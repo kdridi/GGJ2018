@@ -1,6 +1,6 @@
 #include "Scene.hpp"
 #include "Engine.hpp"
-#include "GameObj.hpp"
+#include "SpriteObj.hpp"
 
 Scene::Scene()
 {
@@ -51,7 +51,7 @@ bool Scene::init()
             auto id = ids0[y * 16 + x];
             if (id > 0)
             {
-                auto obj = new GameObj(sheet, id - 1);
+                auto obj = new SpriteObj(sheet, id - 1);
                 obj->move(sf::Vector2f(x * 64, y * 64));
                 
                 push_back(0, obj);
@@ -66,7 +66,7 @@ bool Scene::init()
             auto id = ids1[y * 16 + x];
             if (id > 0)
             {
-                auto obj = new GameObj(sheet, id - 1);
+                auto obj = new SpriteObj(sheet, id - 1);
                 obj->move(sf::Vector2f(x * 64, y * 64));
                 
                 push_back(1, obj);

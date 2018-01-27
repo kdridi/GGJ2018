@@ -36,6 +36,10 @@ add_executable(${EXECUTABLE_NAME}
 	src/SpriteSheet.hpp
 	src/Utils.cpp
 	src/Utils.hpp
+	src/SpriteObj.hpp
+	src/SpriteObj.cpp
+	src/MainObj.cpp
+	src/MainObj.hpp
 )
 
 # Detect and add SFML
