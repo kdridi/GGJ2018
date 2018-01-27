@@ -228,3 +228,11 @@ void MainObj::growUp()
     
 }
 
+void MainObj::updatePlayer(std::size_t id, std::size_t x, std::size_t y, bool* big)
+{
+    // TODO MainObj::updatePlayer implementation is missing
+    std::cout << "Player[" << id << "] ";
+    std::cout << "x = " << x << " ";
+    std::cout << "y = " << y << " ";
+    std::cout << "size = " << ((big == nullptr) ? "unmodified" : (*big ? "big" : "small")) << std::endl;
+}

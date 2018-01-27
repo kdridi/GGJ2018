@@ -86,4 +86,17 @@ void Scene::setPlayer(std::size_t id, MainObj* obj)
     players[id] = obj;
 }
 
+void Scene::pushExitObj(std::string name, std::size_t x, std::size_t y, std::size_t w, std::size_t h)
+{
+    // TODO Scene::pushExitObj implementation is missing
+    // Créer une zone "transparente" à la position (x,y) de taille WxH
+    // Lorsqu'un player touche cette zone, on reload la scene dont le nom est donné par la variable "name"
+    
+    std::cout << "ExitObj[" << name << "] ";
+    std::cout << "x = " << x << " ";
+    std::cout << "y = " << y << " ";
+    std::cout << "w = " << w << " ";
+    std::cout << "h = " << h << " ";
+}
+
 
