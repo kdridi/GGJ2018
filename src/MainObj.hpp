@@ -18,6 +18,8 @@ private:
   void checkT(int id);
   void moveWithD();
 private:
+
+  int idK;
   int	       idJ;
   sf::Vector2f v;
 };
