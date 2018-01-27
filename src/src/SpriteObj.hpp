@@ -17,6 +17,9 @@ public:
   virtual void addCollider(const sf::IntRect &);
 
   virtual int getY() const;
+  virtual sf::Vector2f getPos() const
+  {return this->sprite.getPosition();}
+  
 protected:
   sf::Sprite sprite;
   SpriteSheet& spriteSheet;
