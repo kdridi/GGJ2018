@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "MainObj.hpp"
+#include "ColliderMap.hpp"
 
 MainObj::MainObj(SpriteSheet &s, unsigned int id) : SpriteObj(s, id)
 {
@@ -14,7 +15,6 @@ void MainObj::draw() const
 
 void MainObj::event(sf::Event &e)
 {
-  std::cout << "coucou" << std::endl;
   if (e.type == sf::Event::KeyPressed)
     {
       if (e.key.code == sf::Keyboard::Up)
@@ -30,7 +30,13 @@ void MainObj::event(sf::Event &e)
 
 bool MainObj::update()
 {
-  this->sprite.move(v);
+  sf::Vector2f pos = this->sprite.getPosition();
+
+  if (ColliderMap::current->isCollide({pos.x + v.x, pos.y + v.y}) == false)
+    if (ColliderMap::current->isCollide({pos.x + 64 + v.x, pos.y + v.y}) == false)
+      if (ColliderMap::current->isCollide({pos.x + v.x, pos.y + 64 + v.y}) == false)
+	if (ColliderMap::current->isCollide({pos.x + 64 + v.x, pos.y + 64 + v.y}) == false)
+	  this->sprite.move(v);
   SpriteObj::update();
 }
 

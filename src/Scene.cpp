@@ -2,6 +2,7 @@
 #include "Engine.hpp"
 #include "SpriteObj.hpp"
 #include "MainObj.hpp"
+#include "ColliderMap.hpp"
 
 Scene::Scene()
 {
@@ -45,6 +46,7 @@ bool Scene::init()
 {
     auto& sheet = Engine::current->getSpriteSheet(0);
     
+    new ColliderMap(ids1, sf::Vector2i(16, 12), sf::Vector2i(64, 64), {12});
     for (int x = 0; x < 16; ++x)
     {
         for (int y = 0; y < 12; ++y)
@@ -74,8 +76,10 @@ bool Scene::init()
             }
         }
     }
-    
-    push_back(2, new MainObj(sheet, 0));
+
+    GameObj *obj = new MainObj(sheet, 0);
+    obj->move(sf::Vector2f(10 * 64, 10 * 64));
+    push_back(2, obj);
     return (true);
 }
 
