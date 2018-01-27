@@ -9,12 +9,14 @@
 SpriteObj::SpriteObj(SpriteSheet &sp) : spriteSheet(sp)
 {
   this->sprite.setTexture(this->spriteSheet.getTexture());
+  this->collider = NULL;
 }
 
 SpriteObj::SpriteObj(SpriteSheet &sp, unsigned int id) : spriteSheet(sp)
 {
     this->sprite.setTexture(this->spriteSheet.getTexture());
     this->sprite.setTextureRect(this->spriteSheet.getId(id));
+    this->collider = NULL;
 }
 
 void SpriteObj::draw() const
@@ -40,7 +42,12 @@ void SpriteObj::move(sf::Vector2f pos)
 
 void SpriteObj::addCollider(const sf::IntRect &rect)
 {
-  std::cout << "coucou" << std::endl;
+  if (this->collider != NULL)
+    {
+      ColliderMap::current->delleteCollider(this->collider);
+      std::cout << "delete" << std::endl;
+      delete this->collider;
+    }
   this->collider = new Collider(rect, this);
   ColliderMap::current->addCollider(this->collider);
 }

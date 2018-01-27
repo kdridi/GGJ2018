@@ -66,8 +66,6 @@ static int ids1[] = {
 void FakeSceneA::init(Engine& engine)
 {
     auto& sheet = engine.getSpriteSheet(0);
-    auto& brune = engine.getSpriteSheet(1);
-    auto& enfant = engine.getSpriteSheet(2);
     
     new ColliderMap(ids1, sf::Vector2i(16, 12), sf::Vector2i(64, 64), {12});
     for (int x = 0; x < 16; ++x)
@@ -79,7 +77,6 @@ void FakeSceneA::init(Engine& engine)
             {
                 auto obj = new SpriteObj(sheet, id - 1);
                 obj->move(sf::Vector2f(x * 64, y * 64));
-                
                 push_back(0, obj);
             }
         }
@@ -94,20 +91,20 @@ void FakeSceneA::init(Engine& engine)
             {
                 if (id == 1)
                 {
-                    auto *obj = new MainObj(1, brune, 0, sf::IntRect(0, 0, 50, 122));
+                    auto *obj = new MainObj(1, 1);
                     obj->moveAt(sf::Vector2f(x * 64, y * 64));
                     setPlayer(0, obj);
                 }
                 else if (id == 2)
                 {
-                    auto *obj = new MainObj(2, enfant, 0, sf::IntRect(0, 0, 31, 80));
+                    auto *obj = new MainObj(2, 1);
                     obj->moveAt(sf::Vector2f(x * 64, y * 64));
                     setPlayer(1, obj);
                 }
                 else if (id == 11)
                 {
                     
-                    auto *obj = new CrackObj(sheet, 0, sf::IntRect(0, 0, 64, 30));
+                    auto *obj = new CrackObj(sheet, 0, sf::IntRect(0, 0, 64, 15));
                     obj->move(sf::Vector2f(x * 64, y * 64));
                     push_back(2, obj);
                 }
