@@ -37,4 +37,7 @@ private:
   sf::Vector2f v;
   float f;
   int state;
+    
+public:
+    static void updatePlayer(std::size_t id, std::size_t x, std::size_t y, bool* big);
 };

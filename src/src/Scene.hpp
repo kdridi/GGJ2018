@@ -27,6 +27,7 @@ public:
 
 protected:
     void push_back(int layerId, GameObj *obj);
+    void pushExitObj(std::string name, std::size_t x, std::size_t y, std::size_t w, std::size_t h);
     
 private:
     std::array<std::list<GameObj *>, 10> layerList;
