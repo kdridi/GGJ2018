@@ -1,6 +1,7 @@
 #Change this if you need to target a specific CMake version
 cmake_minimum_required(VERSION 2.6)
 
+set (CMAKE_CXX_STANDARD 11)
 
 # Enable debug symbols by default
 # must be done before project() statement
@@ -22,7 +23,18 @@ include_directories("${PROJECT_BINARY_DIR}")
 
 # Define sources and executable
 set(EXECUTABLE_NAME "myproject")
-add_executable(${EXECUTABLE_NAME} main.cpp)
+add_executable(${EXECUTABLE_NAME}
+	src/main.cpp
+
+	src/Engine.cpp
+	src/Engine.hpp
+	src/GameObj.cpp
+	src/GameObj.hpp
+	src/Scene.cpp
+	src/Scene.hpp
+	src/SpriteSheet.cpp
+	src/SpriteSheet.hpp
+)
 
 
 # Detect and add SFML

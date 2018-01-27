@@ -7,4 +7,4 @@ mkdir -p build/makefile
 cd build/makefile
 
 cmake ../.. -G "Unix Makefiles"
-make
+make VERBOSE=1
