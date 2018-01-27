@@ -1,6 +1,9 @@
+#include <iostream>
 #include "ColliderMap.hpp"
 
+
 ColliderMap *ColliderMap::current = NULL;
+Collider *ColliderMap::test = NULL;
 
 ColliderMap::ColliderMap(int *tile, const sf::Vector2i &size,
 			 const sf::Vector2i &mul, const std::vector<int> &colliderId)
@@ -13,10 +16,25 @@ ColliderMap::ColliderMap(int *tile, const sf::Vector2i &size,
   ColliderMap::current = this;
 }
 
+Collider  *ColliderMap::getTest(const sf::Vector2f &pos)
+{
+  for (auto collide : this->colliderList)
+    {
+      if (collide == test)
+	continue;
+      if (collide->rect.contains(pos.x, pos.y) == true)
+	return (collide);
+    }
+  return (NULL);
+}
+
 bool  ColliderMap::isCollide(const sf::Vector2f &pos)
 {
   sf::Vector2f v = pos;
+  Collider *collider = this->getTest(v);
 
+  if (collider != NULL)
+    return (true);
   v.x /= this->mul.x;
   v.y /= this->mul.y;
 

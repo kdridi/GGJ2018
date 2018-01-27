@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "Scene.hpp"
 #include "Engine.hpp"
 #include "SpriteObj.hpp"
@@ -77,20 +79,32 @@ bool Scene::init()
         }
     }
 
-    GameObj *obj = new MainObj(sheet, 0);
+    GameObj *obj = new MainObj(1, sheet, 0);
     obj->move(sf::Vector2f(10 * 64, 10 * 64));
+    push_back(2, obj);
+    obj = new MainObj(2, sheet, 0);
+    obj->move(sf::Vector2f(4 * 64, 4 * 64));
     push_back(2, obj);
     return (true);
 }
 
 bool Scene::update()
 {
-    for (auto layer : this->layerList)
+  for (auto &layer : this->layerList)
     {
-        for (auto obj : layer)
-            obj->update();
+      auto it = layer.begin();
+      while (it != layer.end())
+	{
+	  if ((*it)->update() == false)
+	    {
+	      std::cout << "BYE" << std::endl;
+	    it = layer.erase(it);
+	    }
+	  else
+	    ++it;
+	}
     }
-    return (true);
+  return (true);
 }
 
 void Scene::event(sf::Event &event)

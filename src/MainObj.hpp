@@ -5,7 +5,7 @@
 class MainObj : public SpriteObj
 {
 public:
-  MainObj(SpriteSheet &, unsigned int id);
+  MainObj(int idJ, SpriteSheet &, unsigned int id);
   
   virtual void draw() const;
   virtual bool update();
@@ -18,5 +18,6 @@ private:
   void checkT(int id);
   void moveWithD();
 private:
+  int	       idJ;
   sf::Vector2f v;
 };

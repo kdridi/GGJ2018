@@ -14,6 +14,7 @@ public:
   virtual void draw() const;
   virtual bool update();
   virtual void move(sf::Vector2f pos);
+  virtual void addCollider(const sf::IntRect &);
 protected:
   sf::Sprite sprite;
   SpriteSheet& spriteSheet;
