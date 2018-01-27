@@ -7,10 +7,11 @@ class SpriteSheet;
 class GameObj
 {
 public:
-  GameObj(SpriteSheet &);
+  GameObj(SpriteSheet &, unsigned int id);
   ~GameObj() = default;
 
   void		draw() const;
+  void		move(sf::Vector2f pos);
   
 private:
   

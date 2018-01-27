@@ -2,18 +2,26 @@
 
 SpriteSheet::SpriteSheet(const std::string &img)
 {
-    this->img.loadFromFile(img);
+  this->img.loadFromFile(img);
 }
 
-sf::IntRect SpriteSheet::getId(unsigned int id) const
+sf::IntRect	SpriteSheet::getId(unsigned int id) const
 {
-    sf::IntRect rect(0, 0, 32, 32);
-    
-    return (this->getId(id, rect));
+  sf::IntRect	rect(0, 0, 32, 32);
+
+  return (this->getId(id, rect));
 }
 
-sf::IntRect SpriteSheet::getId(unsigned int id, const sf::IntRect &rect) const
+sf::IntRect	SpriteSheet::getId(unsigned int id, const sf::IntRect &rect) const
 {
-    return (rect);
+  sf::IntRect	r;
+  
+  sf::Vector2u	size = this->img.getSize();
+  int l = (id * rect.width) / size.x;
+  
+  r.left = (id * rect.width) % size.x;
+  r.top = (l) % size.y;
+  r.width = rect.width;
+  r.height = rect.height;
+  return (rect);
 }
-
