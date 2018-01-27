@@ -18,7 +18,7 @@ sf::IntRect	SpriteSheet::getId(unsigned int id, const sf::IntRect &rect) const
   
   sf::Vector2u	size = this->img.getSize();
   int l = (id * rect.width) / size.x;
-  
+
   r.left = (id * rect.width) % size.x;
   r.top = (l) % size.y;
   r.width = rect.width;
