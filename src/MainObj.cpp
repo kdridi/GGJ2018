@@ -146,12 +146,27 @@ bool MainObj::update()
 void MainObj::move(sf::Vector2f pos)
 {
   sf::Vector2f v = this->sprite.getPosition();
+  sf::Vector2f size = sf::Vector2f(this->sprite.getTextureRect().width,
+				   this->sprite.getTextureRect().height);
   
   if (this->collider != NULL)
     {
-      this->collider->rect.top = v.y + pos.y + 30;
+      this->collider->rect.top = v.y + pos.y + (size.y - size.x);
       this->collider->rect.left = v.x + pos.x;
     }
   this->sprite.setPosition(v.x + pos.x, v.y + pos.y);
+}
+
+void MainObj::moveAt(sf::Vector2f pos)
+{
+  sf::Vector2f size = sf::Vector2f(this->sprite.getTextureRect().width,
+				   this->sprite.getTextureRect().height);
+
+  if (this->collider != NULL)
+    {
+      this->collider->rect.top = pos.y + (size.y - size.x);
+      this->collider->rect.left = pos.x;
+    }
+  this->sprite.setPosition(pos.x, pos.y);
 }
 

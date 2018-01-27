@@ -11,6 +11,7 @@ public:
   virtual void draw() const;
   virtual bool update();
   virtual void move(sf::Vector2f pos);
+  virtual void moveAt(sf::Vector2f pos);
   void event(sf::Event &e);
 
   void setActive(bool active)

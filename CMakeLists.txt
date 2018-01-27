@@ -46,6 +46,8 @@ add_executable(${EXECUTABLE_NAME}
 	src/ColliderMap.hpp
 	src/Collider.hpp
 	src/Collider.cpp
+	src/CrackObj.cpp
+	src/CrackObj.hpp
 )
 
 # Detect and add SFML
