@@ -18,6 +18,10 @@ void GameObj::draw() const
     Engine::current->getWindow().draw(this->sprite);
 }
 
+bool GameObj::update()
+{
+  return (true);
+}
 
 void GameObj::move(sf::Vector2f pos)
 {

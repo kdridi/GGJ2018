@@ -6,6 +6,7 @@
 #include <SFML/Graphics/RenderTexture.hpp>
 
 class GameObj;
+class Actor;
 
 class Scene
 {
@@ -17,6 +18,7 @@ public:
     bool draw();
     
 private:
+
     std::list<GameObj *>    objList;
 };
 

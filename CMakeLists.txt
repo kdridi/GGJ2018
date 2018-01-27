@@ -34,6 +34,8 @@ add_executable(${EXECUTABLE_NAME}
 	src/Scene.hpp
 	src/SpriteSheet.cpp
 	src/SpriteSheet.hpp
+	src/Actor.cpp
+	src/Actor.hpp
 )
 
 
