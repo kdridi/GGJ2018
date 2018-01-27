@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.1" orientation="orthogonal" renderorder="left-up" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextobjectid="14">
+ <tileset firstgid="1" source="map.tsx"/>
+ <layer name="bg" width="16" height="12">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+</data>
+ </layer>
+ <layer name="env" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,7,7,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,12,12,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,
+0,0,0,6,0,0,0,2,2,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,
+0,0,0,6,0,0,0,2,2,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,12,12,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,7,7,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer name="switchEffect2" width="16" height="12" visible="0">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer name="switchEffect1" width="16" height="12" visible="0">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer name="wave1" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,11,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer name="wave2" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,15,15,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer name="wave3" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,15,15,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,11,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup name="door">
+  <object id="4" type="door" x="448" y="0" width="128" height="64">
+   <properties>
+    <property name="isOpen" type="bool" value="true"/>
+    <property name="next" value="room9"/>
+   </properties>
+  </object>
+  <object id="5" type="door" x="448" y="704" width="128" height="64">
+   <properties>
+    <property name="isOpen" type="bool" value="true"/>
+    <property name="next" value="room7"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="switch">
+  <object id="6" type="pressure" x="192" y="192" width="64" height="64">
+   <properties>
+    <property name="size" value="kid"/>
+    <property name="state" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="7" type="pressure" x="192" y="512" width="64" height="64">
+   <properties>
+    <property name="size" value="kid"/>
+    <property name="state" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="foe">
+  <object id="8" type="range" x="832" y="64" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="3"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="9" type="close" x="640" y="640" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="2"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="10" type="range" x="832" y="640" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="3"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="11" type="close" x="640" y="64" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="2"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="12" type="close" x="704" y="640" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="2"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="13" type="close" x="704" y="64" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="2"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

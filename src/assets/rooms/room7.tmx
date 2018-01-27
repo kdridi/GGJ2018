@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.1" orientation="orthogonal" renderorder="left-up" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextobjectid="7">
+ <tileset firstgid="1" source="map.tsx"/>
+ <layer name="bg" width="16" height="12">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+</data>
+ </layer>
+ <layer name="env" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,2,2,0,0,6,0,
+0,0,0,2,2,2,0,0,0,0,2,0,3,4,2,0,
+0,0,0,2,0,2,0,0,0,0,12,0,0,0,0,0,
+0,0,0,2,4,2,0,0,0,0,2,2,2,2,2,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
+0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,8,
+0,0,2,0,12,0,0,0,0,0,2,2,2,0,0,0,
+0,3,0,0,2,0,0,0,0,0,2,0,2,0,0,0,
+0,0,4,0,2,0,0,0,0,0,2,4,2,0,0,0,
+0,6,2,0,2,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup name="switch">
+  <object id="3" type="pressure" x="64" y="640" width="64" height="64">
+   <properties>
+    <property name="size" value="kid"/>
+    <property name="state" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="4" type="pressure" x="896" y="64" width="64" height="64">
+   <properties>
+    <property name="size" value="kid"/>
+    <property name="state" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="door">
+  <object id="5" type="door" x="448" y="0" width="128" height="64">
+   <properties>
+    <property name="isOpen" type="bool" value="false"/>
+    <property name="next" value="room8"/>
+   </properties>
+  </object>
+  <object id="6" type="door" x="960" y="320" width="64" height="128">
+   <properties>
+    <property name="isOpen" type="bool" value="true"/>
+    <property name="next" value="room6"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

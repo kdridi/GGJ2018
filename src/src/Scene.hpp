@@ -6,7 +6,9 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderTexture.hpp>
 
+class Engine;
 class GameObj;
+class MainObj;
 class Actor;
 
 class Scene
@@ -16,13 +18,18 @@ public:
     virtual ~Scene();
 
     void event(sf::Event &event);
-    bool init();
     bool draw();
     bool update();
     
-private:
+    void updateFrom(Scene& previous);
+    virtual void init(Engine& engine);
+    void setPlayer(std::size_t id, MainObj* obj);
+
+protected:
     void push_back(int layerId, GameObj *obj);
     
-    std::array<std::list<GameObj *>, 10>  layerList;
+private:
+    std::array<std::list<GameObj *>, 10> layerList;
+    std::array<MainObj *, 2> players;
 };
 

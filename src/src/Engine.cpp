@@ -8,9 +8,12 @@
 Engine* Engine::current = NULL;
 
 Engine::Engine()
+: sprites()
+, scene(nullptr)
+, nextScene(nullptr)
+, window()
 {
     Engine::current = this;
-    this->scene = new Scene();
 }
 
 Engine::~Engine()
@@ -24,9 +27,6 @@ bool Engine::init()
     this->sprites.push_back(new SpriteSheet(utils::getFullPath("spritesheet.png")));
     this->sprites.push_back(new SpriteSheet(utils::getFullPath("BruneSpriteSheet.png")));
     this->sprites.push_back(new SpriteSheet(utils::getFullPath("BruneSpriteSheetEnfant.png")));
-    
-    if (this->scene->init() == false)
-        return (false);
     
     return (true);
 }
@@ -45,9 +45,44 @@ bool Engine::update()
         }
     }
     
+    if (nextScene)
+    {
+        if (scene)
+        {
+            nextScene->updateFrom(*scene);
+            delete scene;
+        }
+        
+        scene = nextScene;
+        scene->init(*this);
+        
+        nextScene = nullptr;
+    }
+    
     this->window.clear();
     this->scene->update();
     this->scene->draw();
     this->window.display();
     return (true);
+}
+
+Scene* Engine::createScene(std::string name)
+{
+    auto it = factoryMap.find(name);
+    
+    if (it != factoryMap.end())
+        return (*it).second();
+    
+    throw "can't create this scene";
+}
+
+void Engine::showScene(std::string name)
+{
+    nextScene = createScene(name);
+}
+
+Engine& Engine::registerSceneFactory(std::string name, std::function<Scene*()> factory)
+{
+    factoryMap[name] = factory;
+    return *this;
 }

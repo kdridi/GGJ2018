@@ -1,6 +1,8 @@
 #pragma once
 
 #include <list>
+#include <map>
+#include <functional>
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderTexture.hpp>
 
@@ -18,6 +20,8 @@ public:
     Engine();
     virtual ~Engine();
     
+    void showScene(std::string name);
+
     sf::RenderWindow& getWindow()
     {
         return this->window;
@@ -28,14 +32,18 @@ public:
         return (*sprites[id]);
     }
     
+    Engine& registerSceneFactory(std::string name, std::function<Scene*()> factory);
     
 public:
     bool init();
     bool update();
     
 private:
+    Scene* createScene(std::string name);
+    
+    std::map< std::string, std::function<Scene*()> > factoryMap;
     std::vector<SpriteSheet *> sprites;
     Scene* scene;
+    Scene* nextScene;
     sf::RenderWindow window;
 };
-

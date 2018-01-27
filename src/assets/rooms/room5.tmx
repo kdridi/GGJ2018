@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.1" orientation="orthogonal" renderorder="left-up" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextobjectid="6">
+ <tileset firstgid="1" source="map.tsx"/>
+ <layer name="env" width="16" height="12">
+  <data encoding="csv">
+1,1,1,1,1,1,1,8,8,1,1,1,1,1,1,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,2,0,0,0,0,0,0,0,0,2,0,0,1,
+1,0,0,0,2,0,0,0,0,0,0,2,0,0,0,1,
+1,0,0,0,0,2,0,0,0,0,2,0,0,0,0,1,
+1,0,0,0,0,0,2,0,0,2,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+</data>
+ </layer>
+ <objectgroup name="door">
+  <object id="4" type="door" x="448" y="0" width="128" height="64">
+   <properties>
+    <property name="isOpen" type="bool" value="true"/>
+    <property name="next" value="room4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="stuff">
+  <object id="5" type="bow" x="448" y="448" width="128" height="64">
+   <properties>
+    <property name="quantity" type="int" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
