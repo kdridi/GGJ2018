@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-cd $(dirname $0)/..
+set -e
 
-rm -rf build/makefile
-mkdir -p build/makefile
-cd build/makefile
+cd $(dirname $0)/..
+ROOT_DIR="$(pwd)"
+
+rm -rf ${ROOT_DIR}/build/makefile
+mkdir -p ${ROOT_DIR}/build/makefile
+cd ${ROOT_DIR}/build/makefile
 
 cmake ../.. -G "Unix Makefiles"
 make VERBOSE=1
