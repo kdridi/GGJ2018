@@ -1,7 +1,8 @@
 #Change this if you need to target a specific CMake version
 cmake_minimum_required(VERSION 2.6)
 
-set (CMAKE_CXX_STANDARD 11)
+set (CMAKE_CXX_STANDARD 14)
+set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Enable debug symbols by default
 # must be done before project() statement
@@ -48,9 +49,13 @@ add_executable(${EXECUTABLE_NAME}
 	src/Collider.cpp
 	src/CrackObj.cpp
 	src/CrackObj.hpp
+	
+	src/json.hpp
 
 	src/FakeSceneA.cpp
 	src/FakeSceneA.hpp
+	src/JsonScene.cpp
+	src/JsonScene.hpp
 )
 
 # Detect and add SFML

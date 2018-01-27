@@ -10,9 +10,12 @@
 
 #include <string>
 
+#include "json.hpp"
+
 namespace utils
 {
     std::string getFullPath(std::string path);
+    nlohmann::json& getRoomInformations(std::string name);
 }
 
 #endif /* Utils_hpp */

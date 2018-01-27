@@ -9,6 +9,8 @@
 
 #include <algorithm>
 #include <sstream>
+#include <fstream>
+#include <map>
 
 static std::string dirname(const std::string & path);
 
@@ -66,4 +68,18 @@ std::string utils::getFullPath(std::string path)
     return ss.str();
 }
 
-
+nlohmann::json& utils::getRoomInformations(std::string name)
+{
+    static std::map<std::string, nlohmann::json> files;
+    
+    if (files.find(name) == files.end())
+    {
+        std::stringstream ss;
+        ss << "rooms/" << name << ".json";
+        
+        std::ifstream i(getFullPath(ss.str()));
+        i >> files[name];
+    }
+    
+    return files[name];
+}

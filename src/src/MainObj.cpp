@@ -133,8 +133,6 @@ bool MainObj::update()
     if (this->collider != nullptr)
     {
         if (this->collider->test(this->v))
-            move(v);
-        else
         {
             Collider *c = this->collider->getTest(this->v);
             if (c != nullptr)
@@ -147,6 +145,10 @@ bool MainObj::update()
                     this->v = sf::Vector2f(0, 0);
                 }
             }
+        }
+        else
+        {
+            move(v);
         }
     }
     

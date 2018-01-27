@@ -1,21 +1,21 @@
 #include "Engine.hpp"
-
-#include <iostream>
-#include <sstream>
-
-#include "Utils.hpp"
 #include "FakeSceneA.hpp"
+#include "JsonScene.hpp"
 
 int main()
 {
     Engine e;
     
+    e.registerSceneFactory("room1", [] () {
+        return new JsonScene("room1");
+    });
     e.registerSceneFactory("FakeSceneA", [] () {
         FakeSceneA* scene = new FakeSceneA();
         return scene;
     });
     
     e.showScene("FakeSceneA");
+//    e.showScene("room1");
     
     if (e.init() == false)
         return (1);
