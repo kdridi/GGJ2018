@@ -15,7 +15,7 @@ public:
     
 public:
     
-    Engine(std::string assetsDir);
+    Engine();
     virtual ~Engine();
     
     sf::RenderWindow& getWindow()
@@ -28,7 +28,6 @@ public:
         return (*sprites[id]);
     }
     
-    std::string getFullPath(std::string path);
     
 public:
     bool init();
@@ -38,6 +37,5 @@ private:
     std::vector<SpriteSheet *> sprites;
     Scene* scene;
     sf::RenderWindow window;
-    std::string assetsDir;
 };
 
