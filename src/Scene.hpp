@@ -10,13 +10,13 @@ class GameObj;
 class Scene
 {
 public:
-  Scene();
-  virtual ~Scene();
-
-  bool			init();
-  bool			draw();
-  
+    Scene();
+    virtual ~Scene();
+    
+    bool init();
+    bool draw();
+    
 private:
-
-  std::list<GameObj *>	objList;
+    std::list<GameObj *>    objList;
 };
+
