@@ -49,6 +49,9 @@ add_executable(${EXECUTABLE_NAME}
 )
 
 # Detect and add SFML
+if (WIN32)
+	set(SFML_ROOT "${CMAKE_SOURCE_DIR}/vendor/SFML-2.4.2")
+endif ()
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 #Find any version 2.X of SFML
 #See the FindSFML.cmake file for additional details and instructions
@@ -70,6 +73,8 @@ set(CPACK_PACKAGE_VERSION_MAJOR "${myproject_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${myproject_VERSION_MINOR}")
 include(CPack)
 
-
 # spells subprojet managed by Leos
-add_subdirectory(spells)
+if (NOT WIN32)
+	add_subdirectory(spells)
+endif ()
+
