@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+
+class Actor;
 class SpriteSheet;
 
 class GameObj
@@ -9,10 +11,12 @@ class GameObj
 public:
     GameObj(SpriteSheet &);
     GameObj(SpriteSheet &, unsigned int id);
-    ~GameObj() = default;
+    virtual ~GameObj() = default;
     
-    void draw() const;
+    virtual void draw() const;
+    virtual bool update();
     void move(sf::Vector2f pos);
+  
 private:
     sf::Sprite sprite;
     SpriteSheet& spriteSheet;

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <list>
+#include <array>
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderTexture.hpp>
@@ -18,7 +19,8 @@ public:
     bool draw();
     
 private:
-
-    std::list<GameObj *>    objList;
+    void push_back(int layerId, GameObj *obj);
+    
+    std::array<std::list<GameObj *>, 10>  layerList;
 };
 
