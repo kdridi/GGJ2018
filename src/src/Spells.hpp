@@ -8,9 +8,13 @@
 #ifndef Spells_hpp
 #define Spells_hpp
 
+#include <vector>
+
 class Spells
 {
 public:
+    Spells();
+    
     enum Type
     {
         SPELL_NONE,
@@ -32,6 +36,10 @@ public:
 
     void push_spell(Type type);
     void remove_spell(Type type);
+    
+private:
+    std::vector<Type> _types;
+    unsigned int _position;
 };
 
 #endif /* Spells_hpp */

@@ -220,8 +220,8 @@ Test(check_spells, class_move_right_with_three_spells)
     cr_assert_eq(Spells::SPELL_BOW, spells->right());
     
     spells->move_left();
-    cr_assert_eq(Spells::SPELL_FIREBALL, spells->right());
-    cr_assert_eq(Spells::SPELL_HEAL, spells->left());
+    cr_assert_eq(Spells::SPELL_FIREBALL, spells->left());
+    cr_assert_eq(Spells::SPELL_HEAL, spells->right());
 
     delete spells;
 }
