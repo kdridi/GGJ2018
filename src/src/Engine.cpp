@@ -34,18 +34,6 @@ bool Engine::init()
 
 bool Engine::update()
 {
-    sf::Event event;
-
-    while (window.pollEvent(event))
-    {
-        this->scene->event(event);
-      
-        if (event.type == sf::Event::Closed)
-        {
-            return (false);
-        }
-    }
-    
     if (nextScene)
     {
         if (scene)
@@ -58,6 +46,18 @@ bool Engine::update()
         scene->init(*this);
         
         nextScene = nullptr;
+    }
+    
+    sf::Event event;
+    
+    while (window.pollEvent(event))
+    {
+        this->scene->event(event);
+      
+        if (event.type == sf::Event::Closed)
+        {
+            return (false);
+        }
     }
     
     this->window.clear();
