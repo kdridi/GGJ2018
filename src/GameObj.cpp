@@ -4,17 +4,18 @@
 
 GameObj::GameObj(SpriteSheet &sp, unsigned int id) : spriteSheet(sp)
 {
-  this->sprite.setTexture(this->spriteSheet.getTexture());
-  this->sprite.setTextureRect(this->spriteSheet.getId(id));
+    this->sprite.setTexture(this->spriteSheet.getTexture());
+    this->sprite.setTextureRect(this->spriteSheet.getId(id));
 }
 
-void	GameObj::draw() const
+void GameObj::draw() const
 {
-  Engine::current->getWindow().draw(this->sprite);
+    Engine::current->getWindow().draw(this->sprite);
 }
 
 
-void	GameObj::move(sf::Vector2f pos)
+void GameObj::move(sf::Vector2f pos)
 {
-  this->sprite.setPosition(pos);
+    this->sprite.setPosition(pos);
 }
+

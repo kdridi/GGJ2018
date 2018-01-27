@@ -6,15 +6,17 @@
 class SpriteSheet
 {
 public:
-  SpriteSheet(const std::string &);
-
-  sf::IntRect	getId(unsigned int id) const;
-  sf::IntRect 	getId(unsigned int id, const sf::IntRect &rect) const;
-
-  sf::Texture	&getTexture()
-  {return (this->img);}
-  
+    SpriteSheet(const std::string &);
+    
+    sf::IntRect getId(unsigned int id) const;
+    sf::IntRect getId(unsigned int id, const sf::IntRect &rect) const;
+    
+    sf::Texture& getTexture()
+    {
+        return (this->img);
+    }
+    
 private:
-
-  sf::Texture	img;
+    sf::Texture img;
 };
+
