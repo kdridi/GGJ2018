@@ -10,4 +10,13 @@ public:
   virtual void draw() const;
   virtual bool update();
   virtual void move(sf::Vector2f pos);
+  void event(sf::Event &e);
+
+  
+private:
+
+  void checkT(int id);
+  void moveWithD();
+private:
+  sf::Vector2f v;
 };

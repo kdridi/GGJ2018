@@ -14,7 +14,7 @@ public:
   virtual void draw() const;
   virtual bool update();
   virtual void move(sf::Vector2f pos);
-private:
+protected:
   sf::Sprite sprite;
   SpriteSheet& spriteSheet;
 };

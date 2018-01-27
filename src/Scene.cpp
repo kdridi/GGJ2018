@@ -1,6 +1,7 @@
 #include "Scene.hpp"
 #include "Engine.hpp"
 #include "SpriteObj.hpp"
+#include "MainObj.hpp"
 
 Scene::Scene()
 {
@@ -74,7 +75,28 @@ bool Scene::init()
         }
     }
     
+    push_back(2, new MainObj(sheet, 0));
     return (true);
+}
+
+bool Scene::update()
+{
+    for (auto layer : this->layerList)
+    {
+        for (auto obj : layer)
+            obj->update();
+    }
+    return (true);
+}
+
+void Scene::event(sf::Event &event)
+{
+    for (auto layer : this->layerList)
+    {
+        for (auto obj : layer)
+            obj->event(event);
+    }
+  
 }
 
 bool Scene::draw()

@@ -34,6 +34,8 @@ bool Engine::update()
     
     while (window.pollEvent(event))
     {
+        this->scene->event(event);
+      
         if (event.type == sf::Event::Closed)
         {
             return (false);
@@ -41,6 +43,7 @@ bool Engine::update()
     }
     
     this->window.clear();
+    this->scene->update();
     this->scene->draw();
     this->window.display();
     return (true);

@@ -14,9 +14,11 @@ class Scene
 public:
     Scene();
     virtual ~Scene();
-    
+
+    void event(sf::Event &event);
     bool init();
     bool draw();
+    bool update();
     
 private:
     void push_back(int layerId, GameObj *obj);
