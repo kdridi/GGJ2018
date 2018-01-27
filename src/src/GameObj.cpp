@@ -25,7 +25,6 @@ void GameObj::move(sf::Vector2f)
 
 void GameObj::event(sf::Event &e)
 {
-  
 }
 
 void GameObj::addCollider(const sf::IntRect &rect)

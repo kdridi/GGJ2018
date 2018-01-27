@@ -2,6 +2,7 @@
 #include "Scene.hpp"
 #include "SpriteSheet.hpp"
 #include "Utils.hpp"
+#include "ColliderMap.hpp"
 
 #include <sstream>
 
@@ -71,7 +72,10 @@ Scene* Engine::createScene(std::string name)
     auto it = factoryMap.find(name);
     
     if (it != factoryMap.end())
+    {
+        new ColliderMap();
         return (*it).second();
+    }
     
     throw "can't create this scene";
 }

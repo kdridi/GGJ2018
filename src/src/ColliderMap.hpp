@@ -6,36 +6,34 @@
 
 #include "Collider.hpp"
 
+#define WIDTH 16
+#define HEIGHT 16
+#define SIZE 64
+
 class ColliderMap
 {
 public:
-  static ColliderMap *current;
-  static Collider    *test;
-  
-  ColliderMap(int *tile, const sf::Vector2i &size,
-	      const sf::Vector2i &mul, const std::vector<int> &colliderId);
-  virtual ~ColliderMap() = default;
-
-
-  Collider *getTest(const sf::Vector2f &pos);
-  bool	isCollide(const sf::Vector2f &pos);
-
-  void	addCollider(Collider *collider)
-  {this->colliderList.push_back(collider);}
-
-  void	delleteCollider(Collider *collider)
-  {this->colliderList.remove(collider);}
-
+    static ColliderMap *current;
+    static Collider    *test;
+    
+    ColliderMap();
+    virtual ~ColliderMap() = default;
+    
+    Collider *getTest(const sf::Vector2f &pos);
+    bool    isCollide(const sf::Vector2f &pos);
+    
+    void addCollider(Collider *collider)
+    {this->colliderList.push_back(collider);}
+    
+    void delleteCollider(Collider *collider)
+    {this->colliderList.remove(collider);}
+    
+    void addCollider(int x, int y, int id);
 private:
-
-  bool	isACollider(int id);
-  bool	isACollider(int x, int y);
-  
+    bool    isACollider(int x, int y);
+    
 private:
-  int	*tile;
-  int	width;
-  int	height;
-  sf::Vector2i	mul;
-  std::vector<int> colliderId;
-  std::list<Collider *> colliderList;
+    int tile[WIDTH * HEIGHT];
+    std::list<Collider *> colliderList;
 };
+

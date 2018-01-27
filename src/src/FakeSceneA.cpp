@@ -67,7 +67,6 @@ void FakeSceneA::init(Engine& engine)
 {
     auto& sheet = engine.getSpriteSheet(0);
     
-    new ColliderMap(ids1, sf::Vector2i(16, 12), sf::Vector2i(64, 64), {12});
     for (int x = 0; x < 16; ++x)
     {
         for (int y = 0; y < 12; ++y)
@@ -89,21 +88,20 @@ void FakeSceneA::init(Engine& engine)
             auto id = ids1[y * 16 + x];
             if (id > 0)
             {
-                if (id == 1)
+                if (id == 1) // first player
                 {
                     auto *obj = new MainObj(1, 1);
                     obj->moveAt(sf::Vector2f(x * 64, y * 64));
                     setPlayer(0, obj);
                 }
-                else if (id == 2)
+                else if (id == 2) // second player
                 {
                     auto *obj = new MainObj(2, 1);
                     obj->moveAt(sf::Vector2f(x * 64, y * 64));
                     setPlayer(1, obj);
                 }
-                else if (id == 11)
+                else if (id == 11) // wall hole
                 {
-                    
                     auto *obj = new CrackObj(sheet, 0, sf::IntRect(0, 0, 64, 15));
                     obj->move(sf::Vector2f(x * 64, y * 64));
                     push_back(2, obj);
@@ -112,8 +110,8 @@ void FakeSceneA::init(Engine& engine)
                 {
                     auto obj = new SpriteObj(sheet, id - 1);
                     obj->move(sf::Vector2f(x * 64, y * 64));
-                    
                     push_back(1, obj);
+                    ColliderMap::current->addCollider(x, y, id);
                 }
             }
         }
