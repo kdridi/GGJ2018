@@ -5,22 +5,114 @@
 Scene::Scene()
 {
 }
-
+ 
 Scene::~Scene()
 {
 }
 
+static int ids0[] = {
+    2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+    2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+    2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+    2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+    2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+    2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+    2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+    2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+    2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+    2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+    2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+    2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+};
+
+static int ids1[] = {
+    12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,
+    12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12,
+    12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12,
+    12, 0, 0,12, 0, 0, 0, 0, 0, 0, 0, 0,12, 0, 0,12,
+    12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12,
+    12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12,
+    12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12,
+    12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12,
+    12, 0, 0,12, 0, 0, 0, 0, 0, 0, 0, 0,12, 0, 0,12,
+    12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12,
+    12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12,
+    12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
+};
+
 bool Scene::init()
 {
-    objList.push_back(new GameObj(Engine::current->getSpriteSheet(0), 0));
+    auto& sheet = Engine::current->getSpriteSheet(0);
+    
+    for (int x = 0; x < 16; ++x)
+    {
+        for (int y = 0; y < 12; ++y)
+        {
+            auto id = ids0[y * 16 + x];
+            if (id > 0)
+            {
+                auto obj = new GameObj(sheet, id - 1);
+                obj->move(sf::Vector2f(x * 64, y * 64));
+                
+                push_back(0, obj);
+            }
+        }
+    }
+    
+    for (int x = 0; x < 16; ++x)
+    {
+        for (int y = 0; y < 12; ++y)
+        {
+            auto id = ids1[y * 16 + x];
+            if (id > 0)
+            {
+                auto obj = new GameObj(sheet, id - 1);
+                obj->move(sf::Vector2f(x * 64, y * 64));
+                
+                push_back(1, obj);
+            }
+        }
+    }
+    
     return (true);
 }
 
 bool Scene::draw()
 {
-    for (auto obj : this->objList)
-        obj->draw();
+    for (auto layer : this->layerList)
+    {
+        for (auto obj : layer)
+            obj->draw();
+    }
     
     return (true);
 }
+
+void Scene::push_back(int layerId, GameObj *obj)
+{
+    this->layerList[layerId].push_back(obj);
+}
+
+//
+//#include <boost/property_tree/json_parser.hpp>
+//
+//namespace boost {
+//    namespace property_tree {
+//        namespace json_parser {
+//            template<typename Ptree>
+//            void read_json(std::basic_istream< typename Ptree::key_type::value_type > &,
+//                           Ptree &);
+//            template<typename Ptree>
+//            void read_json(const std::string &, Ptree &,
+//                           const std::locale & = std::locale());
+//            template<typename Ptree>
+//            void write_json(std::basic_ostream< typename Ptree::key_type::value_type > &,
+//                            const Ptree &, bool = true);
+//            template<typename Ptree>
+//            void write_json(const std::string &, const Ptree &,
+//                            const std::locale & = std::locale(), bool = true);
+//        }
+//    }
+//}
+
 

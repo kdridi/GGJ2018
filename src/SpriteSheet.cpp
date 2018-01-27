@@ -20,9 +20,9 @@ sf::IntRect SpriteSheet::getId(unsigned int id, const sf::IntRect &rect) const
     int l = (id * rect.width) / size.x;
     
     r.left = (id * rect.width) % size.x;
-    r.top = (l) % size.y;
+    r.top = (l * rect.height) % size.y;
     r.width = rect.width;
     r.height = rect.height;
-    return (rect);
+    return (r);
 }
 
