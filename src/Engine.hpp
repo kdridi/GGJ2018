@@ -9,28 +9,35 @@ class SpriteSheet;
 
 class Engine
 {
-
+    
 public:
-  static Engine	*current;
-  
+    static Engine* current;
+    
 public:
-
-  Engine();
-  virtual ~Engine();
-
-  sf::RenderWindow		&getWindow()
-  {return this->window;}
-
-  SpriteSheet			&getSpriteSheet(unsigned int id)
-  {return (*sprites[id]);}
-  
+    
+    Engine(std::string assetsDir);
+    virtual ~Engine();
+    
+    sf::RenderWindow& getWindow()
+    {
+        return this->window;
+    }
+    
+    SpriteSheet& getSpriteSheet(unsigned int id)
+    {
+        return (*sprites[id]);
+    }
+    
+    std::string getFullPath(std::string path);
+    
 public:
-  bool				init();
-  bool				update();
-
+    bool init();
+    bool update();
+    
 private:
-
-  std::vector<SpriteSheet *>	sprites;
-  Scene				*scene;
-  sf::RenderWindow		window;
+    std::vector<SpriteSheet *> sprites;
+    Scene* scene;
+    sf::RenderWindow window;
+    std::string assetsDir;
 };
+
