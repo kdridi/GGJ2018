@@ -7,6 +7,7 @@
 #include <SFML/Graphics/RenderTexture.hpp>
 
 class GameObj;
+class Actor;
 
 class Scene
 {
