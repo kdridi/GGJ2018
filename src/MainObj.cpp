@@ -3,13 +3,27 @@
 #include "MainObj.hpp"
 #include "ColliderMap.hpp"
 #include "SpriteSheet.hpp"
+#include "MoveObj.hpp"
 
 MainObj::MainObj(int idJ, SpriteSheet &s, unsigned int id) : SpriteObj(s, id)
 {
     this->idJ = idJ;
     this->v = sf::Vector2f(0, 0);
+    this->rect = sf::IntRect(0, 0, 50, 80);
     this->addCollider(sf::IntRect(0, 0, 50, 50));
-    this->sprite.setTextureRect(this->spriteSheet.getId(id, sf::IntRect(0, 0, 50, 80)));
+    this->sprite.setTextureRect(this->spriteSheet.getId(id, this->rect));
+    this->active = true;
+}
+
+MainObj::MainObj(int idJ, SpriteSheet &s, unsigned int id, const sf::IntRect &rect) :
+  SpriteObj(s, id)
+{
+    this->idJ = idJ;
+    this->v = sf::Vector2f(0, 0);
+    this->rect = rect;
+    this->addCollider(sf::IntRect(0, 0, rect.width, rect.width));
+    this->sprite.setTextureRect(this->spriteSheet.getId(id, rect));
+    this->active = true;
 }
 
 void MainObj::draw() const
@@ -19,33 +33,35 @@ void MainObj::draw() const
 
 void MainObj::event(sf::Event &e)
 {
-  float f = 5.5;
+  this->f = 5.5;
   
+  if (this->active == false)
+    return ;
     if (this->idJ == 1)
     {
         if (e.type == sf::Event::KeyPressed)
         {
             if (e.key.code == sf::Keyboard::Up)
             {
-	        this->sprite.setTextureRect(this->spriteSheet.getId(1, sf::IntRect(0, 0, 50, 80)));
+	        this->sprite.setTextureRect(this->spriteSheet.getId(1, this->rect));
                 this->v = sf::Vector2f(0, -f);
                 this->idK = 0;
             }
             if (e.key.code == sf::Keyboard::Down)
             {
-	        this->sprite.setTextureRect(this->spriteSheet.getId(0, sf::IntRect(0, 0, 50, 80)));
+	        this->sprite.setTextureRect(this->spriteSheet.getId(0, this->rect));
                 this->v = sf::Vector2f(0, f);
                 this->idK = 1;
             }
             if (e.key.code == sf::Keyboard::Left)
             {
-	        this->sprite.setTextureRect(this->spriteSheet.getId(2, sf::IntRect(0, 0, 50, 80)));
+	        this->sprite.setTextureRect(this->spriteSheet.getId(2, this->rect));
                 this->v = sf::Vector2f(-f, 0);
                 this->idK = 2;
             }
             if (e.key.code == sf::Keyboard::Right)
             {
-	        this->sprite.setTextureRect(this->spriteSheet.getId(3, sf::IntRect(0, 0, 50, 80)));
+	        this->sprite.setTextureRect(this->spriteSheet.getId(3, this->rect));
                 this->v = sf::Vector2f(f, 0);
                 this->idK = 3;
             }
@@ -68,25 +84,25 @@ void MainObj::event(sf::Event &e)
         {
             if (e.key.code == sf::Keyboard::Z)
             {
-	        this->sprite.setTextureRect(this->spriteSheet.getId(1, sf::IntRect(0, 0, 50, 80)));
+	        this->sprite.setTextureRect(this->spriteSheet.getId(1, this->rect));
                 this->v = sf::Vector2f(0, -f);
                 this->idK = 0;
             }
             if (e.key.code == sf::Keyboard::S)
             {
-	        this->sprite.setTextureRect(this->spriteSheet.getId(0, sf::IntRect(0, 0, 50, 80)));
+	        this->sprite.setTextureRect(this->spriteSheet.getId(0, this->rect));
                 this->v = sf::Vector2f(0, f);
                 this->idK = 1;
             }
             if (e.key.code == sf::Keyboard::Q)
             {
-	        this->sprite.setTextureRect(this->spriteSheet.getId(2, sf::IntRect(0, 0, 50, 80)));
+	        this->sprite.setTextureRect(this->spriteSheet.getId(2, this->rect));
                 this->v = sf::Vector2f(-f, 0);
                 this->idK = 2;
             }
             if (e.key.code == sf::Keyboard::D)
             {
-	        this->sprite.setTextureRect(this->spriteSheet.getId(3, sf::IntRect(0, 0, 50, 80)));
+	        this->sprite.setTextureRect(this->spriteSheet.getId(3, this->rect));
                 this->v = sf::Vector2f(f, 0);
                 this->idK = 3;
             }
@@ -107,21 +123,35 @@ void MainObj::event(sf::Event &e)
 
 bool MainObj::update()
 {
-    sf::Vector2f pos = this->sprite.getPosition();
+  if (this->active == false)
+    return (true);
+  if (this->collider != NULL && this->collider->test(this->v) == false)
+    this->move(v);
+  else
+    {
+      Collider *c = this->collider->getTest(this->v);
+      MoveObj *m;
+      
+      if (c != NULL && (m = dynamic_cast<MoveObj *>(c->obj)) != NULL)
+	{
+	  m->lauch(this, sf::Vector2f(this->v.x / f, this->v.y / f));
+	  this->v = sf::Vector2f(0, 0);
+	}
+
+    }
     
-    pos.y += 30;
-    ColliderMap::test = this->collider;
-    if (ColliderMap::current->isCollide({pos.x + v.x, pos.y + v.y}) == false)
-        if (ColliderMap::current->isCollide({pos.x + 50 + v.x, pos.y + v.y}) == false)
-            if (ColliderMap::current->isCollide({pos.x + v.x, pos.y + 50 + v.y}) == false)
-                if (ColliderMap::current->isCollide({pos.x + 50 + v.x, pos.y + 50 + v.y}) == false)
-                    this->move(v);
-    
-    return (SpriteObj::update());
+  return (SpriteObj::update());
 }
 
 void MainObj::move(sf::Vector2f pos)
 {
-    SpriteObj::move(pos);
+  sf::Vector2f v = this->sprite.getPosition();
+  
+  if (this->collider != NULL)
+    {
+      this->collider->rect.top = v.y + pos.y + 30;
+      this->collider->rect.left = v.x + pos.x;
+    }
+  this->sprite.setPosition(v.x + pos.x, v.y + pos.y);
 }
 

@@ -23,6 +23,7 @@ bool Engine::init()
     this->window.setFramerateLimit(60);
     this->sprites.push_back(new SpriteSheet(utils::getFullPath("spritesheet.png")));
     this->sprites.push_back(new SpriteSheet(utils::getFullPath("BruneSpriteSheet.png")));
+    this->sprites.push_back(new SpriteSheet(utils::getFullPath("BruneSpriteSheetEnfant.png")));
     
     if (this->scene->init() == false)
         return (false);
@@ -33,7 +34,7 @@ bool Engine::init()
 bool Engine::update()
 {
     sf::Event event;
-    
+
     while (window.pollEvent(event))
     {
         this->scene->event(event);

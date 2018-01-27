@@ -38,11 +38,14 @@ add_executable(${EXECUTABLE_NAME}
 	src/Utils.hpp
 	src/SpriteObj.hpp
 	src/SpriteObj.cpp
+	src/MoveObj.hpp
+	src/MoveObj.cpp
 	src/MainObj.cpp
 	src/MainObj.hpp
 	src/ColliderMap.cpp
 	src/ColliderMap.hpp
 	src/Collider.hpp
+	src/Collider.cpp
 )
 
 # Detect and add SFML

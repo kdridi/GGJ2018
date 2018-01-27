@@ -44,3 +44,11 @@ void SpriteObj::addCollider(const sf::IntRect &rect)
   this->collider = new Collider(rect, this);
   ColliderMap::current->addCollider(this->collider);
 }
+
+int SpriteObj::getY() const
+{
+  sf::Vector2f pos = this->sprite.getPosition();
+
+  pos.y += this->sprite.getTextureRect().top;
+  return (pos.y);
+}

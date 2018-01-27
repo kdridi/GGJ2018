@@ -5,6 +5,7 @@
 #include "SpriteObj.hpp"
 #include "MainObj.hpp"
 #include "ColliderMap.hpp"
+#include "MoveObj.hpp"
 
 Scene::Scene()
 {
@@ -29,6 +30,7 @@ static int ids0[] = {
     2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
 };
 
+
 static int ids1[] = {
     12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,
     12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12,
@@ -48,6 +50,7 @@ bool Scene::init()
 {
     auto& sheet = Engine::current->getSpriteSheet(0);
     auto& brune = Engine::current->getSpriteSheet(1);
+    auto& enfant = Engine::current->getSpriteSheet(2);
     
     new ColliderMap(ids1, sf::Vector2i(16, 12), sf::Vector2i(64, 64), {12});
     for (int x = 0; x < 16; ++x)
@@ -83,9 +86,14 @@ bool Scene::init()
     GameObj *obj = new MainObj(1, brune, 0);
     obj->move(sf::Vector2f(10 * 64, 9 * 64));
     push_back(2, obj);
-    obj = new MainObj(2, brune, 1);
+    obj = new MainObj(2, enfant, 0, sf::IntRect(0, 0, 30, 60));
     obj->move(sf::Vector2f(4 * 64, 4 * 64));
     push_back(2, obj);
+
+    obj = new MoveObj(sheet, 0);
+    obj->move(sf::Vector2f(6 * 64, 4 * 64));
+    push_back(2, obj);
+
     return (true);
 }
 
@@ -117,8 +125,16 @@ void Scene::event(sf::Event &event)
   
 }
 
+bool sortY(GameObj *A, GameObj *B)
+{
+  if (A->getY() < B->getY())
+    return (true);
+  return (false);
+} 
+
 bool Scene::draw()
 {
+    this->layerList[2].sort(sortY);
     for (auto layer : this->layerList)
     {
         for (auto obj : layer)

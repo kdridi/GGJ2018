@@ -32,3 +32,8 @@ void GameObj::addCollider(const sf::IntRect &rect)
 {
   this->collider = new Collider(rect, this);
 }
+
+int GameObj::getY() const
+{
+  return (0);
+}

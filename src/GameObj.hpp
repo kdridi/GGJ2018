@@ -18,6 +18,8 @@ public:
     virtual void move(sf::Vector2f pos);
 
     virtual void addCollider(const sf::IntRect &);
+
+    virtual int getY() const;
 protected:
   bool	live;
   Collider *collider;
