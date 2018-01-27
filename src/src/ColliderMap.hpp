@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <list>
 
 #include "Collider.hpp"
 
@@ -21,7 +22,10 @@ public:
 
   void	addCollider(Collider *collider)
   {this->colliderList.push_back(collider);}
-  
+
+  void	delleteCollider(Collider *collider)
+  {this->colliderList.remove(collider);}
+
 private:
 
   bool	isACollider(int id);
@@ -33,5 +37,5 @@ private:
   int	height;
   sf::Vector2i	mul;
   std::vector<int> colliderId;
-  std::vector<Collider *> colliderList;
+  std::list<Collider *> colliderList;
 };

@@ -4,26 +4,21 @@
 #include "ColliderMap.hpp"
 #include "SpriteSheet.hpp"
 #include "MoveObj.hpp"
+#include "Engine.hpp"
 
-MainObj::MainObj(int idJ, SpriteSheet &s, unsigned int id) : SpriteObj(s, id)
-{
-    this->idJ = idJ;
-    this->v = sf::Vector2f(0, 0);
-    this->rect = sf::IntRect(0, 0, 50, 80);
-    this->addCollider(sf::IntRect(0, 0, 50, 50));
-    this->sprite.setTextureRect(this->spriteSheet.getId(id, this->rect));
-    this->active = true;
-}
 
-MainObj::MainObj(int idJ, SpriteSheet &s, unsigned int id, const sf::IntRect &rect) :
-  SpriteObj(s, id)
+MainObj::MainObj(int idJ, int state) :
+  SpriteObj(Engine::current->getSpriteSheet(1), 0)
 {
+  sf::IntRect rect = sf::IntRect(0, 0, 50, 122);
+  
     this->idJ = idJ;
     this->v = sf::Vector2f(0, 0);
     this->rect = rect;
     this->addCollider(sf::IntRect(0, 0, rect.width, rect.width));
-    this->sprite.setTextureRect(this->spriteSheet.getId(id, rect));
+    this->sprite.setTextureRect(this->spriteSheet.getId(0, rect));
     this->active = true;
+    this->state = 2;
 }
 
 void MainObj::draw() const
@@ -41,6 +36,16 @@ void MainObj::event(sf::Event &e)
     {
         if (e.type == sf::Event::KeyPressed)
         {
+	    if (e.key.code == sf::Keyboard::A)
+	    {
+	      this->suicide();
+	    }
+
+	    if (e.key.code == sf::Keyboard::E)
+	    {
+	      this->growUp();
+	    }
+
             if (e.key.code == sf::Keyboard::Up)
             {
 	        this->sprite.setTextureRect(this->spriteSheet.getId(1, this->rect));
@@ -170,3 +175,48 @@ void MainObj::moveAt(sf::Vector2f pos)
   this->sprite.setPosition(pos.x, pos.y);
 }
 
+void MainObj::suicide()
+{
+  if (this->state != 2)
+    return ;
+  
+  this->state = 1;
+  sf::IntRect rect = sf::IntRect(0, 0, 30, 80);
+
+  this->rect = rect;
+  this->addCollider(sf::IntRect(0, 0, rect.width, rect.width));
+  this->sprite.setTexture(Engine::current->getSpriteSheet(2).getTexture());
+  this->sprite.setTextureRect(this->spriteSheet.getId(0, rect));
+
+  sf::Vector2f size = sf::Vector2f(this->sprite.getTextureRect().width,
+  				   this->sprite.getTextureRect().height);
+  sf::Vector2f pos = this->sprite.getPosition();
+
+  this->collider->rect.top = pos.y + (size.y - size.x);
+  this->collider->rect.left = pos.x;
+  this->sprite.move(20, 42);
+
+}
+
+void MainObj::growUp()
+{
+  if (this->state != 1)
+    return ;
+
+  this->state = 2;
+  sf::IntRect rect = sf::IntRect(0, 0, 50, 122);
+
+  this->rect = rect;
+  this->addCollider(sf::IntRect(0, 0, rect.width, rect.width));
+  this->sprite.setTexture(Engine::current->getSpriteSheet(1).getTexture());
+  this->sprite.setTextureRect(this->spriteSheet.getId(0, rect));
+
+  sf::Vector2f size = sf::Vector2f(this->sprite.getTextureRect().width,
+				   this->sprite.getTextureRect().height);
+  sf::Vector2f pos = this->sprite.getPosition();
+
+  this->collider->rect.top = pos.y + (size.y - size.x);
+  this->collider->rect.left = pos.x;
+  this->sprite.move(-20, -42);
+
+}

@@ -83,7 +83,7 @@ bool Scene::init()
             }
         }
     }
-    
+
     for (int x = 0; x < 16; ++x)
     {
         for (int y = 0; y < 12; ++y)
@@ -93,7 +93,7 @@ bool Scene::init()
             {
 	      if (id == 1)
 		{
-		  auto *obj = new MainObj(1, brune, 0, sf::IntRect(0, 0, 50, 122));
+		  auto *obj = new MainObj(1, 1);
 		  obj->moveAt(sf::Vector2f(x * 64, y * 64));
 		  push_back(2, obj);
 
@@ -101,14 +101,14 @@ bool Scene::init()
 	      else if (id == 2)
 		{
 
-		  auto *obj = new MainObj(2, enfant, 0, sf::IntRect(0, 0, 31, 80));
+		  auto *obj = new MainObj(2, 1);
 		  obj->moveAt(sf::Vector2f(x * 64, y * 64));
 		  push_back(2, obj);
 		}
 	      else if (id == 11)
 		{
 
-		  auto *obj = new CrackObj(sheet, 0, sf::IntRect(0, 0, 64, 30));
+		  auto *obj = new CrackObj(sheet, 0, sf::IntRect(0, 0, 64, 15));
 		  obj->move(sf::Vector2f(x * 64, y * 64));
 		  push_back(2, obj);
 		}
