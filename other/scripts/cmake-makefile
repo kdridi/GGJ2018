@@ -2,12 +2,12 @@
 
 set -e
 
-cd $(dirname $0)/..
+cd $(dirname $0)/../..
 ROOT_DIR="$(pwd)"
 
 rm -rf ${ROOT_DIR}/build/makefile
 mkdir -p ${ROOT_DIR}/build/makefile
 cd ${ROOT_DIR}/build/makefile
 
-cmake ../.. -G "Unix Makefiles"
+cmake ${ROOT_DIR}/src -G "Unix Makefiles"
 make VERBOSE=1
