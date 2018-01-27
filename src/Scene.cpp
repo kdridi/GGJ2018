@@ -47,6 +47,7 @@ static int ids1[] = {
 bool Scene::init()
 {
     auto& sheet = Engine::current->getSpriteSheet(0);
+    auto& brune = Engine::current->getSpriteSheet(1);
     
     new ColliderMap(ids1, sf::Vector2i(16, 12), sf::Vector2i(64, 64), {12});
     for (int x = 0; x < 16; ++x)
@@ -79,10 +80,10 @@ bool Scene::init()
         }
     }
 
-    GameObj *obj = new MainObj(1, sheet, 0);
-    obj->move(sf::Vector2f(10 * 64, 10 * 64));
+    GameObj *obj = new MainObj(1, brune, 0);
+    obj->move(sf::Vector2f(10 * 64, 9 * 64));
     push_back(2, obj);
-    obj = new MainObj(2, sheet, 0);
+    obj = new MainObj(2, brune, 1);
     obj->move(sf::Vector2f(4 * 64, 4 * 64));
     push_back(2, obj);
     return (true);
@@ -97,8 +98,7 @@ bool Scene::update()
 	{
 	  if ((*it)->update() == false)
 	    {
-	      std::cout << "BYE" << std::endl;
-	    it = layer.erase(it);
+	      it = layer.erase(it);
 	    }
 	  else
 	    ++it;

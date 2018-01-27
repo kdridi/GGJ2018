@@ -20,7 +20,9 @@ Engine::~Engine()
 bool Engine::init()
 {
     this->window.create(sf::VideoMode(1024, 768), "SFML window");
+    this->window.setFramerateLimit(60);
     this->sprites.push_back(new SpriteSheet(utils::getFullPath("spritesheet.png")));
+    this->sprites.push_back(new SpriteSheet(utils::getFullPath("BruneSpriteSheet.png")));
     
     if (this->scene->init() == false)
         return (false);
