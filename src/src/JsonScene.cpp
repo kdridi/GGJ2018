@@ -153,6 +153,9 @@ void JsonScene::init()
                         case SPRITE_DOOR_SMALL:
                             pushDoorSmallObj(x, y);
                             break;
+                        case SPRITE_PRESSURE:
+                            pushPressureObj(x, y);
+                            break;
                         default:
                             throw "unknown object type";
                             break;

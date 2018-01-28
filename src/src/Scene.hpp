@@ -61,6 +61,7 @@ protected:
     void pushMobileObj(std::size_t x, std::size_t y);
     void pushLinkedObj(std::size_t x, std::size_t y);
     void pushItemObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, Spells::Type type);
+    void pushPressureObj(std::size_t x, std::size_t y);
 
     Engine& engine;
 
