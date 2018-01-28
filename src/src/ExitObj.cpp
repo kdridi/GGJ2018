@@ -32,15 +32,17 @@ void ExitObj::lauch()
 
 bool ExitObj::open()
 {
-    return ((enemyLock <= 0) && (pressureLock <= 0));
+    return ((enemyLock == 0) && (pressureLock == 0));
 }
 
 void ExitObj::killEnemmy()
 {
-    enemyLock -= 1;
+    if (enemyLock > 0)
+        enemyLock -= 1;
 }
 
 void ExitObj::pushPressure()
 {
-    pressureLock -= 1;
+    if (pressureLock > 0)
+        pressureLock -= 1;
 }
