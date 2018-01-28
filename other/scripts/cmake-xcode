@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd $(dirname $0)/../..
+ROOT_DIR="$(pwd)"
+
+rm -rf ${ROOT_DIR}/build/xcode
+mkdir -p ${ROOT_DIR}/build/xcode
+cd ${ROOT_DIR}/build/xcode
+
+cmake ${ROOT_DIR}/src -G "Xcode"
+open myproject.xcodeproj

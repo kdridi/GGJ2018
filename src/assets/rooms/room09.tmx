@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.0" orientation="orthogonal" renderorder="left-up" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextobjectid="12">
+ <tileset firstgid="1" source="map.tsx"/>
+ <layer name="env" width="16" height="12">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,2,2,0,0,0,0,0,0,1,
+1,0,0,0,0,0,2,0,0,4,0,0,0,0,0,1,
+1,6,0,0,0,0,0,2,2,0,0,0,0,0,0,7,
+1,0,4,0,0,0,0,2,0,4,0,0,0,0,0,7,
+1,0,0,0,0,0,2,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,2,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,2,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,2,0,0,0,0,0,0,0,0,0,0,0,1,
+1,1,1,1,1,1,1,7,7,1,1,1,1,1,1,1
+</data>
+ </layer>
+ <objectgroup name="objects">
+  <object id="7" name="enemyAway" type="spawn" x="832" y="128" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="3"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="8" name="enemyAway" type="spawn" x="832" y="576" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="3"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="9" name="room10" type="exit" x="960" y="320" width="64" height="128">
+   <properties>
+    <property name="pressureLock" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="10" name="room08" type="exit" x="448" y="704" width="128" height="64"/>
+  <object id="11" name="openDoor" type="pressure" x="64" y="320" width="64" height="64">
+   <properties>
+    <property name="size" value="block"/>
+    <property name="state" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

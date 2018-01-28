@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd $(dirname $0)/../..
+ROOT_DIR="$(pwd)"
+
+rm -rf ${ROOT_DIR}/build/makefile
+mkdir -p ${ROOT_DIR}/build/makefile
+cd ${ROOT_DIR}/build/makefile
+
+cmake ${ROOT_DIR}/src \
+	-DCMAKE_BUILD_TYPE=Release \
+	-G "Unix Makefiles"
+
+make VERBOSE=1
+
+if [[ "${HOME}" == "/Users/kdridi" ]]; then
+	cp myproject ../../release/MamaPacha-mac.bin
+	cd ../../release
+	rm -rf assets
+	cp -r ../src/assets .
+fi
+
+if [[ "${HOME}" == "/home/mayol_l" ]]; then
+	cp myproject ../../release/MamaPacha-linux.bin
+fi

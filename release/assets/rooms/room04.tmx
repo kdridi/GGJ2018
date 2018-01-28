@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.1" orientation="orthogonal" renderorder="left-up" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextobjectid="14">
+ <tileset firstgid="1" source="map.tsx"/>
+ <layer name="env" width="16" height="12">
+  <data encoding="csv">
+1,1,1,1,1,1,1,7,7,1,1,1,1,1,1,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,15,0,0,15,0,0,0,0,0,1,
+1,0,0,0,0,11,0,15,15,0,11,0,0,0,0,1,
+1,0,0,0,0,0,15,0,0,15,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,1,1,1,1,1,1,7,7,1,1,1,1,1,1,1
+</data>
+ </layer>
+ <objectgroup name="door">
+  <object id="4" type="door" x="448" y="704" width="128" height="64">
+   <properties>
+    <property name="isOpen" type="bool" value="false"/>
+    <property name="next" value="room5"/>
+   </properties>
+  </object>
+  <object id="5" type="door" x="448" y="0" width="128" height="64">
+   <properties>
+    <property name="isOpen" type="bool" value="true"/>
+    <property name="next" value="room3"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="foe">
+  <object id="6" type="range" x="320" y="448" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="3"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="7" type="range" x="640" y="448" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="3"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="8" type="close" x="576" y="512" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="2"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="9" type="close" x="576" y="384" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="2"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="10" type="close" x="512" y="448" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="2"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="11" type="close" x="448" y="448" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="2"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="12" type="close" x="384" y="384" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="2"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="13" type="close" x="384" y="512" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="2"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
