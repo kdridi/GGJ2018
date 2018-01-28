@@ -243,11 +243,9 @@ void Scene::pushToogleObj(std::string name, std::size_t x, std::size_t y, Sprite
 void Scene::pushPressureObj(PressureType type, std::size_t x, std::size_t y, bool kid, bool adult, std::string target)
 {
     // TODO Implements Pressure Obj
-    auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
     auto *obj = new SwitchObj(type, kid, adult, target);
-    // auto *obj = new MoveObj(Engine::current->getSpriteSheet(SSHEET_ITEMS), 1);
     obj->move(sf::Vector2f(x, y));
-    push_back(2, obj);
+    push_back(1, obj);
     
     std::cout << "PressureObj[" << type << "] ";
     std::cout << "x = " << x << " ";
@@ -267,5 +265,7 @@ void Scene::killEnemmy()
 void Scene::pushPressure()
 {
     for (auto *exit : exitList)
+    {
         exit->pushPressure();
+    }
 }
