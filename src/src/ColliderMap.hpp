@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <list>
+#include <iostream>
 
 #include "Collider.hpp"
 
@@ -23,10 +24,15 @@ public:
     bool    isCollide(const sf::Vector2f &pos);
     
     void addCollider(Collider *collider)
-    {this->colliderList.push_back(collider);}
+    {
+        std::cout << "ColliderMap::addCollider " << this << " with collider : " << collider << std::endl;
+        this->colliderList.push_back(collider);
+    }
     
     void delleteCollider(Collider *collider)
-    {this->colliderList.remove(collider);}
+    {
+        this->colliderList.remove(collider);
+    }
     
     void addCollider(int x, int y, int id);
 private:

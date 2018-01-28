@@ -9,6 +9,7 @@ ColliderMap::ColliderMap()
 {
     ColliderMap::current = this;
     std::memset(tile, 0, sizeof(*tile) * WIDTH * HEIGHT);
+    std::cout << "ColliderMap: " << this << std::endl;
 }
 
 Collider* ColliderMap::getTest(const sf::Vector2f &pos)

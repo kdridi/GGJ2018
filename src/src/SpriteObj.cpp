@@ -9,8 +9,8 @@
 SpriteObj::SpriteObj(SpriteSheet &sp)
 : spriteSheet(sp)
 {
-  this->sprite.setTexture(this->spriteSheet.getTexture());
-  this->collider = NULL;
+    this->sprite.setTexture(this->spriteSheet.getTexture());
+    this->collider = NULL;
 }
 
 SpriteObj::SpriteObj(SpriteSheet &sp, unsigned int id)
@@ -23,11 +23,11 @@ SpriteObj::SpriteObj(SpriteSheet &sp, unsigned int id)
 
 SpriteObj::~SpriteObj()
 {
-  if (this->collider != NULL)
+    if (this->collider != NULL)
     {
-      ColliderMap::current->delleteCollider(this->collider);
-      delete this->collider;
-    }  
+        ColliderMap::current->delleteCollider(this->collider);
+        delete this->collider;
+    }
 }
 
 void SpriteObj::draw() const
@@ -37,35 +37,36 @@ void SpriteObj::draw() const
 
 bool SpriteObj::update()
 {
-  return (GameObj::update());
+    return (GameObj::update());
 }
 
 void SpriteObj::move(sf::Vector2f pos)
 {
-  sf::Vector2f v = this->sprite.getPosition();
-  if (this->collider != NULL)
+    sf::Vector2f v = this->sprite.getPosition();
+    if (this->collider != NULL)
     {
-      this->collider->rect.top = v.y + pos.y;
-      this->collider->rect.left = v.x + pos.x;
+        this->collider->rect.top = v.y + pos.y;
+        this->collider->rect.left = v.x + pos.x;
     }
-  this->sprite.setPosition(v.x + pos.x, v.y + pos.y);
+    this->sprite.setPosition(v.x + pos.x, v.y + pos.y);
 }
 
 void SpriteObj::addCollider(const sf::IntRect &rect)
 {
-  if (this->collider != NULL)
+    if (this->collider != NULL)
     {
-      ColliderMap::current->delleteCollider(this->collider);
-      delete this->collider;
+        ColliderMap::current->delleteCollider(this->collider);
+        delete this->collider;
     }
-  this->collider = new Collider(rect, this);
-  ColliderMap::current->addCollider(this->collider);
+    this->collider = new Collider(rect, this);
+    ColliderMap::current->addCollider(this->collider);
 }
 
 int SpriteObj::getY() const
 {
-  sf::Vector2f pos = this->sprite.getPosition();
-
-  pos.y += this->sprite.getTextureRect().top;
-  return (pos.y);
+    sf::Vector2f pos = this->sprite.getPosition();
+    
+    pos.y += this->sprite.getTextureRect().top;
+    return (pos.y);
 }
+

@@ -93,15 +93,11 @@ void FakeSceneA::init()
             {
                 if (id == 1) // first player
                 {
-                    auto *obj = new MainObj(1, 1);
-                    obj->moveAt(sf::Vector2f(x * 64, y * 64));
-                    setPlayer(0, obj);
+                    MainObj::updatePlayer(0, x * 64, y * 64, nullptr);
                 }
                 else if (id == 2) // second player
                 {
-                    auto *obj = new MainObj(2, 1);
-                    obj->moveAt(sf::Vector2f(x * 64, y * 64));
-                    setPlayer(1, obj);
+                    MainObj::updatePlayer(1, x * 64, y * 64, nullptr);
                 }
                 else if (id == 11) // wall hole
                 {
@@ -111,7 +107,7 @@ void FakeSceneA::init()
                 }
                 else if (id == 42) // exit
                 {
-		  auto *obj = new ExitObj("coucou", sf::Vector2f(64, 64));
+                    auto *obj = new ExitObj(engine, "coucou", sf::Vector2f(64, 64), true);
                     obj->move(sf::Vector2f(x * 64, y * 64));
                     push_back(2, obj);
                 }
@@ -138,3 +134,4 @@ void FakeSceneA::init()
         }
     }
 }
+

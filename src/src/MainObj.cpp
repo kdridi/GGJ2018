@@ -9,8 +9,8 @@
 #include "ExitObj.hpp"
 #include "AttackObj.hpp"
 
-MainObj	*MainObj::PA = NULL;
-MainObj	*MainObj::PB = NULL;
+MainObj    *MainObj::PA = NULL;
+MainObj    *MainObj::PB = NULL;
 
 MainObj::MainObj(int idJ, int state) :
 SpriteObj(Engine::current->getSpriteSheet(SSHEET_PLAYER_BIG), 0)
@@ -19,9 +19,9 @@ SpriteObj(Engine::current->getSpriteSheet(SSHEET_PLAYER_BIG), 0)
     
     this->idJ = idJ;
     if (this->idJ == 1)
-      MainObj::PA = this;
+        MainObj::PA = this;
     if (this->idJ == 2)
-      MainObj::PB = this;
+        MainObj::PB = this;
     this->v = sf::Vector2f(0, 0);
     this->rect = rect;
     this->addCollider(sf::IntRect(0, 0, rect.width, rect.width));
@@ -51,15 +51,15 @@ void MainObj::event(sf::Event &e)
             }
             if (e.key.code == sf::Keyboard::E)
             {
-	      sf::Vector2f size(this->collider->rect.width, this->collider->rect.height);
-	      AttackObj *obj = new AttackObj(30, true, this);
-
-	      obj->move(sf::Vector2f(this->collider->rect.left, this->collider->rect.top)
-			+ sf::Vector2f(size.x, 0));
-	      Scene::current->push_back(1, obj);
-	      this->active = false;
+                sf::Vector2f size(this->collider->rect.width, this->collider->rect.height);
+                AttackObj *obj = new AttackObj(30, true, this);
+                
+                obj->move(sf::Vector2f(this->collider->rect.left, this->collider->rect.top)
+                          + sf::Vector2f(size.x, 0));
+                Scene::current->push_back(1, obj);
+                this->active = false;
             }
-                        
+            
             if (e.key.code == sf::Keyboard::Up)
             {
                 this->sprite.setTextureRect(this->spriteSheet.getId(1, this->rect));
@@ -153,19 +153,21 @@ bool MainObj::update()
             if (c != nullptr)
             {
                 MoveObj *m = dynamic_cast<MoveObj *>(c->obj);
-		ExitObj *e = dynamic_cast<ExitObj *>(c->obj);
-		
+                ExitObj *e = dynamic_cast<ExitObj *>(c->obj);
+                
                 if (m != NULL)
                 {
                     m->lauch(this, sf::Vector2f(this->v.x / f, this->v.y / f));
                     this->v = sf::Vector2f(0, 0);
                 }
-		else if (e != NULL)
-		  {
-		    e->lauch();
-		    //move(v);
-		  }
-		
+                else if (e != NULL)
+                {
+                    if (e->open)
+                    {
+                        e->lauch();
+                        move(v);
+                    }
+                }
             }
         }
         else
@@ -195,7 +197,7 @@ void MainObj::moveAt(sf::Vector2f pos)
 {
     sf::Vector2f size = sf::Vector2f(this->sprite.getTextureRect().width,
                                      this->sprite.getTextureRect().height);
-
+    
     pos.y -= size.y;
     if (this->collider != NULL)
     {
@@ -242,18 +244,18 @@ void MainObj::growUp()
 
 sf::Vector2f MainObj::getPos() const
 {
-  sf::Vector2f pos(this->collider->rect.left, this->collider->rect.top);
-
-  return (pos);
+    sf::Vector2f pos(this->collider->rect.left, this->collider->rect.top);
+    
+    return (pos);
 }
 
 void MainObj::updatePlayer(std::size_t id, std::size_t x, std::size_t y, bool* big)
 {
-  MainObj *p = id == 0 ? MainObj::PA : MainObj::PB;
-
-  std::cout << "Player[" << id << "] ";
-  std::cout << "x = " << x << " ";
-  std::cout << "y = " << y << " ";
-  std::cout << "size = " << ((big == nullptr) ? "unmodified" : (*big ? "big" : "small")) << std::endl;
-  p->moveAt(sf::Vector2f(x, y));
+    MainObj *p = id == 0 ? MainObj::PA : MainObj::PB;
+    std::cout << "Player[" << id << "] ";
+    std::cout << "x = " << x << " ";
+    std::cout << "y = " << y << " ";
+    std::cout << "size = " << ((big == nullptr) ? "unmodified" : (*big ? "big" : "small")) << std::endl;
+    p->moveAt(sf::Vector2f(x, y));
 }
+

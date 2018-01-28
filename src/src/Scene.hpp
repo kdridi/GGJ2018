@@ -6,6 +6,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderTexture.hpp>
 
+#include "Spells.hpp"
+
 class Engine;
 class GameObj;
 class MainObj;
@@ -13,6 +15,7 @@ class Actor;
 
 enum SpriteType
 {
+    SPRITE_NONE = 0,
     SPRITE_WALL = 1,
     SPRITE_STATIC = 2,
     SPRITE_MOBILE = 3,
@@ -23,11 +26,11 @@ enum SpriteType
     SPRITE_DOOR1 = 8,
     SPRITE_BOSS0 = 9,
     SPRITE_BOSS1 = 10,
-    SPRITE_ENEMY_AWAY = 11,
+//    SPRITE_ENEMY_AWAY = 11,
     SPRITE_DOOR_SMALL = 12,
     SPRITE_BOSS2 = 13,
     SPRITE_BOSS3 = 14,
-    SPRITE_ENEMY_CLOSE = 15,
+//    SPRITE_ENEMY_CLOSE = 15,
     SPRITE_PRESSURE_SMALL = 16,
 };
 
@@ -44,21 +47,24 @@ public:
     bool draw();
     bool update();
     
-    void updateFrom(Scene& previous);
     virtual void init();
-    void setPlayer(std::size_t id, MainObj* obj);
     void push_back(int layerId, GameObj *obj);
 
 protected:
-    void pushExitObj(std::string name, std::size_t x, std::size_t y, std::size_t w, std::size_t h);
+    void pushExitObj(std::string name, std::size_t x, std::size_t y, std::size_t w, std::size_t h, bool open);
     void pushWallObj(std::size_t x, std::size_t y);
     void pushStaticObj(std::size_t x, std::size_t y);
     void pushDoorObj(std::size_t x, std::size_t y);
     void pushDoorSmallObj(std::size_t x, std::size_t y);
+    void pushEnemyCloseObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, double damage, double hp);
+    void pushEnemyAwayObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, double damage, double hp);
+    void pushMobileObj(std::size_t x, std::size_t y);
+    void pushLinkedObj(std::size_t x, std::size_t y);
+    void pushItemObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, Spells::Type type);
+
     Engine& engine;
 
 private:
     std::array<std::list<GameObj *>, 10> layerList;
-    std::array<MainObj *, 2> players;
 };
 
