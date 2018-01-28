@@ -93,6 +93,12 @@ void JsonScene::init()
                         case SPRITE_STATIC:
                             pushStaticObj(x, y);
                             break;
+                        case SPRITE_MOBILE:
+                            pushMobileObj(x, y);
+                            break;
+                        case SPRITE_LINKED:
+                            pushLinkedObj(x, y);
+                            break;
                         case SPRITE_DOOR0:
                         case SPRITE_DOOR1:
                             pushDoorObj(x, y);

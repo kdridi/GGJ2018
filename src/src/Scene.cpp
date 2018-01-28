@@ -8,6 +8,8 @@
 #include "ExitObj.hpp"
 #include "CrackObj.hpp"
 #include "MonsterObj.hpp"
+#include "ShareObj.hpp"
+#include "MoveObj.hpp"
 
 Scene    *Scene::current = NULL;
 
@@ -165,5 +167,21 @@ void Scene::pushEnemyCloseObj(std::size_t x, std::size_t y, std::size_t w, std::
     
     auto *obj = new MonsterObj(engine.getSpriteSheet(SSHEET_MONSTER), 0);
     obj->moveAt(sf::Vector2f(x, y));
+    push_back(2, obj);
+}
+
+void Scene::pushMobileObj(std::size_t x, std::size_t y)
+{
+    auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
+    auto *obj = new MoveObj(sheet, SPRITE_MOBILE - 1);
+    obj->move(sf::Vector2f(x * 64, y * 64));
+    push_back(2, obj);
+}
+
+void Scene::pushLinkedObj(std::size_t x, std::size_t y)
+{
+    auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
+    auto *obj = new ShareObj(sheet, SPRITE_LINKED - 1);
+    obj->move(sf::Vector2f(x * 64, y * 64));
     push_back(2, obj);
 }
