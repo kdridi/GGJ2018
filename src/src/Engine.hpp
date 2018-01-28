@@ -15,6 +15,7 @@ enum SpriteSheetType
     SSHEET_PLAYER_BIG = 1,
     SSHEET_PLAYER_SMALL = 2,
     SSHEET_FLOOR = 3,
+    SSHEET_MONSTER = 1,
 };
 
 class Engine

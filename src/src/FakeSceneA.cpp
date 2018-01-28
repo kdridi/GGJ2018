@@ -109,7 +109,7 @@ void FakeSceneA::init()
                 }
                 else if (id == 4) // monster
                 {
-                    auto *obj = new MonsterObj(engine.getSpriteSheet(1), 0);
+                    auto *obj = new MonsterObj(engine.getSpriteSheet(SSHEET_MONSTER), 0);
                     obj->moveAt(sf::Vector2f(x * 64, y * 64));
                     push_back(2, obj);
                 }
