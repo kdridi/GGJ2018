@@ -15,7 +15,10 @@
 
 void JsonScene::init()
 {
+#ifdef RELEASE
+#else
     std::cout << std::setw(4) << room << std::endl;
+#endif
     
     for (auto const& layer : room.at("layers"))
     {
