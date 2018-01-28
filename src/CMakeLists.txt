@@ -57,6 +57,8 @@ add_executable(${EXECUTABLE_NAME}
 	src/ExitObj.hpp
 	src/AttackObj.cpp
 	src/AttackObj.hpp
+	src/SwitchObj.cpp
+	src/SwitchObj.hpp
 	
 	src/json.hpp
 

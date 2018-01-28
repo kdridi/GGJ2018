@@ -4,6 +4,7 @@
 #include "Collider.hpp"
 #include "MonsterObj.hpp"
 #include "MainObj.hpp"
+#include "Scene.hpp"
 
 AttackObj::AttackObj(int frame, bool friendly, MainObj *obj)
 {
@@ -24,7 +25,10 @@ bool AttackObj::update()
 	  MonsterObj *obj = dynamic_cast<MonsterObj *>(test->obj);
 
 	  if (obj != NULL)
-	    obj->live = false;
+	    {
+	      Scene::current->killEnemmy();
+	      obj->live = false;
+	    }
 	}
       else
 	{

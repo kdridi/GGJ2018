@@ -10,6 +10,7 @@
 #include "MonsterObj.hpp"
 #include "ShareObj.hpp"
 #include "MoveObj.hpp"
+#include "SwitchObj.hpp"
 
 Scene    *Scene::current = NULL;
 
@@ -193,7 +194,7 @@ void Scene::pushMobileObj(std::size_t x, std::size_t y)
     auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
     auto *obj = new MoveObj(sheet, SPRITE_MOBILE - 1);
     obj->move(sf::Vector2f(x * 64, y * 64));
-    push_back(2, obj);
+    push_back(1, obj);
 }
 
 void Scene::pushLinkedObj(std::size_t x, std::size_t y)
@@ -227,8 +228,9 @@ void Scene::pushPressureObj(PressureType type, std::size_t x, std::size_t y, boo
 {
     // TODO Implements Pressure Obj
     auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
-    auto *obj = new MoveObj(sheet, SPRITE_PRESSURE - 1);
-    obj->move(sf::Vector2f(x * 64, y * 64));
+    auto *obj = new SwitchObj(type, kid, adult, target);
+    // auto *obj = new MoveObj(Engine::current->getSpriteSheet(SSHEET_ITEMS), 1);
+    obj->move(sf::Vector2f(x, y));
     push_back(2, obj);
     
     std::cout << "PressureObj[" << type << "] ";
