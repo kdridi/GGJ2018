@@ -7,6 +7,7 @@
 #include "ColliderMap.hpp"
 #include "ExitObj.hpp"
 #include "CrackObj.hpp"
+#include "MonsterObj.hpp"
 
 Scene    *Scene::current = NULL;
 
@@ -161,4 +162,8 @@ void Scene::pushEnemyCloseObj(std::size_t x, std::size_t y, std::size_t w, std::
     std::cout << "damage = " << damage << " ";
     std::cout << "hp = " << hp << " ";
     std::cout << std::endl;
+    
+    auto *obj = new MonsterObj(engine.getSpriteSheet(SSHEET_MONSTER), 0);
+    obj->moveAt(sf::Vector2f(x, y));
+    push_back(2, obj);
 }
