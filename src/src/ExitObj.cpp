@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "ExitObj.hpp"
 #include "SpriteSheet.hpp"
 #include "Engine.hpp"
@@ -21,5 +23,6 @@ bool ExitObj::update()
 
 void ExitObj::lauch()
 {
+  std::cout << this->name << std::endl;
   //TODO
 }

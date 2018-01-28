@@ -163,7 +163,7 @@ bool MainObj::update()
 		else if (e != NULL)
 		  {
 		    e->lauch();
-		    move(v);
+		    //move(v);
 		  }
 		
             }

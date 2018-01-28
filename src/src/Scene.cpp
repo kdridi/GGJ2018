@@ -5,6 +5,8 @@
 #include "GameObj.hpp"
 #include "MainObj.hpp"
 #include "ColliderMap.hpp"
+#include "ExitObj.hpp"
+#include "CrackObj.hpp"
 
 Scene	*Scene::current = NULL;
 
@@ -136,7 +138,7 @@ void Scene::pushDoorObj(std::size_t x, std::size_t y)
 void Scene::pushDoorSmallObj(std::size_t x, std::size_t y)
 {
     auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
-    auto obj = new SpriteObj(sheet, SPRITE_DOOR_SMALL - 1);
+    auto *obj = new CrackObj(sheet, SPRITE_DOOR_SMALL - 1, sf::IntRect(0, 0, 64, 15));
     obj->move(sf::Vector2f(x * 64, y * 64));
     push_back(1, obj);
 }
@@ -146,6 +148,10 @@ void Scene::pushExitObj(std::string name, std::size_t x, std::size_t y, std::siz
     // TODO Scene::pushExitObj implementation is missing
     // Créer une zone "transparente" à la position (x,y) de taille WxH
     // Lorsqu'un player touche cette zone, on reload la scene dont le nom est donné par la variable "name"
+
+    auto obj = new ExitObj(name, sf::Vector2f(w, h));
+    obj->move(sf::Vector2f(x * 64, y * 64));
+    push_back(1, obj);
     
     std::cout << "ExitObj[" << name << "] ";
     std::cout << "x = " << x << " ";
@@ -153,5 +159,3 @@ void Scene::pushExitObj(std::string name, std::size_t x, std::size_t y, std::siz
     std::cout << "w = " << w << " ";
     std::cout << "h = " << h << " ";
 }
-
-
