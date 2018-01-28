@@ -5,4 +5,4 @@ set -e
 cd $(dirname $0)
 export DYLIB_LIBRARY_PATH="$(pwd)"
 
-./myproject-mac.bin
+./MamaPacha-mac.bin

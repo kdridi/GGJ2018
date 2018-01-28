@@ -16,7 +16,7 @@ cmake ${ROOT_DIR}/src \
 make VERBOSE=1
 
 if [[ "${HOME}" == "/Users/kdridi" ]]; then
-	cp myproject ../../release/myproject-mac.bin
+	cp myproject ../../release/MamaPacha-mac.bin
 	cd ../../release
 	rm -rf assets
 	cp -r ../src/assets .
