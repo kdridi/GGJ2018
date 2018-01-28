@@ -20,14 +20,6 @@
                  "height":128,
                  "id":11,
                  "name":"room01",
-                 "properties":
-                    {
-                     "open":true
-                    },
-                 "propertytypes":
-                    {
-                     "open":"bool"
-                    },
                  "rotation":0,
                  "type":"exit",
                  "visible":true,
@@ -39,14 +31,6 @@
                  "height":128,
                  "id":12,
                  "name":"room03",
-                 "properties":
-                    {
-                     "open":true
-                    },
-                 "propertytypes":
-                    {
-                     "open":"bool"
-                    },
                  "rotation":0,
                  "type":"exit",
                  "visible":true,

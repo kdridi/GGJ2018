@@ -133,14 +133,14 @@ void Scene::pushDoorSmallObj(std::size_t x, std::size_t y)
     push_back(1, obj);
 }
 
-void Scene::pushExitObj(std::string name, std::size_t x, std::size_t y, std::size_t w, std::size_t h, bool open)
+void Scene::pushExitObj(std::string name, std::size_t x, std::size_t y, std::size_t w, std::size_t h, std::size_t enemyLock, std::size_t pressureLock)
 {
     // TODO Scene::pushExitObj implementation is missing
     // Créer une zone "transparente" à la position (x,y) de taille WxH
     // Lorsqu'un player touche cette zone, on reload la scene dont le nom est donné par la variable "name"
     
     std::cout << "Before new ExitObj" << std::endl;
-    auto obj = new ExitObj(engine, name, sf::Vector2f(w, h), open);
+    auto obj = new ExitObj(engine, name, sf::Vector2f(w, h), enemyLock, pressureLock);
     std::cout << "After new ExitObj" << std::endl;
     obj->move(sf::Vector2f(x, y));
     push_back(1, obj);
@@ -150,7 +150,8 @@ void Scene::pushExitObj(std::string name, std::size_t x, std::size_t y, std::siz
     std::cout << "y = " << y << " ";
     std::cout << "w = " << w << " ";
     std::cout << "h = " << h << " ";
-    std::cout << "open = " << (open ? "open" : "close") << " ";
+    std::cout << "enemyLock = " << enemyLock << " ";
+    std::cout << "pressureLock = " << pressureLock << " ";
     std::cout << std::endl;
 }
 
@@ -212,8 +213,9 @@ void Scene::pushItemObj(std::size_t x, std::size_t y, std::size_t w, std::size_t
     std::cout << std::endl;
 }
 
-void Scene::pushPressureObj(std::size_t x, std::size_t y)
+void Scene::pushPressureObj(PressureType type, std::size_t x, std::size_t y, bool kid, bool adult)
 {
+    // TODO Implements Pressure Obj
     auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
     auto *obj = new MoveObj(sheet, SPRITE_PRESSURE - 1);
     obj->move(sf::Vector2f(x * 64, y * 64));

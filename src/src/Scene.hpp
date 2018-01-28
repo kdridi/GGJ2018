@@ -13,6 +13,11 @@ class GameObj;
 class MainObj;
 class Actor;
 
+enum PressureType
+{
+    PRESSURE_OPEN_DOOR = 1,
+};
+
 enum SpriteType
 {
     SPRITE_NONE = 0,
@@ -51,7 +56,7 @@ public:
     void push_back(int layerId, GameObj *obj);
 
 protected:
-    void pushExitObj(std::string name, std::size_t x, std::size_t y, std::size_t w, std::size_t h, bool open);
+    void pushExitObj(std::string name, std::size_t x, std::size_t y, std::size_t w, std::size_t h, std::size_t enemyLock, std::size_t pressureLock);
     void pushWallObj(std::size_t x, std::size_t y);
     void pushStaticObj(std::size_t x, std::size_t y);
     void pushDoorObj(std::size_t x, std::size_t y);
@@ -61,7 +66,7 @@ protected:
     void pushMobileObj(std::size_t x, std::size_t y);
     void pushLinkedObj(std::size_t x, std::size_t y);
     void pushItemObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, Spells::Type type);
-    void pushPressureObj(std::size_t x, std::size_t y);
+    void pushPressureObj(PressureType type, std::size_t x, std::size_t y, bool kid, bool adult);
 
     Engine& engine;
 

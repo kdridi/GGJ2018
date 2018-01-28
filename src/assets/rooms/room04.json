@@ -190,11 +190,11 @@
                  "name":"room03",
                  "properties":
                     {
-                     "open":true
+                     "pressureLock":0
                     },
                  "propertytypes":
                     {
-                     "open":"bool"
+                     "pressureLock":"int"
                     },
                  "rotation":0,
                  "type":"exit",
@@ -209,11 +209,11 @@
                  "name":"room05",
                  "properties":
                     {
-                     "open":false
+                     "enemyLock":8
                     },
                  "propertytypes":
                     {
-                     "open":"bool"
+                     "enemyLock":"int"
                     },
                  "rotation":0,
                  "type":"exit",

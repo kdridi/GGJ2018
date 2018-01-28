@@ -66,6 +66,8 @@ add_executable(${EXECUTABLE_NAME}
 	src/JsonScene.hpp
 	src/Spells.cpp
 	src/Spells.hpp
+	src/Sound.cpp
+	src/Sound.hpp
 )
 
 # Detect and add SFML

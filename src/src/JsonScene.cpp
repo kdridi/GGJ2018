@@ -103,9 +103,80 @@ void JsonScene::init()
                     uint64_t h = object["height"];
                     uint64_t x = object["x"];
                     uint64_t y = object["y"];
-                    bool open = object["properties"]["open"];
+                    
+                    uint64_t enemyLock = 0;
+                    uint64_t pressureLock = 0;
+                    if (object.find("properties") != object.end())
+                    {
+                        if (object["properties"].find("pressureLock") != object["properties"].end())
+                            pressureLock = object["properties"]["pressureLock"];
 
-                    pushExitObj(name, x, y, w, h, open);
+                        if (object["properties"].find("enemyLock") != object["properties"].end())
+                            enemyLock = object["properties"]["enemyLock"];
+                    }
+
+                    pushExitObj(name, x, y, w, h, enemyLock, pressureLock);
+                }
+                else if (type.compare("pressure") == 0)
+                {
+                    PressureType type = PRESSURE_OPEN_DOOR;
+                    
+                    bool kid = true;
+                    bool adult = true;
+                    
+                    std::string size = "";
+                    
+                    if (object.find("properties") != object.end())
+                    {
+                        if (object["properties"].find("size") != object["properties"].end())
+                            size = object["properties"]["size"];
+                    }
+                    
+                    if (size.compare("") == 0)
+                    {
+                        kid = true;
+                        adult = true;
+                    }
+                    else if (size.compare("kid") == 0)
+                    {
+                        kid = true;
+                        adult = false;
+                    }
+                    else if (size.compare("adult") == 0)
+                    {
+                        kid = false;
+                        adult = true;
+                    }
+                    else
+                    {
+                        std::stringstream ss;
+                        ss << "unknown pressure.size: \"" << size << "\"";
+                        std::string message{ss.str()};
+                        std::cout << message << std::endl;
+                        
+                        throw message;
+                    }
+                        
+                    auto const& pressureName { object.value("name", "") };
+                    if (pressureName.compare("openDoor") == 0)
+                    {
+                        type = PRESSURE_OPEN_DOOR;
+                    }
+                    else
+                    {
+                        std::stringstream ss;
+                        ss << "unknown pressureName: \"" << pressureName << "\"";
+                        std::string message{ss.str()};
+                        std::cout << message << std::endl;
+                        
+                        throw message;
+                    }
+                    
+                    uint64_t x = object["x"];
+                    uint64_t y = object["y"];
+                    
+                    
+                    pushPressureObj(type, x, y, kid, adult);
                 }
                 else
                 {
@@ -152,9 +223,6 @@ void JsonScene::init()
                             break;
                         case SPRITE_DOOR_SMALL:
                             pushDoorSmallObj(x, y);
-                            break;
-                        case SPRITE_PRESSURE:
-                            pushPressureObj(x, y);
                             break;
                         default:
                             throw "unknown object type";

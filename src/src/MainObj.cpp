@@ -162,7 +162,7 @@ bool MainObj::update()
                 }
                 else if (e != NULL)
                 {
-                    if (e->open)
+                    if (e->open())
                     {
                         e->lauch();
                         move(v);
