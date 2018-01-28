@@ -44,9 +44,7 @@ public:
     bool draw();
     bool update();
     
-    void updateFrom(Scene& previous);
     virtual void init();
-    void setPlayer(std::size_t id, MainObj* obj);
     void push_back(int layerId, GameObj *obj);
 
 protected:
@@ -59,6 +57,5 @@ protected:
 
 private:
     std::array<std::list<GameObj *>, 10> layerList;
-    std::array<MainObj *, 2> players;
 };
 

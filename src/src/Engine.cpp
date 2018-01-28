@@ -43,7 +43,6 @@ bool Engine::update()
     {
         if (scene)
         {
-            nextScene->updateFrom(*scene);
             delete scene;
         }
         
@@ -87,8 +86,13 @@ Scene* Engine::createScene(std::string name)
         new ColliderMap();
         return (*it).second();
     }
+
+    std::stringstream ss;
+    ss << "can't create scene with name \"";
+    ss << name;
+    ss << "\"";
     
-    throw "can't create this scene";
+    throw ss.str();
 }
 
 void Engine::showScene(std::string name)
