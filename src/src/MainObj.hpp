@@ -21,6 +21,8 @@ public:
   {this->active = active;}
 
   virtual sf::Vector2f getPos() const;
+
+  void takeDmg();
 private:
 
   void checkT(int id);
@@ -30,6 +32,7 @@ private:
   void growUp();
 private:
 
+  int inv;
   int idK;
   int	       idJ;
   bool active;
