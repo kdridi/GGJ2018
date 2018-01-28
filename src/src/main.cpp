@@ -36,7 +36,7 @@ int main()
     });
     
 //    e.showScene("FakeSceneA");
-    e.showScene("room01");
+    e.showScene("room08");
     
     if (e.init() == false)
         return (1);

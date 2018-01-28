@@ -213,11 +213,29 @@ void Scene::pushItemObj(std::size_t x, std::size_t y, std::size_t w, std::size_t
     std::cout << std::endl;
 }
 
-void Scene::pushPressureObj(PressureType type, std::size_t x, std::size_t y, bool kid, bool adult)
+void Scene::pushToogleObj(std::string name, std::size_t x, std::size_t y, SpriteType type)
+{
+    std::cout << "ToogleObj[" << name << "] ";
+    std::cout << "x = " << x << " ";
+    std::cout << "y = " << y << " ";
+    std::cout << "type = " << type << " ";
+    std::cout << std::endl;
+}
+
+void Scene::pushPressureObj(PressureType type, std::size_t x, std::size_t y, bool kid, bool adult, std::string target)
 {
     // TODO Implements Pressure Obj
     auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
     auto *obj = new MoveObj(sheet, SPRITE_PRESSURE - 1);
     obj->move(sf::Vector2f(x * 64, y * 64));
     push_back(2, obj);
+    
+    std::cout << "PressureObj[" << type << "] ";
+    std::cout << "x = " << x << " ";
+    std::cout << "y = " << y << " ";
+    std::cout << "kid = " << (kid ? "true" : "false") << " ";
+    std::cout << "adult = " << (adult ? "true" : "false") << " ";
+    std::cout << "target = " << target << " ";
+    std::cout << std::endl;
+
 }

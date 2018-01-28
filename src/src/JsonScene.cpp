@@ -125,11 +125,15 @@ void JsonScene::init()
                     bool adult = true;
                     
                     std::string size = "";
-                    
+                    std::string target = "";
+
                     if (object.find("properties") != object.end())
                     {
                         if (object["properties"].find("size") != object["properties"].end())
                             size = object["properties"]["size"];
+                        
+                        if (object["properties"].find("target") != object["properties"].end())
+                            target = object["properties"]["target"];
                     }
                     
                     if (size.compare("") == 0)
@@ -161,6 +165,9 @@ void JsonScene::init()
                     if (pressureName.compare("openDoor") == 0)
                     {
                         type = PRESSURE_OPEN_DOOR;
+                    } else if (pressureName.compare("toogle") == 0)
+                    {
+                        type = PRESSURE_TOOGLE;
                     }
                     else
                     {
@@ -175,8 +182,16 @@ void JsonScene::init()
                     uint64_t x = object["x"];
                     uint64_t y = object["y"];
                     
+                    pushPressureObj(type, x, y, kid, adult, target);
+                }
+                else if (type.compare("toogle") == 0)
+                {
+                    auto const& name { object.value("name", "") };
+                    uint64_t x = object["x"];
+                    uint64_t y = object["y"];
                     
-                    pushPressureObj(type, x, y, kid, adult);
+                    SpriteType type = object["properties"]["type"];
+                    pushToogleObj(name, x, y, type);
                 }
                 else
                 {

@@ -16,6 +16,7 @@ class Actor;
 enum PressureType
 {
     PRESSURE_OPEN_DOOR = 1,
+    PRESSURE_TOOGLE = 1,
 };
 
 enum SpriteType
@@ -66,7 +67,8 @@ protected:
     void pushMobileObj(std::size_t x, std::size_t y);
     void pushLinkedObj(std::size_t x, std::size_t y);
     void pushItemObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, Spells::Type type);
-    void pushPressureObj(PressureType type, std::size_t x, std::size_t y, bool kid, bool adult);
+    void pushPressureObj(PressureType type, std::size_t x, std::size_t y, bool kid, bool adult, std::string target);
+    void pushToogleObj(std::string name, std::size_t x, std::size_t y, SpriteType type);
 
     Engine& engine;
 
