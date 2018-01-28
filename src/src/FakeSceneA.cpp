@@ -16,6 +16,7 @@
 #include "MonsterObj.hpp"
 #include "ShareObj.hpp"
 #include "ExitObj.hpp"
+#include "SwitchObj.hpp"
 
 FakeSceneA::~FakeSceneA()
 {
@@ -41,7 +42,7 @@ static int ids1[] = {
     12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12,
     12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0,12,
     12, 0, 0, 0,12,12,12,12,12,12,12,12, 0, 5, 0,12,
-    12, 0, 0, 0,12, 0, 0, 0, 0, 0, 0,11, 0, 0, 0,12,
+    12, 0, 0, 0,12, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0,12,
     12, 0, 0, 0,12, 0, 0, 0, 0, 1, 0,12, 0, 0, 0,42,
     12, 0, 0, 0,12, 0, 0, 0, 0, 2, 0,12, 0, 0, 0,12,
     12, 0, 0, 0,12, 0, 0, 0, 0, 0, 0,11, 0, 0, 0,12,
@@ -111,7 +112,13 @@ void FakeSceneA::init()
                 }
                 else if (id == 42) // exit
                 {
-                    auto *obj = new ExitObj(engine, "coucou", sf::Vector2f(64, 64), 0, 0);
+                    auto *obj = new ExitObj(engine, "coucou", sf::Vector2f(64, 64), 0, 1);
+                    obj->move(sf::Vector2f(x * 64, y * 64));
+                    push_back(1, obj);
+                }
+                else if (id == 3) // exit
+                {
+                    auto *obj = new SwitchObj(PRESSURE_TOOGLE, true, true, "");
                     obj->move(sf::Vector2f(x * 64, y * 64));
                     push_back(1, obj);
                 }
