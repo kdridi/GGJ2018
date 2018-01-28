@@ -63,9 +63,9 @@ static int ids1[] = {
 //     12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
 // };
 
-void FakeSceneA::init(Engine& engine)
+void FakeSceneA::init()
 {
-    auto& sheet = engine.getSpriteSheet(0);
+    auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
     
     for (int x = 0; x < 16; ++x)
     {

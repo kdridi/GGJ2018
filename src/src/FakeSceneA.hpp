@@ -13,7 +13,9 @@
 class FakeSceneA : public Scene
 {
 public:
-    virtual void init(Engine& engine);
+    FakeSceneA(Engine& engine) : Scene(engine) {}
+    
+    virtual void init();
 
     virtual ~FakeSceneA();
 };

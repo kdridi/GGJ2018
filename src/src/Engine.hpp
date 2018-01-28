@@ -9,6 +9,14 @@
 class Scene;
 class SpriteSheet;
 
+enum SpriteSheetType
+{
+    SSHEET_ITEMS = 0,
+    SSHEET_PLAYER_BIG = 1,
+    SSHEET_PLAYER_SMALL = 2,
+    SSHEET_FLOOR = 3,
+};
+
 class Engine
 {
     
@@ -27,7 +35,7 @@ public:
         return this->window;
     }
     
-    SpriteSheet& getSpriteSheet(unsigned int id)
+    SpriteSheet& getSpriteSheet(SpriteSheetType id)
     {
         return (*sprites[id]);
     }

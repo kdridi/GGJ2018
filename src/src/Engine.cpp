@@ -3,6 +3,7 @@
 #include "SpriteSheet.hpp"
 #include "Utils.hpp"
 #include "ColliderMap.hpp"
+#include "SpriteObj.hpp"
 
 #include <sstream>
 
@@ -25,10 +26,11 @@ bool Engine::init()
 {
     this->window.create(sf::VideoMode(1024, 768), "SFML window");
     this->window.setFramerateLimit(60);
-    this->sprites.push_back(new SpriteSheet(utils::getFullPath("spritesheet.png")));
+    this->sprites.push_back(new SpriteSheet(utils::getFullPath("rooms/map.png")));
     this->sprites.push_back(new SpriteSheet(utils::getFullPath("BruneSpriteSheet.png")));
     this->sprites.push_back(new SpriteSheet(utils::getFullPath("BruneSpriteSheetEnfant.png")));
-    
+    this->sprites.push_back(new SpriteSheet(utils::getFullPath("salles.png")));
+
     return (true);
 }
 
@@ -43,7 +45,13 @@ bool Engine::update()
         }
         
         scene = nextScene;
-        scene->init(*this);
+        {
+            auto& sheet = getSpriteSheet(SSHEET_FLOOR);
+            auto obj = new SpriteObj(sheet);
+            obj->move(sf::Vector2f(0, 0));
+            scene->push_back(0, obj);
+        }
+        scene->init();
         
         nextScene = nullptr;
     }

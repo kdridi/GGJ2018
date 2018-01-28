@@ -13,10 +13,8 @@
 
 #include <iostream>
 
-void JsonScene::init(Engine& engine)
+void JsonScene::init()
 {
-    auto& sheet = engine.getSpriteSheet(0);
-    
     std::cout << std::setw(4) << room << std::endl;
     
     for (auto const& layer : room.at("layers"))
@@ -34,19 +32,22 @@ void JsonScene::init(Engine& engine)
                 if (type.compare("spawn") == 0)
                 {
                     auto const& name { object.value("name", "") };
-                    auto const& size = object["properties"].value("size", "unmodified");
-                    uint64_t id = object["properties"]["id"];
-                    uint64_t w = object["width"];
-                    uint64_t h = object["height"];
-                    uint64_t x = object["x"];
-                    uint64_t y = object["y"];
-                    
-                    uint64_t px = x + w / 2;
-                    uint64_t py = y + h / 2;
-                    bool big = size.compare("big") == 0;
-                    bool* big_ptr = size.compare("unmodified") == 0 ? nullptr : &big;
-                    
-                    MainObj::updatePlayer(id, px, py, big_ptr);
+                    if (name.compare("player") == 0)
+                    {
+                        auto const& size = object["properties"].value("size", "unmodified");
+                        uint64_t id = object["properties"]["id"];
+                        uint64_t w = object["width"];
+                        uint64_t h = object["height"];
+                        uint64_t x = object["x"];
+                        uint64_t y = object["y"];
+                        
+                        uint64_t px = x + w / 2;
+                        uint64_t py = y + h / 2;
+                        bool big = size.compare("big") == 0;
+                        bool* big_ptr = size.compare("unmodified") == 0 ? nullptr : &big;
+                        
+                        MainObj::updatePlayer(id, px, py, big_ptr);
+                    }
                 } else if (type.compare("exit") == 0)
                 {
                     auto const& name { object.value("name", "") };
@@ -72,12 +73,22 @@ void JsonScene::init(Engine& engine)
                 {
                     uint64_t id = data.at(y * width + x);
                     
-                    if (id > 0)
-                    {
-                        auto obj = new SpriteObj(sheet, id - 1);
-                        obj->move(sf::Vector2f(x * 64, y * 64));
-                        push_back(1, obj);
-                        ColliderMap::current->addCollider(x, y, id);
+                    switch (id) {
+                        case SPRITE_WALL:
+                            pushWallObj(x, y);
+                            break;
+                        case SPRITE_STATIC:
+                            pushStaticObj(x, y);
+                            break;
+                        case SPRITE_DOOR0:
+                        case SPRITE_DOOR1:
+                            pushDoorObj(x, y);
+                            break;
+                        case SPRITE_DOOR_SMALL:
+                            pushDoorSmallObj(x, y);
+                            break;
+                        default:
+                            break;
                     }
                 }
             }

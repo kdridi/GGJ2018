@@ -4,9 +4,11 @@
 #include "Engine.hpp"
 #include "GameObj.hpp"
 #include "MainObj.hpp"
+#include "ColliderMap.hpp"
 
-Scene::Scene()
-: layerList()
+Scene::Scene(Engine& engine)
+: engine(engine)
+, layerList()
 , players()
 {
 }
@@ -15,7 +17,7 @@ Scene::~Scene()
 {
 }
 
-void Scene::init(Engine& engine)
+void Scene::init()
 {
     throw "please override this method!";
 }
@@ -84,6 +86,40 @@ void Scene::setPlayer(std::size_t id, MainObj* obj)
 {
     push_back(2, obj);
     players[id] = obj;
+}
+
+void Scene::pushWallObj(std::size_t x, std::size_t y)
+{
+    auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
+    auto obj = new SpriteObj(sheet, SPRITE_WALL - 1);
+    obj->move(sf::Vector2f(x * 64, y * 64));
+    push_back(1, obj);
+    ColliderMap::current->addCollider(x, y, SPRITE_WALL);
+}
+
+void Scene::pushStaticObj(std::size_t x, std::size_t y)
+{
+    auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
+    auto obj = new SpriteObj(sheet, SPRITE_STATIC - 1);
+    obj->move(sf::Vector2f(x * 64, y * 64));
+    push_back(1, obj);
+    ColliderMap::current->addCollider(x, y, SPRITE_STATIC);
+}
+
+void Scene::pushDoorObj(std::size_t x, std::size_t y)
+{
+    auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
+    auto obj = new SpriteObj(sheet, SPRITE_DOOR0 - 1);
+    obj->move(sf::Vector2f(x * 64, y * 64));
+    push_back(1, obj);
+}
+
+void Scene::pushDoorSmallObj(std::size_t x, std::size_t y)
+{
+    auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
+    auto obj = new SpriteObj(sheet, SPRITE_DOOR_SMALL - 1);
+    obj->move(sf::Vector2f(x * 64, y * 64));
+    push_back(1, obj);
 }
 
 void Scene::pushExitObj(std::string name, std::size_t x, std::size_t y, std::size_t w, std::size_t h)
