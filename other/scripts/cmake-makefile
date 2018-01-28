@@ -21,3 +21,7 @@ if [[ "${HOME}" == "/Users/kdridi" ]]; then
 	rm -rf assets
 	cp -r ../src/assets .
 fi
+
+if [[ "${HOME}" == "/home/mayol_l" ]]; then
+	cp myproject ../../release/MamaPacha-linux.bin
+fi
