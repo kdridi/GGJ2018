@@ -18,6 +18,9 @@ public:
 public:
     bool open();
     
+    void killEnemmy();
+    void pushPressure();
+
 protected:
     std::string name;
     Engine& engine;

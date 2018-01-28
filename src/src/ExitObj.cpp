@@ -30,8 +30,17 @@ void ExitObj::lauch()
     engine.showScene(name);
 }
 
-
 bool ExitObj::open()
 {
-    return ((enemyLock == 0) &&(pressureLock == 0));
+    return ((enemyLock <= 0) && (pressureLock <= 0));
+}
+
+void ExitObj::killEnemmy()
+{
+    enemyLock -= 1;
+}
+
+void ExitObj::pushPressure()
+{
+    pressureLock -= 1;
 }
