@@ -240,7 +240,6 @@ void Scene::pushPressureObj(PressureType type, std::size_t x, std::size_t y, boo
     std::cout << "adult = " << (adult ? "true" : "false") << " ";
     std::cout << "target = " << target << " ";
     std::cout << std::endl;
-
 }
 
 void Scene::killEnemmy()

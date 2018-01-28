@@ -74,7 +74,6 @@ protected:
     void pushPressureObj(PressureType type, std::size_t x, std::size_t y, bool kid, bool adult, std::string target);
     void pushToogleObj(std::string name, std::size_t x, std::size_t y, SpriteType type);
 
-
     Engine& engine;
 
 private:
