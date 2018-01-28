@@ -31,7 +31,7 @@
                      "hp":"float"
                     },
                  "rotation":0,
-                 "type":"range",
+                 "type":"spawn",
                  "visible":true,
                  "width":64,
                  "x":320,
@@ -52,7 +52,7 @@
                      "hp":"float"
                     },
                  "rotation":0,
-                 "type":"range",
+                 "type":"spawn",
                  "visible":true,
                  "width":64,
                  "x":640,

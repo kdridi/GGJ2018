@@ -6,6 +6,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderTexture.hpp>
 
+#include "Spells.hpp"
+
 class Engine;
 class GameObj;
 class MainObj;
@@ -55,8 +57,11 @@ protected:
     void pushDoorObj(std::size_t x, std::size_t y);
     void pushDoorSmallObj(std::size_t x, std::size_t y);
     void pushEnemyCloseObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, double damage, double hp);
+    void pushEnemyAwayObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, double damage, double hp);
     void pushMobileObj(std::size_t x, std::size_t y);
     void pushLinkedObj(std::size_t x, std::size_t y);
+    void pushItemObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, Spells::Type type);
+
     Engine& engine;
 
 private:
