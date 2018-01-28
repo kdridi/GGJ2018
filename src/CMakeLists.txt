@@ -49,6 +49,8 @@ add_executable(${EXECUTABLE_NAME}
 	src/Collider.cpp
 	src/CrackObj.cpp
 	src/CrackObj.hpp
+	src/MonsterObj.cpp
+	src/MonsterObj.hpp
 	
 	src/json.hpp
 

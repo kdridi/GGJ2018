@@ -5,6 +5,10 @@
 class MainObj : public SpriteObj
 {
 public:
+
+  static MainObj *PA;
+  static MainObj *PB;
+  
   MainObj(int idJ, int state);
   
   virtual void draw() const;
@@ -15,6 +19,8 @@ public:
 
   void setActive(bool active)
   {this->active = active;}
+
+  virtual sf::Vector2f getPos() const;
 private:
 
   void checkT(int id);

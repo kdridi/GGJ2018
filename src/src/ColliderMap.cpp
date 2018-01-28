@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "ColliderMap.hpp"
 
 ColliderMap *ColliderMap::current = NULL;

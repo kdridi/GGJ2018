@@ -6,12 +6,19 @@
 #include "MoveObj.hpp"
 #include "Engine.hpp"
 
+MainObj	*MainObj::PA = NULL;
+MainObj	*MainObj::PB = NULL;
+
 MainObj::MainObj(int idJ, int state) :
 SpriteObj(Engine::current->getSpriteSheet(SSHEET_PLAYER_BIG), 0)
 {
     sf::IntRect rect = sf::IntRect(0, 0, 50, 122);
     
     this->idJ = idJ;
+    if (this->idJ == 1)
+      MainObj::PA = this;
+    if (this->idJ == 2)
+      MainObj::PB = this;
     this->v = sf::Vector2f(0, 0);
     this->rect = rect;
     this->addCollider(sf::IntRect(0, 0, rect.width, rect.width));
@@ -226,6 +233,13 @@ void MainObj::growUp()
     this->collider->rect.left = pos.x;
     this->sprite.move(-20, -42);
     
+}
+
+sf::Vector2f MainObj::getPos() const
+{
+  sf::Vector2f pos(this->collider->rect.left, this->collider->rect.top);
+
+  return (pos);
 }
 
 void MainObj::updatePlayer(std::size_t id, std::size_t x, std::size_t y, bool* big)
