@@ -2,7 +2,7 @@
  "infinite":false,
  "layers":[
         {
-         "data":[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 1, 7, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 7, 7, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 7, 1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+         "data":[1, 1, 1, 1, 1, 1, 1, 7, 7, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 1, 7, 0, 0, 0, 2, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 2, 0, 0, 4, 3, 0, 2, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 7, 7, 1, 1, 1, 1, 1, 1, 1],
          "height":12,
          "name":"env",
          "opacity":1,
@@ -19,7 +19,7 @@
                 {
                  "height":128,
                  "id":11,
-                 "name":"room01",
+                 "name":"room02",
                  "properties":
                     {
                      "open":true
@@ -36,9 +36,9 @@
                  "y":320
                 }, 
                 {
-                 "height":128,
+                 "height":64,
                  "id":12,
-                 "name":"room03",
+                 "name":"room06",
                  "properties":
                     {
                      "open":true
@@ -50,13 +50,53 @@
                  "rotation":0,
                  "type":"exit",
                  "visible":true,
+                 "width":128,
+                 "x":448,
+                 "y":0
+                }, 
+                {
+                 "height":64,
+                 "id":13,
+                 "name":"room04",
+                 "properties":
+                    {
+                     "open":true
+                    },
+                 "propertytypes":
+                    {
+                     "open":"bool"
+                    },
+                 "rotation":0,
+                 "type":"exit",
+                 "visible":true,
+                 "width":128,
+                 "x":448,
+                 "y":704
+                }, 
+                {
+                 "height":64,
+                 "id":14,
+                 "name":"enemyClose",
+                 "properties":
+                    {
+                     "damage":2,
+                     "hp":2
+                    },
+                 "propertytypes":
+                    {
+                     "damage":"float",
+                     "hp":"float"
+                    },
+                 "rotation":0,
+                 "type":"spawn",
+                 "visible":true,
                  "width":64,
-                 "x":960,
+                 "x":768,
                  "y":320
                 }, 
                 {
                  "height":32,
-                 "id":13,
+                 "id":15,
                  "name":"player",
                  "properties":
                     {
@@ -73,11 +113,11 @@
                  "visible":true,
                  "width":32,
                  "x":128,
-                 "y":128
+                 "y":256
                 }, 
                 {
                  "height":32,
-                 "id":14,
+                 "id":16,
                  "name":"player",
                  "properties":
                     {
@@ -94,49 +134,7 @@
                  "visible":true,
                  "width":32,
                  "x":128,
-                 "y":608
-                }, 
-                {
-                 "height":64,
-                 "id":15,
-                 "name":"enemyClose",
-                 "properties":
-                    {
-                     "damage":2,
-                     "hp":2
-                    },
-                 "propertytypes":
-                    {
-                     "damage":"float",
-                     "hp":"float"
-                    },
-                 "rotation":0,
-                 "type":"spawn",
-                 "visible":true,
-                 "width":64,
-                 "x":768,
-                 "y":256
-                }, 
-                {
-                 "height":64,
-                 "id":16,
-                 "name":"enemyClose",
-                 "properties":
-                    {
-                     "damage":2,
-                     "hp":2
-                    },
-                 "propertytypes":
-                    {
-                     "damage":"float",
-                     "hp":"float"
-                    },
-                 "rotation":0,
-                 "type":"spawn",
-                 "visible":true,
-                 "width":64,
-                 "x":768,
-                 "y":448
+                 "y":480
                 }],
          "opacity":1,
          "type":"objectgroup",
