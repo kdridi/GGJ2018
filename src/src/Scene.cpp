@@ -211,3 +211,11 @@ void Scene::pushItemObj(std::size_t x, std::size_t y, std::size_t w, std::size_t
     std::cout << "h = " << h << " ";
     std::cout << std::endl;
 }
+
+void Scene::pushPressureObj(std::size_t x, std::size_t y)
+{
+    auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
+    auto *obj = new MoveObj(sheet, SPRITE_PRESSURE - 1);
+    obj->move(sf::Vector2f(x * 64, y * 64));
+    push_back(2, obj);
+}
