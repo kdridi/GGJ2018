@@ -68,6 +68,7 @@ protected:
     void pushDoorSmallObj(std::size_t x, std::size_t y);
     void pushEnemyCloseObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, double damage, double hp);
     void pushEnemyAwayObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, double damage, double hp);
+    void pushEnemyBossObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, double damage, double hp);
     void pushMobileObj(std::size_t x, std::size_t y);
     void pushLinkedObj(std::size_t x, std::size_t y);
     void pushItemObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, Spells::Type type);

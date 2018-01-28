@@ -71,6 +71,17 @@ void JsonScene::init()
                         
                         pushEnemyAwayObj(x, y, w, h, damage, hp);
                     }
+                    else if (name.compare("enemyBoss") == 0)
+                    {
+                        double damage = object["properties"]["damage"];
+                        double hp = object["properties"]["hp"];
+                        uint64_t w = object["width"];
+                        uint64_t h = object["height"];
+                        uint64_t x = object["x"];
+                        uint64_t y = object["y"];
+                        
+                        pushEnemyBossObj(x, y, w, h, damage, hp);
+                    }
                     else if (name.compare("item") == 0)
                     {
                         std::string typeName = object["properties"]["type"];

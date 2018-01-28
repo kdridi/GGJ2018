@@ -188,6 +188,22 @@ void Scene::pushEnemyAwayObj(std::size_t x, std::size_t y, std::size_t w, std::s
     push_back(2, obj);
 }
 
+void Scene::pushEnemyBossObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, double damage, double hp)
+{
+    std::cout << "EnemyBossObj[] ";
+    std::cout << "x = " << x << " ";
+    std::cout << "y = " << y << " ";
+    std::cout << "w = " << w << " ";
+    std::cout << "h = " << h << " ";
+    std::cout << "damage = " << damage << " ";
+    std::cout << "hp = " << hp << " ";
+    std::cout << std::endl;
+    
+    auto *obj = new MonsterObj(engine.getSpriteSheet(SSHEET_MONSTER), 0);
+    obj->moveAt(sf::Vector2f(x, y));
+    push_back(2, obj);
+}
+
 void Scene::pushMobileObj(std::size_t x, std::size_t y)
 {
     auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
