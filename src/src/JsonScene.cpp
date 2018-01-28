@@ -66,7 +66,9 @@ void JsonScene::init()
                     uint64_t h = object["height"];
                     uint64_t x = object["x"];
                     uint64_t y = object["y"];
-                    pushExitObj(name, x, y, w, h);
+                    bool open = object["properties"]["open"];
+
+                    pushExitObj(name, x, y, w, h, open);
                 }
             }
         }

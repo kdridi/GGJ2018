@@ -130,14 +130,14 @@ void Scene::pushDoorSmallObj(std::size_t x, std::size_t y)
     push_back(1, obj);
 }
 
-void Scene::pushExitObj(std::string name, std::size_t x, std::size_t y, std::size_t w, std::size_t h)
+void Scene::pushExitObj(std::string name, std::size_t x, std::size_t y, std::size_t w, std::size_t h, bool open)
 {
     // TODO Scene::pushExitObj implementation is missing
     // Créer une zone "transparente" à la position (x,y) de taille WxH
     // Lorsqu'un player touche cette zone, on reload la scene dont le nom est donné par la variable "name"
     
     std::cout << "Before new ExitObj" << std::endl;
-    auto obj = new ExitObj(engine, name, sf::Vector2f(w, h));
+    auto obj = new ExitObj(engine, name, sf::Vector2f(w, h), open);
     std::cout << "After new ExitObj" << std::endl;
     obj->move(sf::Vector2f(x, y));
     push_back(1, obj);
@@ -147,6 +147,7 @@ void Scene::pushExitObj(std::string name, std::size_t x, std::size_t y, std::siz
     std::cout << "y = " << y << " ";
     std::cout << "w = " << w << " ";
     std::cout << "h = " << h << " ";
+    std::cout << "open = " << (open ? "open" : "close") << " ";
     std::cout << std::endl;
 }
 

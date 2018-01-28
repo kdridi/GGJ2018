@@ -162,10 +162,12 @@ bool MainObj::update()
                 }
                 else if (e != NULL)
                 {
-                    e->lauch();
-                    move(v);
+                    if (e->open)
+                    {
+                        e->lauch();
+                        move(v);
+                    }
                 }
-                
             }
         }
         else

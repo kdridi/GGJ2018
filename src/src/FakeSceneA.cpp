@@ -107,7 +107,7 @@ void FakeSceneA::init()
                 }
                 else if (id == 42) // exit
                 {
-                    auto *obj = new ExitObj(engine, "coucou", sf::Vector2f(64, 64));
+                    auto *obj = new ExitObj(engine, "coucou", sf::Vector2f(64, 64), true);
                     obj->move(sf::Vector2f(x * 64, y * 64));
                     push_back(2, obj);
                 }

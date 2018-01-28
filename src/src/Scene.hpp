@@ -48,7 +48,7 @@ public:
     void push_back(int layerId, GameObj *obj);
 
 protected:
-    void pushExitObj(std::string name, std::size_t x, std::size_t y, std::size_t w, std::size_t h);
+    void pushExitObj(std::string name, std::size_t x, std::size_t y, std::size_t w, std::size_t h, bool open);
     void pushWallObj(std::size_t x, std::size_t y);
     void pushStaticObj(std::size_t x, std::size_t y);
     void pushDoorObj(std::size_t x, std::size_t y);
