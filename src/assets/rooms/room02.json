@@ -44,13 +44,11 @@
                  "name":"player",
                  "properties":
                     {
-                     "id":0,
-                     "size":"big"
+                     "id":0
                     },
                  "propertytypes":
                     {
-                     "id":"int",
-                     "size":"string"
+                     "id":"int"
                     },
                  "rotation":0,
                  "type":"spawn",
@@ -65,13 +63,11 @@
                  "name":"player",
                  "properties":
                     {
-                     "id":1,
-                     "size":"small"
+                     "id":1
                     },
                  "propertytypes":
                     {
-                     "id":"int",
-                     "size":"string"
+                     "id":"int"
                     },
                  "rotation":0,
                  "type":"spawn",

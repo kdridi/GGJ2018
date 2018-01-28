@@ -15,7 +15,10 @@
 
 void JsonScene::init()
 {
+#ifdef RELEASE
+#else
     std::cout << std::setw(4) << room << std::endl;
+#endif
     
     for (auto const& layer : room.at("layers"))
     {
@@ -53,23 +56,28 @@ void JsonScene::init()
                     {
                         double damage = object["properties"]["damage"];
                         double hp = object["properties"]["hp"];
-                        uint64_t w = object["width"];
-                        uint64_t h = object["height"];
                         uint64_t x = object["x"];
                         uint64_t y = object["y"];
                         
-                        pushEnemyCloseObj(x, y, w, h, damage, hp);
+                        pushEnemyCloseObj(x, y, damage, hp);
                     }
                     else if (name.compare("enemyAway") == 0)
                     {
                         double damage = object["properties"]["damage"];
                         double hp = object["properties"]["hp"];
-                        uint64_t w = object["width"];
-                        uint64_t h = object["height"];
                         uint64_t x = object["x"];
                         uint64_t y = object["y"];
                         
-                        pushEnemyAwayObj(x, y, w, h, damage, hp);
+                        pushEnemyAwayObj(x, y, damage, hp);
+                    }
+                    else if (name.compare("enemyBoss") == 0)
+                    {
+                        double damage = object["properties"]["damage"];
+                        double hp = object["properties"]["hp"];
+                        uint64_t x = object["x"];
+                        uint64_t y = object["y"];
+                        
+                        pushEnemyBossObj(x, y, damage, hp);
                     }
                     else if (name.compare("item") == 0)
                     {
@@ -125,11 +133,15 @@ void JsonScene::init()
                     bool adult = true;
                     
                     std::string size = "";
-                    
+                    std::string target = "";
+
                     if (object.find("properties") != object.end())
                     {
                         if (object["properties"].find("size") != object["properties"].end())
                             size = object["properties"]["size"];
+                        
+                        if (object["properties"].find("target") != object["properties"].end())
+                            target = object["properties"]["target"];
                     }
                     
                     if (size.compare("") == 0)
@@ -161,6 +173,9 @@ void JsonScene::init()
                     if (pressureName.compare("openDoor") == 0)
                     {
                         type = PRESSURE_OPEN_DOOR;
+                    } else if (pressureName.compare("toogle") == 0)
+                    {
+                        type = PRESSURE_TOOGLE;
                     }
                     else
                     {
@@ -175,8 +190,16 @@ void JsonScene::init()
                     uint64_t x = object["x"];
                     uint64_t y = object["y"];
                     
+                    pushPressureObj(type, x, y, kid, adult, target);
+                }
+                else if (type.compare("toogle") == 0)
+                {
+                    auto const& name { object.value("name", "") };
+                    uint64_t x = object["x"];
+                    uint64_t y = object["y"];
                     
-                    pushPressureObj(type, x, y, kid, adult);
+                    SpriteType type = object["properties"]["type"];
+                    pushToogleObj(name, x, y, type);
                 }
                 else
                 {

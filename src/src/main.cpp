@@ -30,13 +30,23 @@ int main()
     e.registerSceneFactory("room08", [&] () {
         return new JsonScene(e, "room08");
     });
+    e.registerSceneFactory("room09", [&] () {
+        return new JsonScene(e, "room09");
+    });
+    e.registerSceneFactory("room10", [&] () {
+        return new JsonScene(e, "room10");
+    });
     e.registerSceneFactory("FakeSceneA", [&] () {
         FakeSceneA* scene = new FakeSceneA(e);
         return scene;
     });
     
-//    e.showScene("FakeSceneA");
+#ifdef RELEASE
     e.showScene("room01");
+#else
+//    e.showScene("FakeSceneA");
+    e.showScene("room10");
+#endif
     
     if (e.init() == false)
         return (1);

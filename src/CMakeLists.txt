@@ -57,6 +57,8 @@ add_executable(${EXECUTABLE_NAME}
 	src/ExitObj.hpp
 	src/AttackObj.cpp
 	src/AttackObj.hpp
+	src/SwitchObj.cpp
+	src/SwitchObj.hpp
 	
 	src/json.hpp
 
@@ -72,6 +74,7 @@ add_executable(${EXECUTABLE_NAME}
 
 # Detect and add SFML
 if (WIN32)
+    add_definitions(-DRELEASE)
 	set(SFML_ROOT "${CMAKE_SOURCE_DIR}/vendor/SFML-2.4.2")
 endif ()
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})

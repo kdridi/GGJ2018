@@ -8,6 +8,7 @@
 #include "Scene.hpp"
 #include "ExitObj.hpp"
 #include "AttackObj.hpp"
+#include "SwitchObj.hpp"
 
 MainObj    *MainObj::PA = NULL;
 MainObj    *MainObj::PB = NULL;
@@ -154,7 +155,8 @@ bool MainObj::update()
             {
                 MoveObj *m = dynamic_cast<MoveObj *>(c->obj);
                 ExitObj *e = dynamic_cast<ExitObj *>(c->obj);
-                
+		SwitchObj *s = dynamic_cast<SwitchObj *>(c->obj);
+		
                 if (m != NULL)
                 {
                     m->lauch(this, sf::Vector2f(this->v.x / f, this->v.y / f));
@@ -167,6 +169,10 @@ bool MainObj::update()
                         e->lauch();
                         move(v);
                     }
+                }
+                else if (s != NULL)
+                {
+		  move(v);
                 }
             }
         }
@@ -257,5 +263,12 @@ void MainObj::updatePlayer(std::size_t id, std::size_t x, std::size_t y, bool* b
     std::cout << "y = " << y << " ";
     std::cout << "size = " << ((big == nullptr) ? "unmodified" : (*big ? "big" : "small")) << std::endl;
     p->moveAt(sf::Vector2f(x, y));
+    if (big != nullptr)
+    {
+        if (*big)
+            p->growUp();
+        else
+            p->suicide();
+    }
 }
 

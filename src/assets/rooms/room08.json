@@ -2,7 +2,7 @@
  "infinite":false,
  "layers":[
         {
-         "data":[1, 1, 1, 1, 1, 1, 1, 7, 7, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 6, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 6, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 7, 7, 1, 1, 1, 1, 1, 1, 1],
+         "data":[1, 1, 1, 1, 1, 1, 1, 7, 7, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 7, 7, 1, 1, 1, 1, 1, 1, 1],
          "height":12,
          "name":"env",
          "opacity":1,
@@ -13,19 +13,8 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-         "height":12,
-         "name":"switchEffect2",
-         "opacity":1,
-         "type":"tilelayer",
-         "visible":false,
-         "width":16,
-         "x":0,
-         "y":0
-        }, 
-        {
          "draworder":"topdown",
-         "name":"obects",
+         "name":"objects",
          "objects":[
                 {
                  "height":64,
@@ -203,7 +192,7 @@
                  "properties":
                     {
                      "size":"kid",
-                     "target":"blockSouth"
+                     "target":"blockS"
                     },
                  "propertytypes":
                     {
@@ -223,7 +212,7 @@
                  "name":"blockN",
                  "properties":
                     {
-                     "type":1
+                     "type":2
                     },
                  "propertytypes":
                     {
@@ -242,7 +231,7 @@
                  "name":"blockN",
                  "properties":
                     {
-                     "type":1
+                     "type":2
                     },
                  "propertytypes":
                     {
@@ -261,7 +250,7 @@
                  "name":"blockN",
                  "properties":
                     {
-                     "type":1
+                     "type":2
                     },
                  "propertytypes":
                     {
@@ -280,7 +269,7 @@
                  "name":"blockN",
                  "properties":
                     {
-                     "type":1
+                     "type":2
                     },
                  "propertytypes":
                     {
@@ -299,7 +288,7 @@
                  "name":"blockN",
                  "properties":
                     {
-                     "type":1
+                     "type":2
                     },
                  "propertytypes":
                     {
@@ -318,7 +307,7 @@
                  "name":"blockN",
                  "properties":
                     {
-                     "type":1
+                     "type":2
                     },
                  "propertytypes":
                     {
@@ -337,7 +326,7 @@
                  "name":"blockS",
                  "properties":
                     {
-                     "type":1
+                     "type":2
                     },
                  "propertytypes":
                     {
@@ -356,7 +345,7 @@
                  "name":"blockS",
                  "properties":
                     {
-                     "type":1
+                     "type":2
                     },
                  "propertytypes":
                     {
@@ -375,7 +364,7 @@
                  "name":"blockS",
                  "properties":
                     {
-                     "type":1
+                     "type":2
                     },
                  "propertytypes":
                     {
@@ -394,7 +383,7 @@
                  "name":"blockS",
                  "properties":
                     {
-                     "type":1
+                     "type":2
                     },
                  "propertytypes":
                     {
@@ -413,7 +402,7 @@
                  "name":"blockS",
                  "properties":
                     {
-                     "type":1
+                     "type":2
                     },
                  "propertytypes":
                     {
@@ -432,7 +421,7 @@
                  "name":"blockS",
                  "properties":
                     {
-                     "type":1
+                     "type":2
                     },
                  "propertytypes":
                     {
@@ -444,6 +433,48 @@
                  "width":64,
                  "x":576,
                  "y":512
+                }, 
+                {
+                 "height":32,
+                 "id":31,
+                 "name":"player",
+                 "properties":
+                    {
+                     "id":1,
+                     "size":"small"
+                    },
+                 "propertytypes":
+                    {
+                     "id":"int",
+                     "size":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawn",
+                 "visible":true,
+                 "width":32,
+                 "x":640,
+                 "y":368
+                }, 
+                {
+                 "height":32,
+                 "id":32,
+                 "name":"player",
+                 "properties":
+                    {
+                     "id":0,
+                     "size":"small"
+                    },
+                 "propertytypes":
+                    {
+                     "id":"int",
+                     "size":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawn",
+                 "visible":true,
+                 "width":32,
+                 "x":352,
+                 "y":368
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -451,7 +482,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":31,
+ "nextobjectid":33,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tiledversion":"1.1.0",

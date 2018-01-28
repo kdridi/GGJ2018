@@ -12,10 +12,12 @@ class Engine;
 class GameObj;
 class MainObj;
 class Actor;
+class ExitObj;
 
 enum PressureType
 {
     PRESSURE_OPEN_DOOR = 1,
+    PRESSURE_TOOGLE = 1,
 };
 
 enum SpriteType
@@ -54,6 +56,9 @@ public:
     
     virtual void init();
     void push_back(int layerId, GameObj *obj);
+    
+    void killEnemmy();
+    void pushPressure();
 
 protected:
     void pushExitObj(std::string name, std::size_t x, std::size_t y, std::size_t w, std::size_t h, std::size_t enemyLock, std::size_t pressureLock);
@@ -61,16 +66,18 @@ protected:
     void pushStaticObj(std::size_t x, std::size_t y);
     void pushDoorObj(std::size_t x, std::size_t y);
     void pushDoorSmallObj(std::size_t x, std::size_t y);
-    void pushEnemyCloseObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, double damage, double hp);
-    void pushEnemyAwayObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, double damage, double hp);
+    void pushEnemyCloseObj(std::size_t x, std::size_t y, double damage, double hp);
+    void pushEnemyAwayObj(std::size_t x, std::size_t y, double damage, double hp);
+    void pushEnemyBossObj(std::size_t x, std::size_t y, double damage, double hp);
     void pushMobileObj(std::size_t x, std::size_t y);
     void pushLinkedObj(std::size_t x, std::size_t y);
     void pushItemObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, Spells::Type type);
-    void pushPressureObj(PressureType type, std::size_t x, std::size_t y, bool kid, bool adult);
+    void pushPressureObj(PressureType type, std::size_t x, std::size_t y, bool kid, bool adult, std::string target);
+    void pushToogleObj(std::string name, std::size_t x, std::size_t y, SpriteType type);
 
     Engine& engine;
 
 private:
     std::array<std::list<GameObj *>, 10> layerList;
+    std::list<ExitObj *> exitList;
 };
-
