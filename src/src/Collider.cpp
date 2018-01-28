@@ -1,12 +1,15 @@
 #include "Collider.hpp"
 #include "ColliderMap.hpp"
 
-bool Collider::test(const sf::Vector2f &v)
+bool Collider::test(const sf::Vector2f &vec)
 {
+    sf::Vector2f v = vec;
     sf::Vector2f pos = sf::Vector2f(rect.left, rect.top);
     sf::Vector2f s = sf::Vector2f(rect.width - 1, rect.height - 1);
     ColliderMap::test = this;
-    
+
+    v.x -= 1;
+    v.y -= 1;
     if (ColliderMap::current->isCollide({pos.x + v.x      , pos.y + v.y}) == false &&
         ColliderMap::current->isCollide({pos.x + s.x + v.x, pos.y + v.y}) == false &&
         ColliderMap::current->isCollide({pos.x + v.x      , pos.y + s.y + v.y}) == false &&
