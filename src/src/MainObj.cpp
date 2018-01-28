@@ -220,13 +220,8 @@ void MainObj::suicide()
     this->sprite.setTexture(Engine::current->getSpriteSheet(SSHEET_PLAYER_SMALL).getTexture());
     this->sprite.setTextureRect(this->spriteSheet.getId(0, rect));
     
-    sf::Vector2f size = sf::Vector2f(this->sprite.getTextureRect().width,
-                                     this->sprite.getTextureRect().height);
-    sf::Vector2f pos = this->sprite.getPosition();
-    
-    this->collider->rect.top = pos.y + (size.y - size.x);
-    this->collider->rect.left = pos.x;
-    this->sprite.move(20, 42);
+    this->move(sf::Vector2f(20, 42));
+    std::cout << this->collider->rect.top << " " << this->collider->rect.left << std::endl;
     
 }
 
@@ -243,13 +238,7 @@ void MainObj::growUp()
     this->sprite.setTexture(Engine::current->getSpriteSheet(SSHEET_PLAYER_BIG).getTexture());
     this->sprite.setTextureRect(this->spriteSheet.getId(0, rect));
     
-    sf::Vector2f size = sf::Vector2f(this->sprite.getTextureRect().width,
-                                     this->sprite.getTextureRect().height);
-    sf::Vector2f pos = this->sprite.getPosition();
-    
-    this->collider->rect.top = pos.y + (size.y - size.x);
-    this->collider->rect.left = pos.x;
-    this->sprite.move(-20, -42);
+    this->move(sf::Vector2f(-20, -42));
     
 }
 
