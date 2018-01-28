@@ -70,11 +70,13 @@ add_executable(${EXECUTABLE_NAME}
 	src/Spells.hpp
 	src/Sound.cpp
 	src/Sound.hpp
+	src/ScreenScene.cpp
+	src/ScreenScene.hpp
 )
 
 # Detect and add SFML
 if (WIN32)
-    add_definitions(-DWINDOWS)
+    add_definitions(-DWINDOWS_VERSION)
 	set(SFML_ROOT "${CMAKE_SOURCE_DIR}/vendor/SFML-2.4.2")
 endif ()
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
