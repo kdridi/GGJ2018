@@ -53,34 +53,28 @@ void JsonScene::init()
                     {
                         double damage = object["properties"]["damage"];
                         double hp = object["properties"]["hp"];
-                        uint64_t w = object["width"];
-                        uint64_t h = object["height"];
                         uint64_t x = object["x"];
                         uint64_t y = object["y"];
                         
-                        pushEnemyCloseObj(x, y, w, h, damage, hp);
+                        pushEnemyCloseObj(x, y, damage, hp);
                     }
                     else if (name.compare("enemyAway") == 0)
                     {
                         double damage = object["properties"]["damage"];
                         double hp = object["properties"]["hp"];
-                        uint64_t w = object["width"];
-                        uint64_t h = object["height"];
                         uint64_t x = object["x"];
                         uint64_t y = object["y"];
                         
-                        pushEnemyAwayObj(x, y, w, h, damage, hp);
+                        pushEnemyAwayObj(x, y, damage, hp);
                     }
                     else if (name.compare("enemyBoss") == 0)
                     {
                         double damage = object["properties"]["damage"];
                         double hp = object["properties"]["hp"];
-                        uint64_t w = object["width"];
-                        uint64_t h = object["height"];
                         uint64_t x = object["x"];
                         uint64_t y = object["y"];
                         
-                        pushEnemyBossObj(x, y, w, h, damage, hp);
+                        pushEnemyBossObj(x, y, damage, hp);
                     }
                     else if (name.compare("item") == 0)
                     {

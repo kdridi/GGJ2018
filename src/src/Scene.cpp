@@ -111,8 +111,7 @@ void Scene::pushWallObj(std::size_t x, std::size_t y)
 
 void Scene::pushStaticObj(std::size_t x, std::size_t y)
 {
-    auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
-    auto obj = new SpriteObj(sheet, SPRITE_STATIC - 1);
+    auto obj = new SpriteObj(engine.getSpriteSheet(SSHEET_ITEMS), SPRITE_STATIC - 1);
     obj->move(sf::Vector2f(x * 64, y * 64));
     push_back(1, obj);
     ColliderMap::current->addCollider(x, y, SPRITE_STATIC);
@@ -128,8 +127,7 @@ void Scene::pushDoorObj(std::size_t x, std::size_t y)
 
 void Scene::pushDoorSmallObj(std::size_t x, std::size_t y)
 {
-    auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
-    auto *obj = new CrackObj(sheet, SPRITE_DOOR_SMALL - 1, sf::IntRect(0, 0, 64, 15));
+    auto *obj = new CrackObj(engine.getSpriteSheet(SSHEET_ITEMS), SPRITE_DOOR_SMALL - 1, sf::IntRect(0, 0, 64, 15));
     obj->move(sf::Vector2f(x * 64, y * 64));
     push_back(1, obj);
 }
@@ -144,7 +142,7 @@ void Scene::pushExitObj(std::string name, std::size_t x, std::size_t y, std::siz
     auto obj = new ExitObj(engine, name, sf::Vector2f(w, h), enemyLock, pressureLock);
     std::cout << "After new ExitObj" << std::endl;
     obj->move(sf::Vector2f(x, y));
-    push_back(1, obj);
+    push_back(2, obj);
     exitList.push_back(obj);
     
     std::cout << "ExitObj[" << name << "] ";
@@ -157,68 +155,60 @@ void Scene::pushExitObj(std::string name, std::size_t x, std::size_t y, std::siz
     std::cout << std::endl;
 }
 
-void Scene::pushEnemyCloseObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, double damage, double hp)
+void Scene::pushEnemyCloseObj(std::size_t x, std::size_t y, double damage, double hp)
 {
     std::cout << "EnemyCloseObj[] ";
     std::cout << "x = " << x << " ";
     std::cout << "y = " << y << " ";
-    std::cout << "w = " << w << " ";
-    std::cout << "h = " << h << " ";
     std::cout << "damage = " << damage << " ";
     std::cout << "hp = " << hp << " ";
     std::cout << std::endl;
     
     auto *obj = new MonsterObj(engine.getSpriteSheet(SSHEET_MONSTER), 0);
     obj->moveAt(sf::Vector2f(x, y));
-    push_back(2, obj);
+    push_back(1, obj);
 }
 
-void Scene::pushEnemyAwayObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, double damage, double hp)
+void Scene::pushEnemyAwayObj(std::size_t x, std::size_t y, double damage, double hp)
 {
     std::cout << "EnemyAwayObj[] ";
     std::cout << "x = " << x << " ";
     std::cout << "y = " << y << " ";
-    std::cout << "w = " << w << " ";
-    std::cout << "h = " << h << " ";
     std::cout << "damage = " << damage << " ";
     std::cout << "hp = " << hp << " ";
     std::cout << std::endl;
     
     auto *obj = new MonsterObj(engine.getSpriteSheet(SSHEET_MONSTER), 0);
     obj->moveAt(sf::Vector2f(x, y));
-    push_back(2, obj);
+    push_back(1, obj);
 }
 
-void Scene::pushEnemyBossObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, double damage, double hp)
+void Scene::pushEnemyBossObj(std::size_t x, std::size_t y, double damage, double hp)
 {
     std::cout << "EnemyBossObj[] ";
     std::cout << "x = " << x << " ";
     std::cout << "y = " << y << " ";
-    std::cout << "w = " << w << " ";
-    std::cout << "h = " << h << " ";
     std::cout << "damage = " << damage << " ";
     std::cout << "hp = " << hp << " ";
     std::cout << std::endl;
     
     auto *obj = new MonsterObj(engine.getSpriteSheet(SSHEET_MONSTER), 0);
     obj->moveAt(sf::Vector2f(x, y));
-    push_back(2, obj);
+    push_back(1, obj);
 }
 
 void Scene::pushMobileObj(std::size_t x, std::size_t y)
 {
-    auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
-    auto *obj = new MoveObj(sheet, SPRITE_MOBILE - 1);
+    auto *obj = new MoveObj(engine.getSpriteSheet(SSHEET_ITEMS), SPRITE_MOBILE - 1);
     obj->move(sf::Vector2f(x * 64, y * 64));
-    push_back(1, obj);
+    push_back(0, obj);
 }
 
 void Scene::pushLinkedObj(std::size_t x, std::size_t y)
 {
-    auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
-    auto *obj = new ShareObj(sheet, SPRITE_LINKED - 1);
+    auto *obj = new ShareObj(engine.getSpriteSheet(SSHEET_ITEMS), SPRITE_LINKED - 1);
     obj->move(sf::Vector2f(x * 64, y * 64));
-    push_back(2, obj);
+    push_back(1, obj);
 }
 
 void Scene::pushItemObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, Spells::Type type)

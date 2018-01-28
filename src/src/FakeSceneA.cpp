@@ -69,22 +69,6 @@ static int ids1[] = {
 
 void FakeSceneA::init()
 {
-    auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
-    
-    for (int x = 0; x < 16; ++x)
-    {
-        for (int y = 0; y < 12; ++y)
-        {
-            auto id = ids0[y * 16 + x];
-            if (id > 0)
-            {
-                auto obj = new SpriteObj(sheet, id - 1);
-                obj->move(sf::Vector2f(x * 64, y * 64));
-                push_back(0, obj);
-            }
-        }
-    }
-    
     for (int x = 0; x < 16; ++x)
     {
         for (int y = 0; y < 12; ++y)
@@ -106,9 +90,7 @@ void FakeSceneA::init()
                 }
                 else if (id == 11) // wall hole
                 {
-                    auto *obj = new CrackObj(sheet, 0, sf::IntRect(0, 0, 64, 15));
-                    obj->move(sf::Vector2f(x * 64, y * 64));
-                    push_back(1, obj);
+                    pushDoorSmallObj(x, y);
                 }
                 else if (id == 42) // exit
                 {
@@ -120,28 +102,19 @@ void FakeSceneA::init()
                 }
                 else if (id == 4) // monster
                 {
-                    auto *obj = new MonsterObj(engine.getSpriteSheet(SSHEET_MONSTER), 0);
-                    obj->moveAt(sf::Vector2f(x * 64, y * 64));
-                    push_back(1, obj);
+                    pushEnemyCloseObj(x * 64, y * 64, 2, 2);
                 }
                 else if (id == 5) // Share
                 {
-                    auto *obj = new ShareObj(sheet, 0);
-                    obj->move(sf::Vector2f(x * 64, y * 64));
-                    push_back(1, obj);
+                    pushLinkedObj(x, y);
                 }
                 else if (id == 6) // Move
                 {
-                    auto *obj = new MoveObj(sheet, 0);
-                    obj->move(sf::Vector2f(x * 64, y * 64));
-                    push_back(0, obj);
+                    pushMobileObj(x, y);
                 }
                 else
                 {
-                    auto obj = new SpriteObj(sheet, id - 1);
-                    obj->move(sf::Vector2f(x * 64, y * 64));
-                    push_back(1, obj);
-                    ColliderMap::current->addCollider(x, y, id);
+                    pushStaticObj(x, y);
                 }
             }
         }
