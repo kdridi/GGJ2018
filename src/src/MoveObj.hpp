@@ -15,6 +15,8 @@ public:
 
   virtual bool update();
   virtual void lauch(MainObj *, sf::Vector2f v);
+
+  virtual bool canLauch(sf::Vector2f v) const;
 protected:
   int	       step;
   sf::Vector2f v;

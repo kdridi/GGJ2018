@@ -26,8 +26,8 @@ int main()
         return scene;
     });
     
-//    e.showScene("FakeSceneA");
-    e.showScene("room04");
+   e.showScene("FakeSceneA");
+    // e.showScene("room04");
     
     if (e.init() == false)
         return (1);

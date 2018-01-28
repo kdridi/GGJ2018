@@ -51,10 +51,17 @@ bool MoveObj::update()
 void MoveObj::lauch(MainObj *obj, sf::Vector2f v)
 {
   if (this->state != 0)
-    return;
+    return ;
+  if (this->canLauch(v) == false)
+    return ;
   this->state = 1;
   this->obj = obj;
   this->obj->setActive(false);
   this->v = v;
   this->step = 64;
+}
+
+bool MoveObj::canLauch(sf::Vector2f v) const
+{
+  return (this->collider->test(v) == false);
 }
