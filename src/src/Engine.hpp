@@ -6,6 +6,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderTexture.hpp>
 
+#include "Sound.hpp"
+
 class Scene;
 class SpriteSheet;
 
@@ -55,4 +57,7 @@ private:
     Scene* scene;
     Scene* nextScene;
     sf::RenderWindow window;
+    
+public:
+    Sound sound;
 };
