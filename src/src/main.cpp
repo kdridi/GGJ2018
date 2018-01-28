@@ -6,11 +6,11 @@ int main()
 {
     Engine e;
     
-    e.registerSceneFactory("room1", [] () {
-        return new JsonScene("room1");
+    e.registerSceneFactory("room1", [&] () {
+        return new JsonScene(e, "room1");
     });
-    e.registerSceneFactory("FakeSceneA", [] () {
-        FakeSceneA* scene = new FakeSceneA();
+    e.registerSceneFactory("FakeSceneA", [&] () {
+        FakeSceneA* scene = new FakeSceneA(e);
         return scene;
     });
     

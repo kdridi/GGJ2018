@@ -14,13 +14,13 @@
 class JsonScene : public Scene
 {
 public:
-    JsonScene(std::string const& name)
-    : Scene()
+    JsonScene(Engine& engine, std::string const& name)
+    : Scene(engine)
     , room(utils::getRoomInformations(name))
     {
     }
     
-    virtual void init(Engine& engine);
+    virtual void init();
 private:
     nlohmann::json const& room;
 };

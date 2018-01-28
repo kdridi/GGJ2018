@@ -6,13 +6,15 @@
 #include "Collider.hpp"
 #include "ColliderMap.hpp"
 
-SpriteObj::SpriteObj(SpriteSheet &sp) : spriteSheet(sp)
+SpriteObj::SpriteObj(SpriteSheet &sp)
+: spriteSheet(sp)
 {
   this->sprite.setTexture(this->spriteSheet.getTexture());
   this->collider = NULL;
 }
 
-SpriteObj::SpriteObj(SpriteSheet &sp, unsigned int id) : spriteSheet(sp)
+SpriteObj::SpriteObj(SpriteSheet &sp, unsigned int id)
+: spriteSheet(sp)
 {
     this->sprite.setTexture(this->spriteSheet.getTexture());
     this->sprite.setTextureRect(this->spriteSheet.getId(id));

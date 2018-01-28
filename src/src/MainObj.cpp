@@ -10,7 +10,7 @@ MainObj	*MainObj::PA = NULL;
 MainObj	*MainObj::PB = NULL;
 
 MainObj::MainObj(int idJ, int state) :
-SpriteObj(Engine::current->getSpriteSheet(1), 0)
+SpriteObj(Engine::current->getSpriteSheet(SSHEET_PLAYER_BIG), 0)
 {
     sf::IntRect rect = sf::IntRect(0, 0, 50, 122);
     
@@ -199,7 +199,7 @@ void MainObj::suicide()
     
     this->rect = rect;
     this->addCollider(sf::IntRect(0, 0, rect.width, rect.width));
-    this->sprite.setTexture(Engine::current->getSpriteSheet(2).getTexture());
+    this->sprite.setTexture(Engine::current->getSpriteSheet(SSHEET_PLAYER_SMALL).getTexture());
     this->sprite.setTextureRect(this->spriteSheet.getId(0, rect));
     
     sf::Vector2f size = sf::Vector2f(this->sprite.getTextureRect().width,
@@ -222,7 +222,7 @@ void MainObj::growUp()
     
     this->rect = rect;
     this->addCollider(sf::IntRect(0, 0, rect.width, rect.width));
-    this->sprite.setTexture(Engine::current->getSpriteSheet(1).getTexture());
+    this->sprite.setTexture(Engine::current->getSpriteSheet(SSHEET_PLAYER_BIG).getTexture());
     this->sprite.setTextureRect(this->spriteSheet.getId(0, rect));
     
     sf::Vector2f size = sf::Vector2f(this->sprite.getTextureRect().width,

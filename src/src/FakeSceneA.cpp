@@ -65,9 +65,9 @@ static int ids1[] = {
 //     12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
 // };
 
-void FakeSceneA::init(Engine& engine)
+void FakeSceneA::init()
 {
-    auto& sheet = engine.getSpriteSheet(0);
+    auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
     
     for (int x = 0; x < 16; ++x)
     {
@@ -110,7 +110,7 @@ void FakeSceneA::init(Engine& engine)
                 }
                 else if (id == 4) // monster
                 {
-                    auto *obj = new MonsterObj(engine.getSpriteSheet(1), 0);
+                    auto *obj = new MonsterObj(engine.getSpriteSheet(SSHEET_MONSTER), 0);
                     obj->moveAt(sf::Vector2f(x * 64, y * 64));
                     push_back(2, obj);
                 }
