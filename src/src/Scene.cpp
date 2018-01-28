@@ -144,6 +144,7 @@ void Scene::pushExitObj(std::string name, std::size_t x, std::size_t y, std::siz
     std::cout << "After new ExitObj" << std::endl;
     obj->move(sf::Vector2f(x, y));
     push_back(1, obj);
+    exitList.push_back(obj);
     
     std::cout << "ExitObj[" << name << "] ";
     std::cout << "x = " << x << " ";
@@ -238,4 +239,16 @@ void Scene::pushPressureObj(PressureType type, std::size_t x, std::size_t y, boo
     std::cout << "target = " << target << " ";
     std::cout << std::endl;
 
+}
+
+void Scene::killEnemmy()
+{
+    for (auto *exit : exitList)
+        exit->killEnemmy();
+}
+
+void Scene::pushPressure()
+{
+    for (auto *exit : exitList)
+        exit->pushPressure();
 }

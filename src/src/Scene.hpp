@@ -12,6 +12,7 @@ class Engine;
 class GameObj;
 class MainObj;
 class Actor;
+class ExitObj;
 
 enum PressureType
 {
@@ -55,6 +56,9 @@ public:
     
     virtual void init();
     void push_back(int layerId, GameObj *obj);
+    
+    void killEnemmy();
+    void pushPressure();
 
 protected:
     void pushExitObj(std::string name, std::size_t x, std::size_t y, std::size_t w, std::size_t h, std::size_t enemyLock, std::size_t pressureLock);
@@ -70,9 +74,10 @@ protected:
     void pushPressureObj(PressureType type, std::size_t x, std::size_t y, bool kid, bool adult, std::string target);
     void pushToogleObj(std::string name, std::size_t x, std::size_t y, SpriteType type);
 
+
     Engine& engine;
 
 private:
     std::array<std::list<GameObj *>, 10> layerList;
+    std::list<ExitObj *> exitList;
 };
-
