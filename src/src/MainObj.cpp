@@ -257,5 +257,12 @@ void MainObj::updatePlayer(std::size_t id, std::size_t x, std::size_t y, bool* b
     std::cout << "y = " << y << " ";
     std::cout << "size = " << ((big == nullptr) ? "unmodified" : (*big ? "big" : "small")) << std::endl;
     p->moveAt(sf::Vector2f(x, y));
+    if (big != nullptr)
+    {
+        if (*big)
+            p->growUp();
+        else
+            p->suicide();
+    }
 }
 
