@@ -53,6 +53,10 @@ add_executable(${EXECUTABLE_NAME}
 	src/MonsterObj.hpp
 	src/ShareObj.cpp
 	src/ShareObj.hpp
+	src/ExitObj.cpp
+	src/ExitObj.hpp
+	src/AttackObj.cpp
+	src/AttackObj.hpp
 	
 	src/json.hpp
 

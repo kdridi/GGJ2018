@@ -4,6 +4,7 @@
 #include "Utils.hpp"
 #include "ColliderMap.hpp"
 #include "SpriteObj.hpp"
+#include "MainObj.hpp"
 
 #include <sstream>
 
@@ -31,6 +32,8 @@ bool Engine::init()
     this->sprites.push_back(new SpriteSheet(utils::getFullPath("BruneSpriteSheetEnfant.png")));
     this->sprites.push_back(new SpriteSheet(utils::getFullPath("salles.png")));
 
+    new MainObj(1, 2);
+    new MainObj(2, 2);
     return (true);
 }
 

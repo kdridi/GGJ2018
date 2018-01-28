@@ -31,7 +31,7 @@ bool MonsterObj::update()
       if (this->collider->test(this->v) == false)
 	move(this->v);
     }
-  return (true);
+  return (GameObj::update());
 }
 
 void MonsterObj::move(sf::Vector2f pos)

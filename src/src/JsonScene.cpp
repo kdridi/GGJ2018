@@ -47,6 +47,7 @@ void JsonScene::init()
                         bool* big_ptr = size.compare("unmodified") == 0 ? nullptr : &big;
                         
                         MainObj::updatePlayer(id, px, py, big_ptr);
+			push_back(2, id == 0 ? MainObj::PA : MainObj::PB);
                     }
                 } else if (type.compare("exit") == 0)
                 {

@@ -21,6 +21,15 @@ SpriteObj::SpriteObj(SpriteSheet &sp, unsigned int id)
     this->collider = NULL;
 }
 
+SpriteObj::~SpriteObj()
+{
+  if (this->collider != NULL)
+    {
+      ColliderMap::current->delleteCollider(this->collider);
+      delete this->collider;
+    }  
+}
+
 void SpriteObj::draw() const
 {
     Engine::current->getWindow().draw(this->sprite);
@@ -47,7 +56,6 @@ void SpriteObj::addCollider(const sf::IntRect &rect)
   if (this->collider != NULL)
     {
       ColliderMap::current->delleteCollider(this->collider);
-      std::cout << "delete" << std::endl;
       delete this->collider;
     }
   this->collider = new Collider(rect, this);

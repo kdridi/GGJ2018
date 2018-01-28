@@ -6,15 +6,32 @@
 #include "MainObj.hpp"
 #include "ColliderMap.hpp"
 
+Scene	*Scene::current = NULL;
+
 Scene::Scene(Engine& engine)
 : engine(engine)
 , layerList()
 , players()
 {
+  Scene::current = this;
 }
  
 Scene::~Scene()
 {
+  for (auto &layer : this->layerList)
+    {
+      auto it = layer.begin();
+      while (it != layer.end())
+	{
+	  auto obj = *it;
+
+	  if (obj != MainObj::PA && obj != MainObj::PB)
+	    it = layer.erase(it);
+	  else
+	    ++it;
+	  delete obj;
+	}
+    }
 }
 
 void Scene::init()
@@ -31,7 +48,9 @@ bool Scene::update()
 	{
 	  if ((*it)->update() == false)
 	    {
+	      auto obj = *it;
 	      it = layer.erase(it);
+	      delete obj;
 	    }
 	  else
 	    ++it;

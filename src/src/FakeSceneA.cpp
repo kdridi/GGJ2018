@@ -15,6 +15,7 @@
 #include "CrackObj.hpp"
 #include "MonsterObj.hpp"
 #include "ShareObj.hpp"
+#include "ExitObj.hpp"
 
 FakeSceneA::~FakeSceneA()
 {
@@ -39,13 +40,13 @@ static int ids1[] = {
     12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,
     12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12,
     12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12,
-    12, 0, 0, 0,12,12,12,12,12,12,12,12, 0, 5, 0,12,
-    12, 0, 0, 0,12, 0, 0, 0, 0, 1, 0,11, 0, 0, 0,12,
-    12, 0, 0, 0,12, 0, 0, 0, 0, 0, 0,12, 0, 0, 0,12,
+    12, 0, 0, 0,12,12,12,12,12,12,12,12, 0, 4, 0,12,
+    12, 0, 0, 0,12, 0, 0, 0, 0, 0, 0,11, 0, 0, 0,12,
+    12, 0, 0, 0,12, 0, 0, 0, 0, 1, 0,12, 0, 0, 0,42,
     12, 0, 0, 0,12, 0, 0, 0, 0, 2, 0,12, 0, 0, 0,12,
     12, 0, 0, 0,12, 0, 0, 0, 0, 0, 0,11, 0, 0, 0,12,
     12, 0, 0, 0,12,12,12,12,12,12,12,12, 0, 0, 0,12,
-    12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0,12,
+    12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0,12,
     12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12,
     12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
 };
@@ -108,6 +109,12 @@ void FakeSceneA::init()
                     obj->move(sf::Vector2f(x * 64, y * 64));
                     push_back(2, obj);
                 }
+                else if (id == 42) // exit
+                {
+		  auto *obj = new ExitObj("coucou", sf::Vector2f(64, 64));
+                    obj->move(sf::Vector2f(x * 64, y * 64));
+                    push_back(2, obj);
+                }
                 else if (id == 4) // monster
                 {
                     auto *obj = new MonsterObj(engine.getSpriteSheet(SSHEET_MONSTER), 0);
@@ -116,7 +123,7 @@ void FakeSceneA::init()
                 }
                 else if (id == 5) // Share
                 {
-                    auto *obj = new ShareObj(engine.getSpriteSheet(0), 0);
+                    auto *obj = new ShareObj(sheet, 0);
                     obj->move(sf::Vector2f(x * 64, y * 64));
                     push_back(2, obj);
                 }

@@ -5,6 +5,9 @@
 #include "SpriteSheet.hpp"
 #include "MoveObj.hpp"
 #include "Engine.hpp"
+#include "Scene.hpp"
+#include "ExitObj.hpp"
+#include "AttackObj.hpp"
 
 MainObj	*MainObj::PA = NULL;
 MainObj	*MainObj::PB = NULL;
@@ -46,12 +49,17 @@ void MainObj::event(sf::Event &e)
             {
                 this->suicide();
             }
-            
             if (e.key.code == sf::Keyboard::E)
             {
-                this->growUp();
+	      sf::Vector2f size(this->collider->rect.width, this->collider->rect.height);
+	      AttackObj *obj = new AttackObj(30, true, this);
+
+	      obj->move(sf::Vector2f(this->collider->rect.left, this->collider->rect.top)
+			+ sf::Vector2f(size.x, 0));
+	      Scene::current->push_back(1, obj);
+	      this->active = false;
             }
-            
+                        
             if (e.key.code == sf::Keyboard::Up)
             {
                 this->sprite.setTextureRect(this->spriteSheet.getId(1, this->rect));
@@ -145,12 +153,19 @@ bool MainObj::update()
             if (c != nullptr)
             {
                 MoveObj *m = dynamic_cast<MoveObj *>(c->obj);
-                
+		ExitObj *e = dynamic_cast<ExitObj *>(c->obj);
+		
                 if (m != NULL)
                 {
                     m->lauch(this, sf::Vector2f(this->v.x / f, this->v.y / f));
                     this->v = sf::Vector2f(0, 0);
                 }
+		else if (e != NULL)
+		  {
+		    e->lauch();
+		    move(v);
+		  }
+		
             }
         }
         else
@@ -180,7 +195,8 @@ void MainObj::moveAt(sf::Vector2f pos)
 {
     sf::Vector2f size = sf::Vector2f(this->sprite.getTextureRect().width,
                                      this->sprite.getTextureRect().height);
-    
+
+    pos.y -= size.y;
     if (this->collider != NULL)
     {
         this->collider->rect.top = pos.y + (size.y - size.x);
@@ -244,9 +260,11 @@ sf::Vector2f MainObj::getPos() const
 
 void MainObj::updatePlayer(std::size_t id, std::size_t x, std::size_t y, bool* big)
 {
-    // TODO MainObj::updatePlayer implementation is missing
-    std::cout << "Player[" << id << "] ";
-    std::cout << "x = " << x << " ";
-    std::cout << "y = " << y << " ";
-    std::cout << "size = " << ((big == nullptr) ? "unmodified" : (*big ? "big" : "small")) << std::endl;
+  MainObj *p = id == 0 ? MainObj::PA : MainObj::PB;
+
+  std::cout << "Player[" << id << "] ";
+  std::cout << "x = " << x << " ";
+  std::cout << "y = " << y << " ";
+  std::cout << "size = " << ((big == nullptr) ? "unmodified" : (*big ? "big" : "small")) << std::endl;
+  p->moveAt(sf::Vector2f(x, y));
 }

@@ -34,6 +34,9 @@ enum SpriteType
 class Scene
 {
 public:
+  static Scene *current;
+  
+public:
     Scene(Engine& engine);
     virtual ~Scene();
 

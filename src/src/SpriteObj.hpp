@@ -9,7 +9,7 @@ class SpriteObj : public GameObj
 public:
   SpriteObj(SpriteSheet &);
   SpriteObj(SpriteSheet &, unsigned int id);
-  virtual ~SpriteObj() = default;
+  virtual ~SpriteObj();
 
   virtual void draw() const;
   virtual bool update();

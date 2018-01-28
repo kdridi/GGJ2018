@@ -20,8 +20,8 @@ public:
     virtual void addCollider(const sf::IntRect &);
 
     virtual int getY() const;
-protected:
   bool	live;
+protected:
   Collider *collider;
 };
 
