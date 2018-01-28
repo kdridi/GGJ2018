@@ -39,7 +39,8 @@ void MonsterObj::move(sf::Vector2f pos)
     sf::Vector2f v = this->sprite.getPosition();
     sf::Vector2f size = sf::Vector2f(this->sprite.getTextureRect().width,
                                      this->sprite.getTextureRect().height);
-    
+
+    pos.y -= size.y;
     if (this->collider != NULL)
     {
         this->collider->rect.top = v.y + pos.y + (size.y - size.x);
