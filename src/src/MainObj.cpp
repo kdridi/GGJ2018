@@ -39,121 +39,123 @@ void MainObj::draw() const
 
 void MainObj::event(sf::Event &e)
 {
-  this->f = 5.5;
+    this->f = 5.5;
     
-  if (this->active == false)
-    return ;
-  if (this->idJ == 1)
+    if (this->active == false)
+        return ;
+    if (this->idJ == 1)
     {
-      if (e.type == sf::Event::KeyPressed)
+        if (e.type == sf::Event::KeyPressed)
         {
-	  if (e.key.code == sf::Keyboard::R)
+            if (e.key.code == sf::Keyboard::R)
             {
-	      this->suicide();
+                this->suicide();
+                Engine::current->sound.play_sound(Sound::GO_SMALL);
             }
-	  if (e.key.code == sf::Keyboard::LShift)
+            if (e.key.code == sf::Keyboard::LShift)
             {
-	      sf::Vector2f size(this->collider->rect.width, this->collider->rect.height);
-	      AttackObj *obj = new AttackObj(30, true, this);
+                sf::Vector2f size(this->collider->rect.width, this->collider->rect.height);
+                AttackObj *obj = new AttackObj(30, true, this);
                 
-	      obj->move(sf::Vector2f(this->collider->rect.left, this->collider->rect.top)
-			+ sf::Vector2f(size.x, 0));
-	      Scene::current->push_back(1, obj);
-	      this->active = false;
+                obj->move(sf::Vector2f(this->collider->rect.left, this->collider->rect.top)
+                          + sf::Vector2f(size.x, 0));
+                Scene::current->push_back(1, obj);
+                this->active = false;
             }
             
-	  if (e.key.code == sf::Keyboard::W)
+            if (e.key.code == sf::Keyboard::W)
             {
-	      this->sprite.setTextureRect(this->spriteSheet.getId(1, this->rect));
-	      this->v = sf::Vector2f(0, -f);
-	      this->idK = 0;
+                this->sprite.setTextureRect(this->spriteSheet.getId(1, this->rect));
+                this->v = sf::Vector2f(0, -f);
+                this->idK = 0;
             }
-	  if (e.key.code == sf::Keyboard::S)
+            if (e.key.code == sf::Keyboard::S)
             {
-	      this->sprite.setTextureRect(this->spriteSheet.getId(0, this->rect));
-	      this->v = sf::Vector2f(0, f);
-	      this->idK = 1;
+                this->sprite.setTextureRect(this->spriteSheet.getId(0, this->rect));
+                this->v = sf::Vector2f(0, f);
+                this->idK = 1;
             }
-	  if (e.key.code == sf::Keyboard::A)
+            if (e.key.code == sf::Keyboard::A)
             {
-	      this->sprite.setTextureRect(this->spriteSheet.getId(2, this->rect));
-	      this->v = sf::Vector2f(-f, 0);
-	      this->idK = 2;
+                this->sprite.setTextureRect(this->spriteSheet.getId(2, this->rect));
+                this->v = sf::Vector2f(-f, 0);
+                this->idK = 2;
             }
-	  if (e.key.code == sf::Keyboard::D)
+            if (e.key.code == sf::Keyboard::D)
             {
-	      this->sprite.setTextureRect(this->spriteSheet.getId(3, this->rect));
-	      this->v = sf::Vector2f(f, 0);
-	      this->idK = 3;
+                this->sprite.setTextureRect(this->spriteSheet.getId(3, this->rect));
+                this->v = sf::Vector2f(f, 0);
+                this->idK = 3;
             }
         }
-      else if (e.type == sf::Event::KeyReleased)
+        else if (e.type == sf::Event::KeyReleased)
         {
-	  if (e.key.code == sf::Keyboard::W && this->idK == 0)
-	    this->v = sf::Vector2f(0, 0);
-	  if (e.key.code == sf::Keyboard::S && this->idK == 1)
-	    this->v = sf::Vector2f(0, 0);
-	  if (e.key.code == sf::Keyboard::A && this->idK == 2)
-	    this->v = sf::Vector2f(0, 0);
-	  if (e.key.code == sf::Keyboard::D && this->idK == 3)
-	    this->v = sf::Vector2f(0, 0);
+            if (e.key.code == sf::Keyboard::W && this->idK == 0)
+                this->v = sf::Vector2f(0, 0);
+            if (e.key.code == sf::Keyboard::S && this->idK == 1)
+                this->v = sf::Vector2f(0, 0);
+            if (e.key.code == sf::Keyboard::A && this->idK == 2)
+                this->v = sf::Vector2f(0, 0);
+            if (e.key.code == sf::Keyboard::D && this->idK == 3)
+                this->v = sf::Vector2f(0, 0);
         }
     }
-  else if (this->idJ == 2)
+    else if (this->idJ == 2)
     {
-      if (e.type == sf::Event::KeyPressed)
+        if (e.type == sf::Event::KeyPressed)
         {
-	  if (e.key.code == sf::Keyboard::U)
+            if (e.key.code == sf::Keyboard::U)
             {
-	      this->suicide();
+                this->suicide();
+                Engine::current->sound.play_sound(Sound::GO_SMALL);
             }
-	  if (e.key.code == sf::Keyboard::M)
+            if (e.key.code == sf::Keyboard::M)
             {
-	      sf::Vector2f size(this->collider->rect.width, this->collider->rect.height);
-	      AttackObj *obj = new AttackObj(30, true, this);
+                sf::Vector2f size(this->collider->rect.width, this->collider->rect.height);
+                AttackObj *obj = new AttackObj(30, true, this);
                 
-	      obj->move(sf::Vector2f(this->collider->rect.left, this->collider->rect.top)
-			+ sf::Vector2f(size.x, 0));
-	      Scene::current->push_back(1, obj);
-	      this->active = false;
+                obj->move(sf::Vector2f(this->collider->rect.left, this->collider->rect.top)
+                          + sf::Vector2f(size.x, 0));
+                Scene::current->push_back(1, obj);
+                this->active = false;
             }
-
-	    
-	  if (e.key.code == sf::Keyboard::O)
+            
+            
+            if (e.key.code == sf::Keyboard::O)
             {
-	      this->sprite.setTextureRect(this->spriteSheet.getId(1, this->rect));
-	      this->v = sf::Vector2f(0, -f);
-	      this->idK = 0;
+                this->sprite.setTextureRect(this->spriteSheet.getId(1, this->rect));
+                this->v = sf::Vector2f(0, -f);
+                this->idK = 0;
             }
-	  if (e.key.code == sf::Keyboard::L)
+            if (e.key.code == sf::Keyboard::L)
             {
-	      this->sprite.setTextureRect(this->spriteSheet.getId(0, this->rect));
-	      this->v = sf::Vector2f(0, f);
-	      this->idK = 1;
+                this->sprite.setTextureRect(this->spriteSheet.getId(0, this->rect));
+                this->v = sf::Vector2f(0, f);
+                this->idK = 1;
             }
-	  if (e.key.code == sf::Keyboard::K)
+            if (e.key.code == sf::Keyboard::K)
             {
-	      this->sprite.setTextureRect(this->spriteSheet.getId(2, this->rect));
-	      this->v = sf::Vector2f(-f, 0);
-	      this->idK = 2;
+                this->sprite.setTextureRect(this->spriteSheet.getId(2, this->rect));
+                this->v = sf::Vector2f(-f, 0);
+                this->idK = 2;
             }
-	  if (e.key.code == sf::Keyboard::SemiColon)
+            if (e.key.code == sf::Keyboard::SemiColon)
             {
-	      this->sprite.setTextureRect(this->spriteSheet.getId(3, this->rect));
-	      this->v = sf::Vector2f(f, 0);
-	      this->idK = 3;
+                this->sprite.setTextureRect(this->spriteSheet.getId(3, this->rect));
+                this->v = sf::Vector2f(f, 0);
+                this->idK = 3;
             }
         }
-      else if (e.type == sf::Event::KeyReleased)
+        else if (e.type == sf::Event::KeyReleased)
         {
-	  if (e.key.code == sf::Keyboard::O && this->idK == 0)
-	    this->v = sf::Vector2f(0, 0);
-	  if (e.key.code == sf::Keyboard::L && this->idK == 1)
-	    this->v = sf::Vector2f(0, 0);
-	  if (e.key.code == sf::Keyboard::K && this->idK == 2)
-	    this->v = sf::Vector2f(0, 0);
-	  if (e.key.code == sf::Keyboard::SemiColon && this->idK == 3)
-	    this->v = sf::Vector2f(0, 0);
+            if (e.key.code == sf::Keyboard::O && this->idK == 0)
+                this->v = sf::Vector2f(0, 0);
+            if (e.key.code == sf::Keyboard::L && this->idK == 1)
+                this->v = sf::Vector2f(0, 0);
+            if (e.key.code == sf::Keyboard::K && this->idK == 2)
+                this->v = sf::Vector2f(0, 0);
+            if (e.key.code == sf::Keyboard::SemiColon && this->idK == 3)
+                this->v = sf::Vector2f(0, 0);
         }
     }
 }
@@ -172,8 +174,8 @@ bool MainObj::update()
             {
                 MoveObj *m = dynamic_cast<MoveObj *>(c->obj);
                 ExitObj *e = dynamic_cast<ExitObj *>(c->obj);
-		SwitchObj *s = dynamic_cast<SwitchObj *>(c->obj);
-		
+                SwitchObj *s = dynamic_cast<SwitchObj *>(c->obj);
+                
                 if (m != NULL)
                 {
                     m->lauch(this, sf::Vector2f(this->v.x / f, this->v.y / f));
@@ -189,7 +191,7 @@ bool MainObj::update()
                 }
                 else if (s != NULL)
                 {
-		  move(v);
+                    move(v);
                 }
             }
         }
@@ -198,9 +200,9 @@ bool MainObj::update()
             move(v);
         }
     }
-
+    
     if (this->inv > 0)
-      this->inv -= 1;
+        this->inv -= 1;
     return (SpriteObj::update());
 }
 
@@ -247,8 +249,6 @@ void MainObj::suicide()
     
     this->move(sf::Vector2f(20, 42));
     std::cout << this->collider->rect.top << " " << this->collider->rect.left << std::endl;
-    
-    Engine::current->sound.play_sound(Sound::GO_SMALL);
 }
 
 void MainObj::growUp()
@@ -295,12 +295,19 @@ void MainObj::updatePlayer(std::size_t id, std::size_t x, std::size_t y, bool* b
 
 void MainObj::takeDmg()
 {
-  if (this->inv <= 0)
+    if (this->inv <= 0)
     {
-      if (this->state == 2)
-	this->suicide();
-      else
-	std::cout << "DEATH" << std::endl;
-      this->inv = 120;
+        if (this->state == 2)
+        {
+            Engine::current->sound.play_sound(Sound::ADULT_GETS_HURT);
+            this->suicide();
+        }
+        else
+        {
+            Engine::current->sound.play_sound(Sound::CHILDREN_GETS_HURT);
+            Engine::current->showScene("msg01");
+        }
+        this->inv = 120;
     }
 }
+

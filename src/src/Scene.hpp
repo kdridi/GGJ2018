@@ -23,14 +23,25 @@ enum PressureType
 enum SpriteType
 {
     SPRITE_NONE = 0,
-    SPRITE_WALL = 1,
+    
+    SPRITE_WALL1 = 1,
+    SPRITE_WALL2 = 17,
+    SPRITE_WALL3 = 18,
+    SPRITE_WALL4 = 20,
+    SPRITE_WALL5 = 21,
+    SPRITE_WALL6 = 22,
+    SPRITE_WALL7 = 23,
+    SPRITE_WALL8 = 19,
+
     SPRITE_STATIC = 2,
     SPRITE_MOBILE = 3,
     SPRITE_LINKED = 4,
     SPRITE_FLOOR = 5,
     SPRITE_PRESSURE = 6,
+    
     SPRITE_DOOR0 = 7,
     SPRITE_DOOR1 = 8,
+    
     SPRITE_BOSS0 = 9,
     SPRITE_BOSS1 = 10,
 //    SPRITE_ENEMY_AWAY = 11,
@@ -59,10 +70,11 @@ public:
     
     void killEnemmy();
     void pushPressure();
+    virtual void showNext();
 
 protected:
     void pushExitObj(std::string name, std::size_t x, std::size_t y, std::size_t w, std::size_t h, std::size_t enemyLock, std::size_t pressureLock);
-    void pushWallObj(std::size_t x, std::size_t y);
+    void pushWallObj(std::size_t x, std::size_t y, unsigned int type);
     void pushStaticObj(std::size_t x, std::size_t y);
     void pushDoorObj(std::size_t x, std::size_t y);
     void pushDoorSmallObj(std::size_t x, std::size_t y);

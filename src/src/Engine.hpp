@@ -18,6 +18,10 @@ enum SpriteSheetType
     SSHEET_PLAYER_SMALL = 2,
     SSHEET_FLOOR = 3,
     SSHEET_MONSTER = 1,
+    SSHEET_MSG1 = 4,
+    SSHEET_MSG2 = 5,
+    SSHEET_ENEMY_CLOSE = 6,
+    SSHEET_ENEMY_AWAY = 7,
 };
 
 class Engine

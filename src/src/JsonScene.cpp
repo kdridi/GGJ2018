@@ -228,8 +228,15 @@ void JsonScene::init()
                     switch (id) {
                         case SPRITE_NONE:
                             break;
-                        case SPRITE_WALL:
-                            pushWallObj(x, y);
+                        case SPRITE_WALL1:
+                        case SPRITE_WALL2:
+                        case SPRITE_WALL3:
+                        case SPRITE_WALL4:
+                        case SPRITE_WALL5:
+                        case SPRITE_WALL6:
+                        case SPRITE_WALL7:
+                        case SPRITE_WALL8:
+                            pushWallObj(x, y, id);
                             break;
                         case SPRITE_STATIC:
                             pushStaticObj(x, y);

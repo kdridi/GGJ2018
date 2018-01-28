@@ -100,13 +100,13 @@ void Scene::push_back(int layerId, GameObj *obj)
     this->layerList[layerId].push_back(obj);
 }
 
-void Scene::pushWallObj(std::size_t x, std::size_t y)
+void Scene::pushWallObj(std::size_t x, std::size_t y, unsigned int type)
 {
     auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
-    auto obj = new SpriteObj(sheet, SPRITE_WALL - 1);
+    auto obj = new SpriteObj(sheet, type - 1);
     obj->move(sf::Vector2f(x * 64, y * 64));
     push_back(1, obj);
-    ColliderMap::current->addCollider(x, y, SPRITE_WALL);
+    ColliderMap::current->addCollider(x, y, type);
 }
 
 void Scene::pushStaticObj(std::size_t x, std::size_t y)
@@ -164,7 +164,7 @@ void Scene::pushEnemyCloseObj(std::size_t x, std::size_t y, double damage, doubl
     std::cout << "hp = " << hp << " ";
     std::cout << std::endl;
     
-    auto *obj = new MonsterObj(engine.getSpriteSheet(SSHEET_MONSTER), 0);
+    auto *obj = new MonsterObj(engine.getSpriteSheet(SSHEET_ENEMY_CLOSE), 0);
     obj->moveAt(sf::Vector2f(x, y));
     push_back(1, obj);
 }
@@ -178,7 +178,7 @@ void Scene::pushEnemyAwayObj(std::size_t x, std::size_t y, double damage, double
     std::cout << "hp = " << hp << " ";
     std::cout << std::endl;
     
-    auto *obj = new MonsterObj(engine.getSpriteSheet(SSHEET_MONSTER), 0);
+    auto *obj = new MonsterObj(engine.getSpriteSheet(SSHEET_ENEMY_AWAY), 0);
     obj->moveAt(sf::Vector2f(x, y));
     push_back(1, obj);
 }
@@ -258,4 +258,8 @@ void Scene::pushPressure()
     {
         exit->pushPressure();
     }
+}
+
+void Scene::showNext()
+{
 }

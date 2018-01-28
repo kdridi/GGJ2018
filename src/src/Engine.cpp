@@ -31,6 +31,10 @@ bool Engine::init()
     this->sprites.push_back(new SpriteSheet(utils::getFullPath("BruneSpriteSheet.png")));
     this->sprites.push_back(new SpriteSheet(utils::getFullPath("BruneSpriteSheetEnfant.png")));
     this->sprites.push_back(new SpriteSheet(utils::getFullPath("salles.png")));
+    this->sprites.push_back(new SpriteSheet(utils::getFullPath("1.png")));
+    this->sprites.push_back(new SpriteSheet(utils::getFullPath("2.png")));
+    this->sprites.push_back(new SpriteSheet(utils::getFullPath("ent.png")));
+    this->sprites.push_back(new SpriteSheet(utils::getFullPath("ent_bow.png")));
 
     new MainObj(1, 2);
     new MainObj(2, 2);
@@ -70,6 +74,19 @@ bool Engine::update()
         if (event.type == sf::Event::Closed)
         {
             return (false);
+        }
+        
+        static bool keyPressed = false;
+        
+        if (keyPressed == false && event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space)
+        {
+            this->scene->showNext();
+            keyPressed = true;
+        }
+        
+        if (keyPressed == true && event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Space)
+        {
+            keyPressed = false;
         }
     }
     

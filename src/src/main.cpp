@@ -1,6 +1,7 @@
 #include "Engine.hpp"
 #include "FakeSceneA.hpp"
 #include "JsonScene.hpp"
+#include "ScreenScene.hpp"
 
 int main()
 {
@@ -36,16 +37,22 @@ int main()
     e.registerSceneFactory("room10", [&] () {
         return new JsonScene(e, "room10");
     });
+    e.registerSceneFactory("msg01", [&] () {
+        return new ScreenScene(e, 0);
+    });
+    e.registerSceneFactory("msg02", [&] () {
+        return new ScreenScene(e, 1);
+    });
     e.registerSceneFactory("FakeSceneA", [&] () {
         FakeSceneA* scene = new FakeSceneA(e);
         return scene;
     });
     
 #ifdef NDEBUG
-    e.showScene("room01");
+    e.showScene("msg01");
 #else
 //    e.showScene("FakeSceneA");
-    e.showScene("room02");
+    e.showScene("room04");
 #endif
     
     if (e.init() == false)
