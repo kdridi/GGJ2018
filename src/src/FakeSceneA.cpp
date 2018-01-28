@@ -39,14 +39,14 @@ static int ids0[] = {
 static int ids1[] = {
     12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,
     12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12,
-    12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12,
-    12, 0, 0, 0,12,12,12,12,12,12,12,12, 0, 4, 0,12,
+    12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0,12,
+    12, 0, 0, 0,12,12,12,12,12,12,12,12, 0, 5, 0,12,
     12, 0, 0, 0,12, 0, 0, 0, 0, 0, 0,11, 0, 0, 0,12,
     12, 0, 0, 0,12, 0, 0, 0, 0, 1, 0,12, 0, 0, 0,42,
     12, 0, 0, 0,12, 0, 0, 0, 0, 2, 0,12, 0, 0, 0,12,
     12, 0, 0, 0,12, 0, 0, 0, 0, 0, 0,11, 0, 0, 0,12,
     12, 0, 0, 0,12,12,12,12,12,12,12,12, 0, 0, 0,12,
-    12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0,12,
+    12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0,12,
     12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,12,
     12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
 };
@@ -93,35 +93,45 @@ void FakeSceneA::init()
             {
                 if (id == 1) // first player
                 {
-                    MainObj::updatePlayer(0, x * 64, y * 64, nullptr);
+                    auto *obj = new MainObj(1, 1);
+                    obj->moveAt(sf::Vector2f(x * 64, y * 64));
+                    push_back(2, obj);
                 }
                 else if (id == 2) // second player
                 {
-                    MainObj::updatePlayer(1, x * 64, y * 64, nullptr);
+                    auto *obj = new MainObj(2, 1);
+                    obj->moveAt(sf::Vector2f(x * 64, y * 64));
+                    push_back(2, obj);
                 }
                 else if (id == 11) // wall hole
                 {
                     auto *obj = new CrackObj(sheet, 0, sf::IntRect(0, 0, 64, 15));
                     obj->move(sf::Vector2f(x * 64, y * 64));
-                    push_back(2, obj);
+                    push_back(1, obj);
                 }
                 else if (id == 42) // exit
                 {
                     auto *obj = new ExitObj(engine, "coucou", sf::Vector2f(64, 64), 0, 0);
                     obj->move(sf::Vector2f(x * 64, y * 64));
-                    push_back(2, obj);
+                    push_back(1, obj);
                 }
                 else if (id == 4) // monster
                 {
                     auto *obj = new MonsterObj(engine.getSpriteSheet(SSHEET_MONSTER), 0);
                     obj->moveAt(sf::Vector2f(x * 64, y * 64));
-                    push_back(2, obj);
+                    push_back(1, obj);
                 }
                 else if (id == 5) // Share
                 {
                     auto *obj = new ShareObj(sheet, 0);
                     obj->move(sf::Vector2f(x * 64, y * 64));
-                    push_back(2, obj);
+                    push_back(1, obj);
+                }
+                else if (id == 6) // Move
+                {
+                    auto *obj = new MoveObj(sheet, 0);
+                    obj->move(sf::Vector2f(x * 64, y * 64));
+                    push_back(0, obj);
                 }
                 else
                 {
