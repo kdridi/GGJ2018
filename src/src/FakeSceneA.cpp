@@ -112,15 +112,11 @@ void FakeSceneA::init()
                 }
                 else if (id == 42) // exit
                 {
-                    auto *obj = new ExitObj(engine, "coucou", sf::Vector2f(64, 64), 0, 1);
-                    obj->move(sf::Vector2f(x * 64, y * 64));
-                    push_back(1, obj);
+                    pushExitObj("room01", x * 64, y * 64, 64, 64, 0, 1);
                 }
                 else if (id == 3) // exit
                 {
-                    auto *obj = new SwitchObj(PRESSURE_TOOGLE, true, true, "");
-                    obj->move(sf::Vector2f(x * 64, y * 64));
-                    push_back(1, obj);
+                    pushPressureObj(PRESSURE_OPEN_DOOR, x * 64, y * 64, true, true, "");
                 }
                 else if (id == 4) // monster
                 {

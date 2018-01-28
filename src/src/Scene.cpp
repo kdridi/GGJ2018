@@ -189,6 +189,22 @@ void Scene::pushEnemyAwayObj(std::size_t x, std::size_t y, std::size_t w, std::s
     push_back(2, obj);
 }
 
+void Scene::pushEnemyBossObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, double damage, double hp)
+{
+    std::cout << "EnemyBossObj[] ";
+    std::cout << "x = " << x << " ";
+    std::cout << "y = " << y << " ";
+    std::cout << "w = " << w << " ";
+    std::cout << "h = " << h << " ";
+    std::cout << "damage = " << damage << " ";
+    std::cout << "hp = " << hp << " ";
+    std::cout << std::endl;
+    
+    auto *obj = new MonsterObj(engine.getSpriteSheet(SSHEET_MONSTER), 0);
+    obj->moveAt(sf::Vector2f(x, y));
+    push_back(2, obj);
+}
+
 void Scene::pushMobileObj(std::size_t x, std::size_t y)
 {
     auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
@@ -227,11 +243,9 @@ void Scene::pushToogleObj(std::string name, std::size_t x, std::size_t y, Sprite
 void Scene::pushPressureObj(PressureType type, std::size_t x, std::size_t y, bool kid, bool adult, std::string target)
 {
     // TODO Implements Pressure Obj
-    auto& sheet = engine.getSpriteSheet(SSHEET_ITEMS);
     auto *obj = new SwitchObj(type, kid, adult, target);
-    // auto *obj = new MoveObj(Engine::current->getSpriteSheet(SSHEET_ITEMS), 1);
     obj->move(sf::Vector2f(x, y));
-    push_back(2, obj);
+    push_back(1, obj);
     
     std::cout << "PressureObj[" << type << "] ";
     std::cout << "x = " << x << " ";
@@ -251,5 +265,7 @@ void Scene::killEnemmy()
 void Scene::pushPressure()
 {
     for (auto *exit : exitList)
+    {
         exit->pushPressure();
+    }
 }
