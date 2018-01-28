@@ -14,8 +14,8 @@ public:
   {return (this->collider);}
 
   virtual bool update();
-  void lauch(MainObj *, sf::Vector2f v);
-private:
+  virtual void lauch(MainObj *, sf::Vector2f v);
+protected:
   int	       step;
   sf::Vector2f v;
   MainObj *obj;

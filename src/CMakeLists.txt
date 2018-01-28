@@ -51,6 +51,8 @@ add_executable(${EXECUTABLE_NAME}
 	src/CrackObj.hpp
 	src/MonsterObj.cpp
 	src/MonsterObj.hpp
+	src/ShareObj.cpp
+	src/ShareObj.hpp
 	
 	src/json.hpp
 
