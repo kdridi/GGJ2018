@@ -41,7 +41,7 @@ int main()
         return scene;
     });
     
-#ifdef RELEASE
+#ifdef NDEBUG
     e.showScene("room01");
 #else
 //    e.showScene("FakeSceneA");

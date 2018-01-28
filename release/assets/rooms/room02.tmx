@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.1" orientation="orthogonal" renderorder="left-up" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextobjectid="11">
+ <tileset firstgid="1" source="map.tsx"/>
+ <layer name="env" width="16" height="12">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,2,2,2,2,0,0,15,0,0,1,
+7,0,0,0,0,0,2,2,2,2,0,0,0,0,0,7,
+7,0,0,0,0,0,2,2,2,2,0,0,0,0,0,7,
+1,0,0,0,0,0,2,2,2,2,0,0,15,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+</data>
+ </layer>
+ <objectgroup name="door">
+  <object id="4" type="door" x="960" y="320" width="64" height="128">
+   <properties>
+    <property name="isOpen" type="bool" value="true"/>
+    <property name="next" value="room3"/>
+   </properties>
+  </object>
+  <object id="5" type="door" x="0" y="320" width="64" height="128">
+   <properties>
+    <property name="isOpen" type="bool" value="true"/>
+    <property name="next" value="room1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="foe">
+  <properties>
+   <property name="damage" value="2"/>
+   <property name="hp" value="2"/>
+  </properties>
+  <object id="7" type="close" x="768" y="256" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="2"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="8" type="close" x="768" y="448" width="64" height="64">
+   <properties>
+    <property name="damage" type="float" value="2"/>
+    <property name="hp" type="float" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

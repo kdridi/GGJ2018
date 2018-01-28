@@ -74,7 +74,7 @@ add_executable(${EXECUTABLE_NAME}
 
 # Detect and add SFML
 if (WIN32)
-    add_definitions(-DRELEASE)
+    add_definitions(-DWINDOWS)
 	set(SFML_ROOT "${CMAKE_SOURCE_DIR}/vendor/SFML-2.4.2")
 endif ()
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})

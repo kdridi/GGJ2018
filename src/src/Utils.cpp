@@ -12,6 +12,37 @@
 #include <fstream>
 #include <map>
 
+static std::string GetCurrentWorkingDir(void);
+#ifdef NDEBUG
+
+#include <stdio.h>
+
+#ifdef WINDOWS_VERSION
+#   include <direct.h>
+#   define GetCurrentDir _getcwd
+#else
+#   include <unistd.h>
+#   define GetCurrentDir getcwd
+#endif
+
+#include<iostream>
+
+static std::string GetCurrentWorkingDir(void) {
+    char buff[FILENAME_MAX];
+    GetCurrentDir( buff, FILENAME_MAX );
+    std::string current_working_dir(buff);
+    
+    std::stringstream ss;
+    ss << current_working_dir;
+    ss << "/assets";
+    
+    std::cout << ">>>>[" << ss.str() << "]<<<<" << std::endl;
+    
+    return ss.str();
+}
+
+#else
+
 static std::string dirname(const std::string & path);
 
 std::string dirname(const std::string & path)
@@ -47,19 +78,23 @@ std::string dirname(const std::string & path)
     return std::string(path.begin(),last_slash.base()-1);
 }
 
+static std::string GetCurrentWorkingDir(void)
+{
+    std::stringstream ss;
+    ss << dirname(__FILE__);
+    ss << "/../assets";
+    return ss.str();
+}
+
+#endif
+
 std::string utils::getFullPath(std::string path)
 {
     static std::string assetsDir;
     
     if (assetsDir.empty())
-    {
-        std::stringstream ss;
-        ss << dirname(__FILE__);
-        ss << "/../assets";
-        
-        assetsDir = ss.str();
-    }
-    
+        assetsDir = GetCurrentWorkingDir();
+
     std::stringstream ss;
     ss << assetsDir;
     ss << "/";
@@ -83,3 +118,6 @@ nlohmann::json& utils::getRoomInformations(std::string name)
     
     return files[name];
 }
+
+
+

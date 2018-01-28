@@ -15,7 +15,7 @@
 
 void JsonScene::init()
 {
-#ifdef RELEASE
+#ifdef NDEBUG
 #else
     std::cout << std::setw(4) << room << std::endl;
 #endif
