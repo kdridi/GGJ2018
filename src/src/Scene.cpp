@@ -147,5 +147,17 @@ void Scene::pushExitObj(std::string name, std::size_t x, std::size_t y, std::siz
     std::cout << "y = " << y << " ";
     std::cout << "w = " << w << " ";
     std::cout << "h = " << h << " ";
+    std::cout << std::endl;
 }
 
+void Scene::pushEnemyCloseObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, double damage, double hp)
+{
+    std::cout << "EnemyCloseObj[] ";
+    std::cout << "x = " << x << " ";
+    std::cout << "y = " << y << " ";
+    std::cout << "w = " << w << " ";
+    std::cout << "h = " << h << " ";
+    std::cout << "damage = " << damage << " ";
+    std::cout << "hp = " << hp << " ";
+    std::cout << std::endl;
+}

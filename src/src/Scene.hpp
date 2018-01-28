@@ -53,6 +53,7 @@ protected:
     void pushStaticObj(std::size_t x, std::size_t y);
     void pushDoorObj(std::size_t x, std::size_t y);
     void pushDoorSmallObj(std::size_t x, std::size_t y);
+    void pushEnemyCloseObj(std::size_t x, std::size_t y, std::size_t w, std::size_t h, double damage, double hp);
     Engine& engine;
 
 private:

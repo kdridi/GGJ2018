@@ -47,7 +47,17 @@ void JsonScene::init()
                         bool* big_ptr = size.compare("unmodified") == 0 ? nullptr : &big;
                         
                         MainObj::updatePlayer(id, px, py, big_ptr);
-			push_back(2, id == 0 ? MainObj::PA : MainObj::PB);
+                        push_back(2, id == 0 ? MainObj::PA : MainObj::PB);
+                    } else if (name.compare("enemyClose") == 0)
+                    {
+                        double damage = object["properties"]["damage"];
+                        double hp = object["properties"]["hp"];
+                        uint64_t w = object["width"];
+                        uint64_t h = object["height"];
+                        uint64_t x = object["x"];
+                        uint64_t y = object["y"];
+                        
+                        pushEnemyCloseObj(x, y, w, h, damage, hp);
                     }
                 } else if (type.compare("exit") == 0)
                 {
