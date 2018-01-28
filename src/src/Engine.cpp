@@ -34,6 +34,9 @@ bool Engine::init()
 
     new MainObj(1, 2);
     new MainObj(2, 2);
+    
+    sound.play_music(Sound::MUSIC_PUZZLE);
+    
     return (true);
 }
 

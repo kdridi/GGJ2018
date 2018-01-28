@@ -229,6 +229,7 @@ void MainObj::suicide()
     this->move(sf::Vector2f(20, 42));
     std::cout << this->collider->rect.top << " " << this->collider->rect.left << std::endl;
     
+    Engine::current->sound.play_sound(Sound::GO_SMALL);
 }
 
 void MainObj::growUp()

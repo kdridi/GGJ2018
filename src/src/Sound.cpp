@@ -21,8 +21,7 @@ Sound::Sound()
     this->_sounds[5].loadFromFile(utils::getFullPath("sound/gain_skill.ogg"));
     this->_sounds[6].loadFromFile(utils::getFullPath("sound/loot_coin.ogg"));
     this->_sounds[7].loadFromFile(utils::getFullPath("sound/lose_inventory.ogg"));
-    this->_sounds[7].loadFromFile(utils::getFullPath("sound/lose_inventory.ogg"));
-    
+    this->_sounds[8].loadFromFile(utils::getFullPath("sound/son_taika_final.ogg"));
 }
 
 void    Sound::play_sound(Sound_Type id)

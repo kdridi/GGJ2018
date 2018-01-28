@@ -22,14 +22,15 @@ public:
     
     enum Sound_Type
     {
-        ELECTRIC_BOW,
-        ADULT_GETS_HURT,
-        CHILDREN_GETS_HURT,
-        ARROW_IN_BODY,
-        ARROW_IN_WALL,
-        GAIN_SKILL,
-        LOOT_COIN,
-        LOSE_INVENTORY,
+        ELECTRIC_BOW = 0,
+        ADULT_GETS_HURT = 1,
+        CHILDREN_GETS_HURT = 2,
+        ARROW_IN_BODY = 3,
+        ARROW_IN_WALL = 4,
+        GAIN_SKILL = 5,
+        LOOT_COIN = 6,
+        LOSE_INVENTORY = 7,
+        GO_SMALL = 8,
     };
     
     enum Music_Type
