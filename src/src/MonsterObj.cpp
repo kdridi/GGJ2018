@@ -41,6 +41,17 @@ bool MonsterObj::update()
     {
       if (this->collider->test(this->v) == false)
 	move(this->v);
+      else
+	{
+	  Collider *c = this->collider->getTest(this->v);
+	  if (c != nullptr)
+	    {
+	      MainObj *m = dynamic_cast<MainObj *>(c->obj);
+
+	      if (m != NULL)
+		m->takeDmg();
+	    }
+	}
     }
   return (GameObj::update());
 }

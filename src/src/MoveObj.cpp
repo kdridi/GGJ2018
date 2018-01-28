@@ -5,6 +5,7 @@
 #include "Collider.hpp"
 #include "ColliderMap.hpp"
 #include "MainObj.hpp"
+#include "SwitchObj.hpp"
 
 MoveObj::MoveObj(SpriteSheet &sp) : SpriteObj(sp)
 {
@@ -32,10 +33,24 @@ bool MoveObj::update()
 	}
       else if (this->state == 1)
 	{
-	  this->step = 64 - this->step;
-	  this->step += 1;
-	  this->v = sf::Vector2f(this->v.x * -1, this->v.y * -1);
-	  this->state = 2;
+	  Collider *c = this->collider->getTest(this->v);
+	  if (c != nullptr)
+	    {
+	      SwitchObj *m = dynamic_cast<SwitchObj *>(c->obj);
+
+	      if (m != NULL)
+		this->move(v);
+	      else
+		goto conti;
+	    }
+	  else
+	    {
+	    conti:
+	      this->step = 64 - this->step;
+	      this->step += 1;
+	      this->v = sf::Vector2f(this->v.x * -1, this->v.y * -1);
+	      this->state = 2;
+	    }
 	}
       this->step -= 1;
     }
@@ -63,5 +78,18 @@ void MoveObj::lauch(MainObj *obj, sf::Vector2f v)
 
 bool MoveObj::canLauch(sf::Vector2f v) const
 {
-  return (this->collider->test(v) == false);
+  if (this->collider->test(v) == false)
+    return (true);
+  else
+    {
+      Collider *c = this->collider->getTest(this->v);
+      if (c != nullptr)
+	{
+	  SwitchObj *m = dynamic_cast<SwitchObj *>(c->obj);
+
+	  if (m != NULL)
+	    return (true);
+	}
+      return (false);
+    }
 }

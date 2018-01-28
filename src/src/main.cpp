@@ -45,7 +45,7 @@ int main()
     e.showScene("room01");
 #else
 //    e.showScene("FakeSceneA");
-    e.showScene("room10");
+    e.showScene("room04");
 #endif
     
     if (e.init() == false)
