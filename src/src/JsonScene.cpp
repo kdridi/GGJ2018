@@ -87,6 +87,8 @@ void JsonScene::init()
                     uint64_t id = data.at(y * width + x);
                     
                     switch (id) {
+                        case SPRITE_NONE:
+                            break;
                         case SPRITE_WALL:
                             pushWallObj(x, y);
                             break;
@@ -107,6 +109,7 @@ void JsonScene::init()
                             pushDoorSmallObj(x, y);
                             break;
                         default:
+                            throw "unknown object type";
                             break;
                     }
                 }

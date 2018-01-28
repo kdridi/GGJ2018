@@ -15,13 +15,16 @@ int main()
     e.registerSceneFactory("room03", [&] () {
         return new JsonScene(e, "room03");
     });
+    e.registerSceneFactory("room04", [&] () {
+        return new JsonScene(e, "room04");
+    });
     e.registerSceneFactory("FakeSceneA", [&] () {
         FakeSceneA* scene = new FakeSceneA(e);
         return scene;
     });
     
 //    e.showScene("FakeSceneA");
-    e.showScene("room03");
+    e.showScene("room04");
     
     if (e.init() == false)
         return (1);

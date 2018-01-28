@@ -13,6 +13,7 @@ class Actor;
 
 enum SpriteType
 {
+    SPRITE_NONE = 0,
     SPRITE_WALL = 1,
     SPRITE_STATIC = 2,
     SPRITE_MOBILE = 3,
@@ -23,11 +24,11 @@ enum SpriteType
     SPRITE_DOOR1 = 8,
     SPRITE_BOSS0 = 9,
     SPRITE_BOSS1 = 10,
-    SPRITE_ENEMY_AWAY = 11,
+//    SPRITE_ENEMY_AWAY = 11,
     SPRITE_DOOR_SMALL = 12,
     SPRITE_BOSS2 = 13,
     SPRITE_BOSS3 = 14,
-    SPRITE_ENEMY_CLOSE = 15,
+//    SPRITE_ENEMY_CLOSE = 15,
     SPRITE_PRESSURE_SMALL = 16,
 };
 
